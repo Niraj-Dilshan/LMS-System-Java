@@ -41,6 +41,8 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("                                                                                                            LMS SYSTEM");
+        setAutoRequestFocus(false);
+        setFocusCycleRoot(false);
         setIconImages(null);
         setResizable(false);
 
