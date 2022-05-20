@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -89,6 +90,196 @@ public class Admin extends javax.swing.JFrame {
         tla = new javax.swing.JTextField();
         btn_addlsubmit = new javax.swing.JButton();
         btn_addlreset = new javax.swing.JButton();
+        jfaddto = new javax.swing.JFrame();
+        jPanel9 = new javax.swing.JPanel();
+        btn_atoback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel34 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel35 = new javax.swing.JLabel();
+        ttoulcid = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel36 = new javax.swing.JLabel();
+        ttouid = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel37 = new javax.swing.JLabel();
+        ttouname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel38 = new javax.swing.JLabel();
+        ttofname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel39 = new javax.swing.JLabel();
+        ttolname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel40 = new javax.swing.JLabel();
+        ttoemail = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel41 = new javax.swing.JLabel();
+        ttocn = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel43 = new javax.swing.JLabel();
+        ttoa = new javax.swing.JTextField();
+        btn_addtosubmit = new javax.swing.JButton();
+        btn_addtoreset = new javax.swing.JButton();
+        jfadds = new javax.swing.JFrame();
+        jPanel10 = new javax.swing.JPanel();
+        btn_asback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel44 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel45 = new javax.swing.JLabel();
+        tsulcid = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel46 = new javax.swing.JLabel();
+        tsuid = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel47 = new javax.swing.JLabel();
+        tsuname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel48 = new javax.swing.JLabel();
+        tsfname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel49 = new javax.swing.JLabel();
+        tslname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel50 = new javax.swing.JLabel();
+        tsemail = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel51 = new javax.swing.JLabel();
+        tscn = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel52 = new javax.swing.JLabel();
+        tsa = new javax.swing.JTextField();
+        btn_addssubmit = new javax.swing.JButton();
+        btn_addsreset = new javax.swing.JButton();
+        javax.swing.JLabel jLabel53 = new javax.swing.JLabel();
+        tsfullname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel54 = new javax.swing.JLabel();
+        tsregdate = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel55 = new javax.swing.JLabel();
+        tsdep = new javax.swing.JComboBox<>();
+        jfviewlc = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel56 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel57 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel58 = new javax.swing.JLabel();
+        tlcviewun = new javax.swing.JTextField();
+        tlcviewp = new javax.swing.JPasswordField();
+        tlcviewr = new javax.swing.JComboBox<>();
+        btn_viewlcupdate = new javax.swing.JButton();
+        btn_viewlcreset = new javax.swing.JButton();
+        btn_vlcback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel59 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel60 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTALC = new javax.swing.JTable();
+        tlcviewidf = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel61 = new javax.swing.JLabel();
+        tlcviewid = new javax.swing.JTextField();
+        btn_viewlcsearch = new javax.swing.JButton();
+        btn_viewlcdelete = new javax.swing.JButton();
+        jfviewa = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        btn_aviewback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel62 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel63 = new javax.swing.JLabel();
+        taviewun = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel64 = new javax.swing.JLabel();
+        taviewufn = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel65 = new javax.swing.JLabel();
+        taviewuln = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel66 = new javax.swing.JLabel();
+        taviewe = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel67 = new javax.swing.JLabel();
+        taviewcn = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel68 = new javax.swing.JLabel();
+        taviewa = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel69 = new javax.swing.JLabel();
+        taviewlidf = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel70 = new javax.swing.JLabel();
+        taviewuid = new javax.swing.JTextField();
+        btn_viewaupdate = new javax.swing.JButton();
+        btn_viewareset = new javax.swing.JButton();
+        taviewulid = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel71 = new javax.swing.JLabel();
+        pfaview = new javax.swing.JLabel();
+        btn_viewasearch = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTAV = new javax.swing.JTable();
+        btn_viewaselectimage = new javax.swing.JButton();
+        btn_viewadelete = new javax.swing.JButton();
+        jfviewl = new javax.swing.JFrame();
+        jPanel11 = new javax.swing.JPanel();
+        btn_lviewback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel72 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel73 = new javax.swing.JLabel();
+        tlviewulid = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel74 = new javax.swing.JLabel();
+        tlviewuid = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel75 = new javax.swing.JLabel();
+        tlviewuname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel76 = new javax.swing.JLabel();
+        tlviewfname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel77 = new javax.swing.JLabel();
+        tlviewlname = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel78 = new javax.swing.JLabel();
+        tlviewe = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel79 = new javax.swing.JLabel();
+        tlviewcn = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel80 = new javax.swing.JLabel();
+        tlviewa = new javax.swing.JTextField();
+        btn_viewlupdate = new javax.swing.JButton();
+        btn_viewlreset = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTLV = new javax.swing.JTable();
+        javax.swing.JLabel jLabel81 = new javax.swing.JLabel();
+        tlviewlidf = new javax.swing.JTextField();
+        btn_viewlsearch = new javax.swing.JButton();
+        pflview = new javax.swing.JLabel();
+        btn_viewlselectimage = new javax.swing.JButton();
+        btn_viewldelete = new javax.swing.JButton();
+        jfviewto = new javax.swing.JFrame();
+        jPanel12 = new javax.swing.JPanel();
+        btn_alback2 = new javax.swing.JButton();
+        javax.swing.JLabel jLabel82 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel83 = new javax.swing.JLabel();
+        tlviewulid1 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel84 = new javax.swing.JLabel();
+        tlviewuid1 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel85 = new javax.swing.JLabel();
+        tlviewuname1 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel86 = new javax.swing.JLabel();
+        tlviewfname1 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel87 = new javax.swing.JLabel();
+        tlviewlname1 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel88 = new javax.swing.JLabel();
+        tlviewe1 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel89 = new javax.swing.JLabel();
+        tlviewcn1 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel90 = new javax.swing.JLabel();
+        tlviewa1 = new javax.swing.JTextField();
+        btn_viewlupdate1 = new javax.swing.JButton();
+        btn_viewlreset1 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTLV1 = new javax.swing.JTable();
+        javax.swing.JLabel jLabel91 = new javax.swing.JLabel();
+        tlviewlidf1 = new javax.swing.JTextField();
+        btn_viewlsearch1 = new javax.swing.JButton();
+        pflview1 = new javax.swing.JLabel();
+        btn_viewlselectimage1 = new javax.swing.JButton();
+        btn_viewadelete2 = new javax.swing.JButton();
+        jfviews = new javax.swing.JFrame();
+        jPanel13 = new javax.swing.JPanel();
+        btn_alback3 = new javax.swing.JButton();
+        javax.swing.JLabel jLabel92 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel93 = new javax.swing.JLabel();
+        tlviewulid2 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel94 = new javax.swing.JLabel();
+        tlviewuid2 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel95 = new javax.swing.JLabel();
+        tlviewuname2 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel96 = new javax.swing.JLabel();
+        tlviewfname2 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel97 = new javax.swing.JLabel();
+        tlviewlname2 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel98 = new javax.swing.JLabel();
+        tlviewe2 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel99 = new javax.swing.JLabel();
+        tlviewcn2 = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel100 = new javax.swing.JLabel();
+        tlviewa2 = new javax.swing.JTextField();
+        btn_viewlupdate2 = new javax.swing.JButton();
+        btn_viewlreset2 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTLV2 = new javax.swing.JTable();
+        javax.swing.JLabel jLabel101 = new javax.swing.JLabel();
+        tlviewlidf2 = new javax.swing.JTextField();
+        btn_viewlsearch2 = new javax.swing.JButton();
+        pflview2 = new javax.swing.JLabel();
+        btn_viewlselectimage2 = new javax.swing.JButton();
+        btn_viewadelete3 = new javax.swing.JButton();
         bg = new javax.swing.JPanel();
         sidepanel = new javax.swing.JPanel();
         btn_users = new javax.swing.JPanel();
@@ -109,7 +300,6 @@ public class Admin extends javax.swing.JFrame {
         body = new javax.swing.JPanel();
         jpuser = new javax.swing.JPanel();
         javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
         btn_addlc = new javax.swing.JButton();
         btn_adda = new javax.swing.JButton();
@@ -121,11 +311,6 @@ public class Admin extends javax.swing.JFrame {
         btn_viewl = new javax.swing.JButton();
         btn_viewa = new javax.swing.JButton();
         btn_viewlc = new javax.swing.JButton();
-        btn_ups = new javax.swing.JButton();
-        btn_upl = new javax.swing.JButton();
-        btn_upa = new javax.swing.JButton();
-        btn_upto = new javax.swing.JButton();
-        btn_uplc = new javax.swing.JButton();
         jpcourse = new javax.swing.JPanel();
         btn_addc = new javax.swing.JButton();
         btn_upc = new javax.swing.JButton();
@@ -140,17 +325,19 @@ public class Admin extends javax.swing.JFrame {
         btn_viewt = new javax.swing.JButton();
 
         jfaddlc.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jfaddlc.setTitle("                                                                                                Add Login Credentials");
-        jfaddlc.setLocationByPlatform(true);
-        jfaddlc.setMinimumSize(new java.awt.Dimension(800, 600));
+        jfaddlc.setTitle("Add New Login Credentials");
+        jfaddlc.setFocusCycleRoot(false);
+        jfaddlc.setIconImages(null);
+        jfaddlc.setMinimumSize(new java.awt.Dimension(800, 500));
         jfaddlc.setName("adduserlc"); // NOI18N
         jfaddlc.setResizable(false);
+        jfaddlc.setLocationRelativeTo(null);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setToolTipText("");
-        jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
-        jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanel1.setMaximumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,7 +372,9 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addlcsubmit.setBackground(new java.awt.Color(0, 204, 51));
+        btn_addlcsubmit.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btn_addlcsubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addlcsubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
         btn_addlcsubmit.setText("Submit");
         btn_addlcsubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +383,9 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addlcreset.setBackground(new java.awt.Color(255, 0, 51));
+        btn_addlcreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btn_addlcreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addlcreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
         btn_addlcreset.setText("Reset");
         btn_addlcreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,10 +393,10 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        btn_alcback.setBackground(new java.awt.Color(102, 0, 255));
+        btn_alcback.setBackground(new java.awt.Color(51, 51, 51));
         btn_alcback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
         btn_alcback.setToolTipText("Go To Admin Main Panel");
-        btn_alcback.setBorder(null);
+        btn_alcback.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn_alcback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_alcbackActionPerformed(evt);
@@ -220,41 +411,39 @@ public class Admin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(50, 50, 50)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lcuname)
-                                    .addComponent(lcupass)
-                                    .addComponent(lcrole, 0, 360, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_alcback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(142, 142, 142)
-                                .addComponent(jLabel13))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(btn_addlcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
-                        .addComponent(btn_addlcsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)))
-                .addGap(127, 127, 127))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(btn_addlcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addComponent(btn_addlcsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lcuname)
+                    .addComponent(lcupass)
+                    .addComponent(lcrole, 0, 360, Short.MAX_VALUE))
+                .addGap(138, 138, 138))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btn_alcback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142)
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel13)
                     .addComponent(btn_alcback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(105, 105, 105)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lcuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
@@ -266,11 +455,11 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lcrole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addGap(84, 84, 84)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_addlcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_addlcsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jfaddlcLayout = new javax.swing.GroupLayout(jfaddlc.getContentPane());
@@ -285,23 +474,22 @@ public class Admin extends javax.swing.JFrame {
         );
 
         jfadda.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jfadda.setAutoRequestFocus(false);
+        jfadda.setTitle("Add Admin Information");
         jfadda.setFocusCycleRoot(false);
         jfadda.setIconImages(null);
-        jfadda.setLocation(new java.awt.Point(250, 250));
-        jfadda.setLocationByPlatform(true);
         jfadda.setMinimumSize(new java.awt.Dimension(800, 600));
         jfadda.setName("addusera"); // NOI18N
         jfadda.setResizable(false);
         jfadda.setSize(new java.awt.Dimension(800, 700));
         jfadda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jfadda.setLocationRelativeTo(null);
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setMaximumSize(new java.awt.Dimension(1280, 720));
         jPanel4.setMinimumSize(new java.awt.Dimension(800, 700));
         jPanel4.setPreferredSize(new java.awt.Dimension(800, 700));
 
-        btn_aaback.setBackground(new java.awt.Color(102, 0, 255));
+        btn_aaback.setBackground(new java.awt.Color(51, 51, 51));
         btn_aaback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
         btn_aaback.setToolTipText("Go To Admin Main Panel");
         btn_aaback.setBorder(null);
@@ -312,7 +500,7 @@ public class Admin extends javax.swing.JFrame {
         });
 
         jLabel17.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(153, 51, 255));
         jLabel17.setText("Add Admin Information");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -394,7 +582,9 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addasubmit.setBackground(new java.awt.Color(0, 204, 51));
+        btn_addasubmit.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btn_addasubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addasubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
         btn_addasubmit.setText("Submit");
         btn_addasubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,7 +593,9 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addareset.setBackground(new java.awt.Color(255, 0, 51));
+        btn_addareset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btn_addareset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addareset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
         btn_addareset.setText("Reset");
         btn_addareset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -468,16 +660,6 @@ public class Admin extends javax.swing.JFrame {
                         .addComponent(aulid, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(jLabel27)
-                        .addGap(46, 46, 46)
-                        .addComponent(auid, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel18)
-                        .addGap(45, 45, 45)
-                        .addComponent(auname, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
                         .addComponent(jLabel21)
                         .addGap(45, 45, 45)
                         .addComponent(aufname, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -507,22 +689,32 @@ public class Admin extends javax.swing.JFrame {
                         .addGap(272, 272, 272)
                         .addComponent(btn_addasubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(btn_aaback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel17)))
-                .addGap(90, 90, 90))
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addGap(46, 46, 46)
+                                .addComponent(auid, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(45, 45, 45)
+                                .addComponent(auname, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btn_aaback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel17)
+                .addGap(238, 238, 238))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_aaback, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel17)))
-                .addGap(46, 46, 46)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel17)
+                    .addComponent(btn_aaback, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -565,13 +757,15 @@ public class Admin extends javax.swing.JFrame {
         jfadda.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jfaddl.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jfaddl.setTitle("                                                                                                Add Login Credentials");
-        jfaddl.setLocationByPlatform(true);
-        jfaddl.setMinimumSize(new java.awt.Dimension(800, 600));
+        jfaddl.setTitle("Add Lecturer Informations");
+        jfaddl.setIconImages(null);
+        jfaddl.setMinimumSize(new java.awt.Dimension(800, 700));
         jfaddl.setName("adduserl"); // NOI18N
         jfaddl.setResizable(false);
+        jfaddl.setLocationRelativeTo(null);
 
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel8.setMinimumSize(new java.awt.Dimension(800, 700));
 
         btn_alback.setBackground(new java.awt.Color(51, 51, 51));
         btn_alback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
@@ -584,8 +778,8 @@ public class Admin extends javax.swing.JFrame {
         });
 
         jLabel19.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(153, 255, 255));
-        jLabel19.setText("Add New Login Credentials");
+        jLabel19.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel19.setText("Add Lecturer Informations");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -593,7 +787,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel20.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tllcid.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tllcid.setToolTipText("Insert A User Name");
+        tllcid.setToolTipText("Insert Valid Login ID");
         tllcid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tllcidActionPerformed(evt);
@@ -606,7 +800,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel28.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tluid.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tluid.setToolTipText("Insert A User Name");
+        tluid.setToolTipText("Insert Lecyure ID");
         tluid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tluidActionPerformed(evt);
@@ -618,8 +812,14 @@ public class Admin extends javax.swing.JFrame {
         jLabel29.setText("User Name            :");
         jLabel29.setPreferredSize(new java.awt.Dimension(167, 26));
 
+        tluname.setEditable(false);
         tluname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tluname.setToolTipText("Insert A User Name");
+        tluname.setToolTipText("User Name Will Genarate Auto With Login ID");
+        tluname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tlunameMouseClicked(evt);
+            }
+        });
         tluname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tlunameActionPerformed(evt);
@@ -632,7 +832,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel30.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tlfname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tlfname.setToolTipText("Insert A User Name");
+        tlfname.setToolTipText("Insert First Name");
         tlfname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tlfnameActionPerformed(evt);
@@ -645,7 +845,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel31.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tllname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tllname.setToolTipText("Insert A User Name");
+        tllname.setToolTipText("Insert Last Name");
         tllname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tllnameActionPerformed(evt);
@@ -658,7 +858,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel32.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tlemail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tlemail.setToolTipText("Insert A User Name");
+        tlemail.setToolTipText("Insert Email");
         tlemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tlemailActionPerformed(evt);
@@ -670,7 +870,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel33.setText("Contact Number :");
 
         tlcn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tlcn.setToolTipText("Insert A User Name");
+        tlcn.setToolTipText("Insert Contact Number");
         tlcn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tlcnActionPerformed(evt);
@@ -683,7 +883,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel42.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tla.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tla.setToolTipText("Insert A User Name");
+        tla.setToolTipText("Insert Address");
         tla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tlaActionPerformed(evt);
@@ -691,7 +891,9 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addlsubmit.setBackground(new java.awt.Color(0, 204, 51));
+        btn_addlsubmit.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btn_addlsubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addlsubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
         btn_addlsubmit.setText("Submit");
         btn_addlsubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -700,7 +902,9 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addlreset.setBackground(new java.awt.Color(255, 0, 51));
+        btn_addlreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btn_addlreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addlreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
         btn_addlreset.setText("Reset");
         btn_addlreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -712,12 +916,6 @@ public class Admin extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(btn_alback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142)
-                .addComponent(jLabel19)
-                .addContainerGap(233, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(111, 111, 111)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,18 +949,24 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(tllname)
                             .addComponent(tlfname)
                             .addComponent(tlemail))))
-                .addGap(113, 113, 113))
+                .addGap(110, 110, 110))
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
+                .addGap(35, 35, 35)
+                .addComponent(btn_alback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142)
+                .addComponent(jLabel19)
+                .addContainerGap(233, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(142, 142, 142)
                 .addComponent(btn_addlreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_addlsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
+                .addGap(155, 155, 155))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel19)
                     .addComponent(btn_alback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -798,11 +1002,11 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_addlreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_addlsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                .addGap(90, 90, 90))
         );
 
         javax.swing.GroupLayout jfaddlLayout = new javax.swing.GroupLayout(jfaddl.getContentPane());
@@ -815,6 +1019,2294 @@ public class Admin extends javax.swing.JFrame {
             jfaddlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfaddlLayout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jfaddto.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfaddto.setTitle("Add Technical Officer Informations");
+        jfaddto.setIconImages(null);
+        jfaddto.setMinimumSize(new java.awt.Dimension(800, 700));
+        jfaddto.setName("adduserl"); // NOI18N
+        jfaddto.setResizable(false);
+        jfaddto.setLocationRelativeTo(null);
+
+        jPanel9.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel9.setMinimumSize(new java.awt.Dimension(800, 700));
+
+        btn_atoback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_atoback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_atoback.setToolTipText("Go To Admin Main Panel");
+        btn_atoback.setBorder(null);
+        btn_atoback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_atobackActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel34.setText("Add Technical Officer Informations");
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("User Login ID       :");
+        jLabel35.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        ttoulcid.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttoulcid.setToolTipText("Insert Valid Login ID");
+        ttoulcid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttoulcidActionPerformed(evt);
+            }
+        });
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("TO ID                      :");
+        jLabel36.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        ttouid.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttouid.setToolTipText("Insert Technical Officer ID");
+        ttouid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttouidActionPerformed(evt);
+            }
+        });
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("User Name            :");
+        jLabel37.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        ttouname.setEditable(false);
+        ttouname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttouname.setToolTipText("Username Will Auto Genarate With User Login ID");
+        ttouname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ttounameMouseClicked(evt);
+            }
+        });
+        ttouname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttounameActionPerformed(evt);
+            }
+        });
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setText("First Name            :");
+        jLabel38.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        ttofname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttofname.setToolTipText("Insert First Name");
+        ttofname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttofnameActionPerformed(evt);
+            }
+        });
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Last Name            :");
+        jLabel39.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        ttolname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttolname.setToolTipText("Insert Last Name");
+        ttolname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttolnameActionPerformed(evt);
+            }
+        });
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setText("Email                      :");
+        jLabel40.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        ttoemail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttoemail.setToolTipText("Insert Email");
+        ttoemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttoemailActionPerformed(evt);
+            }
+        });
+
+        jLabel41.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel41.setText("Contact Number :");
+
+        ttocn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttocn.setToolTipText("Insert Contact Number");
+        ttocn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttocnActionPerformed(evt);
+            }
+        });
+
+        jLabel43.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel43.setText("Address                 :");
+        jLabel43.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        ttoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ttoa.setToolTipText("Insert Address");
+        ttoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ttoaActionPerformed(evt);
+            }
+        });
+
+        btn_addtosubmit.setBackground(new java.awt.Color(0, 204, 51));
+        btn_addtosubmit.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_addtosubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addtosubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
+        btn_addtosubmit.setText("Submit");
+        btn_addtosubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addtosubmitActionPerformed(evt);
+            }
+        });
+
+        btn_addtoreset.setBackground(new java.awt.Color(255, 0, 51));
+        btn_addtoreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_addtoreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addtoreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_addtoreset.setText("Reset");
+        btn_addtoreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addtoresetActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(ttoulcid))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(ttouid))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(ttouname))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ttocn)
+                            .addComponent(ttoa)))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(52, 52, 52)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ttolname)
+                            .addComponent(ttofname)
+                            .addComponent(ttoemail))))
+                .addGap(110, 110, 110))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btn_atoback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(jLabel34)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(btn_addtoreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addComponent(btn_addtosubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel34)
+                    .addComponent(btn_atoback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ttoulcid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ttouid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ttouname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ttofname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ttolname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ttoemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ttocn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ttoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_addtoreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_addtosubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(90, 90, 90))
+        );
+
+        javax.swing.GroupLayout jfaddtoLayout = new javax.swing.GroupLayout(jfaddto.getContentPane());
+        jfaddto.getContentPane().setLayout(jfaddtoLayout);
+        jfaddtoLayout.setHorizontalGroup(
+            jfaddtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfaddtoLayout.setVerticalGroup(
+            jfaddtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfaddtoLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jfadds.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfadds.setTitle("Add Student Informations");
+        jfadds.setFocusCycleRoot(false);
+        jfadds.setIconImages(null);
+        jfadds.setMinimumSize(new java.awt.Dimension(800, 800));
+        jfadds.setName("adduserl"); // NOI18N
+        jfadds.setResizable(false);
+        jfadds.setLocationRelativeTo(null);
+
+        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel10.setMinimumSize(new java.awt.Dimension(800, 800));
+        jPanel10.setPreferredSize(new java.awt.Dimension(800, 800));
+
+        btn_asback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_asback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_asback.setToolTipText("Go To Admin Main Panel");
+        btn_asback.setBorder(null);
+        btn_asback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_asbackActionPerformed(evt);
+            }
+        });
+
+        jLabel44.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel44.setText("Add Student Informations");
+
+        jLabel45.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel45.setText("User Login ID         :");
+        jLabel45.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsulcid.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsulcid.setToolTipText("Insert Valid Login ID");
+        tsulcid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsulcidActionPerformed(evt);
+            }
+        });
+
+        jLabel46.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel46.setText("Student Index No  :");
+        jLabel46.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsuid.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsuid.setToolTipText("Insert Student Index Number");
+        tsuid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsuidActionPerformed(evt);
+            }
+        });
+
+        jLabel47.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel47.setText("User Name              :");
+        jLabel47.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsuname.setEditable(false);
+        tsuname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsuname.setToolTipText("Username Will Auto Genarate With User Login ID");
+        tsuname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tsunameMouseClicked(evt);
+            }
+        });
+        tsuname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsunameActionPerformed(evt);
+            }
+        });
+
+        jLabel48.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel48.setText("First Name              :");
+        jLabel48.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsfname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsfname.setToolTipText("Insert First Name");
+        tsfname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsfnameActionPerformed(evt);
+            }
+        });
+
+        jLabel49.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Last Name              :");
+        jLabel49.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tslname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tslname.setToolTipText("Insert Last Name");
+        tslname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tslnameActionPerformed(evt);
+            }
+        });
+
+        jLabel50.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("Email                        :");
+        jLabel50.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsemail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsemail.setToolTipText("Insert Email");
+        tsemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsemailActionPerformed(evt);
+            }
+        });
+
+        jLabel51.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel51.setText("Contact Number   :");
+
+        tscn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tscn.setToolTipText("Insert Contact Number");
+        tscn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tscnActionPerformed(evt);
+            }
+        });
+
+        jLabel52.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel52.setText("Address                  :");
+        jLabel52.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsa.setToolTipText("Insert Address");
+        tsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsaActionPerformed(evt);
+            }
+        });
+
+        btn_addssubmit.setBackground(new java.awt.Color(0, 204, 51));
+        btn_addssubmit.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_addssubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addssubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
+        btn_addssubmit.setText("Submit");
+        btn_addssubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addssubmitActionPerformed(evt);
+            }
+        });
+
+        btn_addsreset.setBackground(new java.awt.Color(255, 0, 51));
+        btn_addsreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_addsreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addsreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_addsreset.setText("Reset");
+        btn_addsreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addsresetActionPerformed(evt);
+            }
+        });
+
+        jLabel53.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel53.setText("Full Name               :");
+        jLabel53.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsfullname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsfullname.setToolTipText("Insert Full Name");
+        tsfullname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsfullnameActionPerformed(evt);
+            }
+        });
+
+        jLabel54.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel54.setText("Register Date        :");
+        jLabel54.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsregdate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tsregdate.setToolTipText("Insert Student Register Date YYYY-MM-DD");
+        tsregdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsregdateActionPerformed(evt);
+            }
+        });
+
+        jLabel55.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel55.setText("Department            :");
+        jLabel55.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsdep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICT", "ET", "BST" }));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tslname)
+                            .addComponent(tsfname)
+                            .addComponent(tsemail)
+                            .addComponent(tsfullname)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tsuid)
+                            .addComponent(tsulcid)
+                            .addComponent(tsuname)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_addsreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_addssubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tscn)
+                                    .addComponent(tsa)
+                                    .addComponent(tsregdate)
+                                    .addComponent(tsdep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addGap(110, 110, 110))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btn_asback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(171, 171, 171)
+                .addComponent(jLabel44)
+                .addContainerGap(212, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel44)
+                    .addComponent(btn_asback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tsulcid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tsuid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tsuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tsfname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tslname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tsfullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tsemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tscn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel51))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tsregdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tsdep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_addssubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_addsreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jfaddsLayout = new javax.swing.GroupLayout(jfadds.getContentPane());
+        jfadds.getContentPane().setLayout(jfaddsLayout);
+        jfaddsLayout.setHorizontalGroup(
+            jfaddsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfaddsLayout.setVerticalGroup(
+            jfaddsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jfviewlc.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfviewlc.setTitle("View All Login Credentials");
+        jfviewlc.setFocusCycleRoot(false);
+        jfviewlc.setIconImages(null);
+        jfviewlc.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jfviewlc.setName("adduserlc"); // NOI18N
+        jfviewlc.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jfviewlc.setLocationRelativeTo(null);
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setToolTipText("");
+        jPanel2.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jPanel2.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1000, 800));
+
+        jLabel56.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel56.setText("Login ID For Search");
+
+        jLabel57.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel57.setText("Password   :");
+
+        jLabel58.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel58.setText("Role             :");
+
+        tlcviewun.setToolTipText("Insert User Name");
+        tlcviewun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlcviewunActionPerformed(evt);
+            }
+        });
+
+        tlcviewp.setToolTipText("Insert Password");
+
+        tlcviewr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "lecturer", "t_Officer", "student" }));
+        tlcviewr.setToolTipText("Select User Type");
+        tlcviewr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlcviewrActionPerformed(evt);
+            }
+        });
+
+        btn_viewlcupdate.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewlcupdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlcupdate.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlcupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewlcupdate.setText("Update");
+        btn_viewlcupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlcupdateActionPerformed(evt);
+            }
+        });
+
+        btn_viewlcreset.setBackground(new java.awt.Color(255, 153, 0));
+        btn_viewlcreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlcreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlcreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewlcreset.setText("Reset");
+        btn_viewlcreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlcresetActionPerformed(evt);
+            }
+        });
+
+        btn_vlcback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_vlcback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_vlcback.setToolTipText("Go To Admin Main Panel");
+        btn_vlcback.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_vlcback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vlcbackActionPerformed(evt);
+            }
+        });
+
+        jLabel59.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel59.setText("View All Login Credentials");
+
+        jLabel60.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel60.setText("User Name :");
+
+        jTALC.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "User ID", "User Name", "Password", "Role"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTALC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTALCMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTALC);
+
+        tlcviewidf.setToolTipText("Inset Login ID For Search");
+
+        jLabel61.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel61.setText("User ID       :");
+
+        tlcviewid.setEditable(false);
+        tlcviewid.setToolTipText("Genarated UserID");
+        tlcviewid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlcviewidActionPerformed(evt);
+            }
+        });
+
+        btn_viewlcsearch.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewlcsearch.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_viewlcsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewlcsearch.setText("Search");
+        btn_viewlcsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlcsearchActionPerformed(evt);
+            }
+        });
+
+        btn_viewlcdelete.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewlcdelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlcdelete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlcdelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewlcdelete.setText("Delete");
+        btn_viewlcdelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlcdeleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btn_vlcback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(210, 210, 210)
+                .addComponent(jLabel59)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_viewlcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel57)
+                            .addComponent(jLabel58)
+                            .addComponent(jLabel60)
+                            .addComponent(jLabel61))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tlcviewid, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tlcviewp)
+                            .addComponent(tlcviewun, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tlcviewr, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(btn_viewlcdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_viewlcupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel56)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btn_viewlcsearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tlcviewidf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel59)
+                    .addComponent(btn_vlcback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel56)
+                        .addGap(18, 18, 18)
+                        .addComponent(tlcviewidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_viewlcsearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tlcviewid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel61))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlcviewun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel60))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel57)
+                            .addComponent(tlcviewp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlcviewr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel58))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_viewlcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewlcupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewlcdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(267, 267, 267))))
+        );
+
+        javax.swing.GroupLayout jfviewlcLayout = new javax.swing.GroupLayout(jfviewlc.getContentPane());
+        jfviewlc.getContentPane().setLayout(jfviewlcLayout);
+        jfviewlcLayout.setHorizontalGroup(
+            jfviewlcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfviewlcLayout.setVerticalGroup(
+            jfviewlcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jfviewa.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfviewa.setTitle("Add Admin Information");
+        jfviewa.setFocusCycleRoot(false);
+        jfviewa.setIconImages(null);
+        jfviewa.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jfviewa.setName("addusera"); // NOI18N
+        jfviewa.setSize(new java.awt.Dimension(1000, 800));
+        jfviewa.setLocationRelativeTo(null);
+
+        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel5.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jPanel5.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1000, 800));
+
+        btn_aviewback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_aviewback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_aviewback.setToolTipText("Go To Admin Main Panel");
+        btn_aviewback.setBorder(null);
+        btn_aviewback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_aviewbackActionPerformed(evt);
+            }
+        });
+
+        jLabel62.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel62.setText("View All Admin Information");
+
+        jLabel63.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel63.setText("User Name                    :");
+        jLabel63.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel63.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel63.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        taviewun.setEditable(false);
+        taviewun.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewun.setToolTipText("User Name Will Genarate With Your Login ID");
+        taviewun.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taviewunMouseClicked(evt);
+            }
+        });
+        taviewun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewunActionPerformed(evt);
+            }
+        });
+
+        jLabel64.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel64.setText("User First Name          :");
+        jLabel64.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel64.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel64.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        taviewufn.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewufn.setToolTipText("Enter First Name");
+        taviewufn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewufnActionPerformed(evt);
+            }
+        });
+
+        jLabel65.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel65.setText("User Last Name           :");
+
+        taviewuln.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewuln.setToolTipText("Enter Last Name");
+        taviewuln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewulnActionPerformed(evt);
+            }
+        });
+
+        jLabel66.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel66.setText("User Email                    :");
+        jLabel66.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel66.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel66.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        taviewe.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewe.setToolTipText("Enter User Email Address");
+        taviewe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tavieweActionPerformed(evt);
+            }
+        });
+
+        jLabel67.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel67.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel67.setText("User Contact Number :");
+        jLabel67.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel67.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel67.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        taviewcn.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewcn.setToolTipText("Enter Contact Number");
+        taviewcn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewcnActionPerformed(evt);
+            }
+        });
+
+        jLabel68.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel68.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel68.setText("User Address                :");
+        jLabel68.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel68.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel68.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        taviewa.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewa.setToolTipText("Enter Address");
+        taviewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewaActionPerformed(evt);
+            }
+        });
+
+        jLabel69.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel69.setText("Admn ID For Search");
+        jLabel69.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel69.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel69.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        taviewlidf.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewlidf.setToolTipText("Enter User Login ID Correctly");
+        taviewlidf.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                taviewlidfComponentAdded(evt);
+            }
+        });
+        taviewlidf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewlidfActionPerformed(evt);
+            }
+        });
+        taviewlidf.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                taviewlidfPropertyChange(evt);
+            }
+        });
+
+        jLabel70.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel70.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel70.setText("User ID                           :");
+        jLabel70.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel70.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel70.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        taviewuid.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewuid.setToolTipText("Enter Admin User ID");
+        taviewuid.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                taviewuidComponentAdded(evt);
+            }
+        });
+        taviewuid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewuidActionPerformed(evt);
+            }
+        });
+        taviewuid.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                taviewuidPropertyChange(evt);
+            }
+        });
+
+        btn_viewaupdate.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewaupdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewaupdate.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewaupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewaupdate.setText("Update");
+        btn_viewaupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewaupdateActionPerformed(evt);
+            }
+        });
+
+        btn_viewareset.setBackground(new java.awt.Color(255, 102, 0));
+        btn_viewareset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewareset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewareset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewareset.setText("Reset");
+        btn_viewareset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewaresetActionPerformed(evt);
+            }
+        });
+
+        taviewulid.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        taviewulid.setToolTipText("Enter User Login ID Correctly");
+        taviewulid.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                taviewulidComponentAdded(evt);
+            }
+        });
+        taviewulid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taviewulidActionPerformed(evt);
+            }
+        });
+        taviewulid.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                taviewulidPropertyChange(evt);
+            }
+        });
+
+        jLabel71.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel71.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel71.setText("User Login ID                :");
+        jLabel71.setMaximumSize(new java.awt.Dimension(170, 19));
+        jLabel71.setMinimumSize(new java.awt.Dimension(170, 19));
+        jLabel71.setPreferredSize(new java.awt.Dimension(170, 19));
+
+        pfaview.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+
+        btn_viewasearch.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewasearch.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewasearch.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewasearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewasearch.setText("Search");
+        btn_viewasearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewasearchActionPerformed(evt);
+            }
+        });
+
+        jTAV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Admin ID", "User Name", "First Name", "Last Name", "Email", "Contact Number", "Address", "Login ID"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTAV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTAVMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTAV);
+
+        btn_viewaselectimage.setBackground(new java.awt.Color(102, 102, 255));
+        btn_viewaselectimage.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_viewaselectimage.setText("Select Image");
+
+        btn_viewadelete.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewadelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewadelete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewadelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewadelete.setText("Delete");
+        btn_viewadelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewadeleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(btn_aviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel62)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(btn_viewareset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(60, 60, 60)
+                                    .addComponent(btn_viewadelete, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewaupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel67, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(45, 45, 45)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(taviewa, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(taviewcn, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(taviewe, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(taviewuid, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel65, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel63, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(taviewufn)
+                                    .addComponent(taviewun)
+                                    .addComponent(taviewuln, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(45, 45, 45))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(taviewlidf, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel69, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                                .addComponent(btn_viewasearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(btn_viewaselectimage, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(20, 20, 20)))
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(taviewulid, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
+                                        .addComponent(pfaview, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel62)
+                    .addComponent(btn_aviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(pfaview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(taviewlidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_viewasearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                                .addComponent(btn_viewaselectimage)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(taviewulid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taviewuid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taviewun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taviewufn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel65)
+                            .addComponent(taviewuln, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taviewe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taviewcn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taviewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_viewareset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewaupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewadelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())))
+        );
+
+        javax.swing.GroupLayout jfviewaLayout = new javax.swing.GroupLayout(jfviewa.getContentPane());
+        jfviewa.getContentPane().setLayout(jfviewaLayout);
+        jfviewaLayout.setHorizontalGroup(
+            jfviewaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfviewaLayout.setVerticalGroup(
+            jfviewaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jfviewl.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfviewl.setTitle("Add Lecturer Informations");
+        jfviewl.setIconImages(null);
+        jfviewl.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jfviewl.setName("adduserl"); // NOI18N
+        jfviewl.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jfviewl.setLocationRelativeTo(null);
+
+        jPanel11.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel11.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jPanel11.setPreferredSize(new java.awt.Dimension(1000, 800));
+
+        btn_lviewback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_lviewback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_lviewback.setToolTipText("Go To Admin Main Panel");
+        btn_lviewback.setBorder(null);
+        btn_lviewback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_lviewbackActionPerformed(evt);
+            }
+        });
+
+        jLabel72.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel72.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel72.setText("Add Lecturer Informations");
+
+        jLabel73.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel73.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel73.setText("User Login ID      :");
+        jLabel73.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewulid.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewulid.setToolTipText("Insert Valid Login ID");
+        tlviewulid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewulidActionPerformed(evt);
+            }
+        });
+
+        jLabel74.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel74.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel74.setText("Lecturer ID          :");
+        jLabel74.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewuid.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewuid.setToolTipText("Insert Lecyure ID");
+        tlviewuid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewuidActionPerformed(evt);
+            }
+        });
+
+        jLabel75.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel75.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel75.setText("User Name          :");
+        jLabel75.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewuname.setEditable(false);
+        tlviewuname.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewuname.setToolTipText("User Name Will Genarate Auto With Login ID");
+        tlviewuname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tlviewunameMouseClicked(evt);
+            }
+        });
+        tlviewuname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewunameActionPerformed(evt);
+            }
+        });
+
+        jLabel76.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel76.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel76.setText("First Name          :");
+        jLabel76.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewfname.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewfname.setToolTipText("Insert First Name");
+        tlviewfname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewfnameActionPerformed(evt);
+            }
+        });
+
+        jLabel77.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel77.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel77.setText("Last Name           :");
+        jLabel77.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewlname.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewlname.setToolTipText("Insert Last Name");
+        tlviewlname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewlnameActionPerformed(evt);
+            }
+        });
+
+        jLabel78.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel78.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel78.setText("Email                    :");
+        jLabel78.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewe.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewe.setToolTipText("Insert Email");
+        tlviewe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlvieweActionPerformed(evt);
+            }
+        });
+
+        jLabel79.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel79.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel79.setText("Contact Number :");
+
+        tlviewcn.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewcn.setToolTipText("Insert Contact Number");
+        tlviewcn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewcnActionPerformed(evt);
+            }
+        });
+
+        jLabel80.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel80.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel80.setText("Address               :");
+        jLabel80.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewa.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewa.setToolTipText("Insert Address");
+        tlviewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewaActionPerformed(evt);
+            }
+        });
+
+        btn_viewlupdate.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewlupdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlupdate.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewlupdate.setText("Update");
+        btn_viewlupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlupdateActionPerformed(evt);
+            }
+        });
+
+        btn_viewlreset.setBackground(new java.awt.Color(255, 102, 0));
+        btn_viewlreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewlreset.setText("Reset");
+        btn_viewlreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlresetActionPerformed(evt);
+            }
+        });
+
+        jTLV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Lecture ID", "User Name", "First Name", "Last Name", "Email", "Conatact Number", "Address", "User Login ID"
+            }
+        ));
+        jTLV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTLVMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTLV);
+
+        jLabel81.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel81.setText("Lecture ID For Search");
+        jLabel81.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewlidf.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewlidf.setToolTipText("Insert Valid Login ID");
+        tlviewlidf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewlidfActionPerformed(evt);
+            }
+        });
+
+        btn_viewlsearch.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewlsearch.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlsearch.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewlsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewlsearch.setText("Search");
+        btn_viewlsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlsearchActionPerformed(evt);
+            }
+        });
+
+        pflview.setBackground(new java.awt.Color(153, 153, 153));
+        pflview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+
+        btn_viewlselectimage.setBackground(new java.awt.Color(102, 102, 255));
+        btn_viewlselectimage.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_viewlselectimage.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewlselectimage.setText("Select Image");
+        btn_viewlselectimage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlselectimageActionPerformed(evt);
+            }
+        });
+
+        btn_viewldelete.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewldelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewldelete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewldelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewldelete.setText("Delete");
+        btn_viewldelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewldeleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(btn_lviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel72)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel77, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel78, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_viewlreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tlviewcn)
+                                        .addComponent(tlviewa, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tlviewlname)
+                                        .addComponent(tlviewfname)
+                                        .addComponent(tlviewuname)
+                                        .addComponent(tlviewuid)
+                                        .addComponent(tlviewulid)
+                                        .addComponent(tlviewe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(btn_viewldelete, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btn_viewlupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tlviewlidf)
+                                    .addComponent(jLabel81, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                    .addComponent(btn_viewlsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewlselectimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+                                .addComponent(pflview, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_lviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel72))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tlviewlidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_viewlsearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addComponent(btn_viewlselectimage))
+                            .addComponent(pflview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewulid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewuid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewfname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewlname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewcn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel79))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tlviewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_viewlupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewlreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewldelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())))
+        );
+
+        javax.swing.GroupLayout jfviewlLayout = new javax.swing.GroupLayout(jfviewl.getContentPane());
+        jfviewl.getContentPane().setLayout(jfviewlLayout);
+        jfviewlLayout.setHorizontalGroup(
+            jfviewlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfviewlLayout.setVerticalGroup(
+            jfviewlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfviewlLayout.createSequentialGroup()
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jfviewto.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfviewto.setTitle("Add Lecturer Informations");
+        jfviewto.setIconImages(null);
+        jfviewto.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jfviewto.setName("adduserl"); // NOI18N
+        jfviewl.setLocationRelativeTo(null);
+
+        jPanel12.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel12.setMinimumSize(new java.awt.Dimension(1000, 800));
+
+        btn_alback2.setBackground(new java.awt.Color(51, 51, 51));
+        btn_alback2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_alback2.setToolTipText("Go To Admin Main Panel");
+        btn_alback2.setBorder(null);
+        btn_alback2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alback2ActionPerformed(evt);
+            }
+        });
+
+        jLabel82.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel82.setText("Add Lecturer Informations");
+
+        jLabel83.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel83.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel83.setText("User Login ID      :");
+        jLabel83.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewulid1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewulid1.setToolTipText("Insert Valid Login ID");
+        tlviewulid1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewulid1ActionPerformed(evt);
+            }
+        });
+
+        jLabel84.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel84.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel84.setText("Lecturer ID          :");
+        jLabel84.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewuid1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewuid1.setToolTipText("Insert Lecyure ID");
+        tlviewuid1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewuid1ActionPerformed(evt);
+            }
+        });
+
+        jLabel85.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel85.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel85.setText("User Name          :");
+        jLabel85.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewuname1.setEditable(false);
+        tlviewuname1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewuname1.setToolTipText("User Name Will Genarate Auto With Login ID");
+        tlviewuname1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tlviewuname1MouseClicked(evt);
+            }
+        });
+        tlviewuname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewuname1ActionPerformed(evt);
+            }
+        });
+
+        jLabel86.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel86.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel86.setText("First Name          :");
+        jLabel86.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewfname1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewfname1.setToolTipText("Insert First Name");
+        tlviewfname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewfname1ActionPerformed(evt);
+            }
+        });
+
+        jLabel87.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel87.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel87.setText("Last Name           :");
+        jLabel87.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewlname1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewlname1.setToolTipText("Insert Last Name");
+        tlviewlname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewlname1ActionPerformed(evt);
+            }
+        });
+
+        jLabel88.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel88.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel88.setText("Email                    :");
+        jLabel88.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewe1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewe1.setToolTipText("Insert Email");
+        tlviewe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewe1ActionPerformed(evt);
+            }
+        });
+
+        jLabel89.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel89.setText("Contact Number :");
+
+        tlviewcn1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewcn1.setToolTipText("Insert Contact Number");
+        tlviewcn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewcn1ActionPerformed(evt);
+            }
+        });
+
+        jLabel90.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel90.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel90.setText("Address               :");
+        jLabel90.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewa1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewa1.setToolTipText("Insert Address");
+        tlviewa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewa1ActionPerformed(evt);
+            }
+        });
+
+        btn_viewlupdate1.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewlupdate1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlupdate1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlupdate1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewlupdate1.setText("Update");
+        btn_viewlupdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlupdate1ActionPerformed(evt);
+            }
+        });
+
+        btn_viewlreset1.setBackground(new java.awt.Color(255, 102, 0));
+        btn_viewlreset1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlreset1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlreset1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewlreset1.setText("Reset");
+        btn_viewlreset1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlreset1ActionPerformed(evt);
+            }
+        });
+
+        jTLV1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTLV1);
+
+        jLabel91.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel91.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel91.setText("Lecture ID For Search");
+        jLabel91.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewlidf1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewlidf1.setToolTipText("Insert Valid Login ID");
+        tlviewlidf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewlidf1ActionPerformed(evt);
+            }
+        });
+
+        btn_viewlsearch1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlsearch1.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewlsearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewlsearch1.setText("Search");
+        btn_viewlsearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlsearch1ActionPerformed(evt);
+            }
+        });
+
+        pflview1.setBackground(new java.awt.Color(153, 153, 153));
+        pflview1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+
+        btn_viewlselectimage1.setBackground(new java.awt.Color(102, 102, 255));
+        btn_viewlselectimage1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_viewlselectimage1.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewlselectimage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewlselectimage1.setText("Select Image");
+        btn_viewlselectimage1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlselectimage1ActionPerformed(evt);
+            }
+        });
+
+        btn_viewadelete2.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewadelete2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewadelete2.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewadelete2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewadelete2.setText("Delete");
+        btn_viewadelete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewadelete2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(btn_alback2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel82)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel89, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel85, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel87, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel88, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_viewlreset1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel12Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tlviewcn1)
+                                            .addComponent(tlviewa1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tlviewlname1)
+                                            .addComponent(tlviewfname1)
+                                            .addComponent(tlviewuname1)
+                                            .addComponent(tlviewuid1)
+                                            .addComponent(tlviewulid1)
+                                            .addComponent(tlviewe1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel12Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(btn_viewadelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btn_viewlupdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tlviewlidf1)
+                                    .addComponent(jLabel91, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                    .addComponent(btn_viewlsearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewlselectimage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+                                .addComponent(pflview1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_alback2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel82))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tlviewlidf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_viewlsearch1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addComponent(btn_viewlselectimage1))
+                            .addComponent(pflview1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewulid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewuid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewuname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewfname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewlname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewcn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel89))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tlviewa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_viewlupdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewlreset1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewadelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4)
+                        .addContainerGap())))
+        );
+
+        javax.swing.GroupLayout jfviewtoLayout = new javax.swing.GroupLayout(jfviewto.getContentPane());
+        jfviewto.getContentPane().setLayout(jfviewtoLayout);
+        jfviewtoLayout.setHorizontalGroup(
+            jfviewtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfviewtoLayout.setVerticalGroup(
+            jfviewtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfviewtoLayout.createSequentialGroup()
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jfviews.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfviews.setTitle("Add Lecturer Informations");
+        jfviews.setIconImages(null);
+        jfviews.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jfviews.setName("adduserl"); // NOI18N
+        jfviewl.setLocationRelativeTo(null);
+
+        jPanel13.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel13.setMinimumSize(new java.awt.Dimension(1000, 800));
+
+        btn_alback3.setBackground(new java.awt.Color(51, 51, 51));
+        btn_alback3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_alback3.setToolTipText("Go To Admin Main Panel");
+        btn_alback3.setBorder(null);
+        btn_alback3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alback3ActionPerformed(evt);
+            }
+        });
+
+        jLabel92.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel92.setText("Add Lecturer Informations");
+
+        jLabel93.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel93.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel93.setText("User Login ID      :");
+        jLabel93.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewulid2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewulid2.setToolTipText("Insert Valid Login ID");
+        tlviewulid2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewulid2ActionPerformed(evt);
+            }
+        });
+
+        jLabel94.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel94.setText("Lecturer ID          :");
+        jLabel94.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewuid2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewuid2.setToolTipText("Insert Lecyure ID");
+        tlviewuid2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewuid2ActionPerformed(evt);
+            }
+        });
+
+        jLabel95.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel95.setText("User Name          :");
+        jLabel95.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewuname2.setEditable(false);
+        tlviewuname2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewuname2.setToolTipText("User Name Will Genarate Auto With Login ID");
+        tlviewuname2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tlviewuname2MouseClicked(evt);
+            }
+        });
+        tlviewuname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewuname2ActionPerformed(evt);
+            }
+        });
+
+        jLabel96.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel96.setText("First Name          :");
+        jLabel96.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewfname2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewfname2.setToolTipText("Insert First Name");
+        tlviewfname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewfname2ActionPerformed(evt);
+            }
+        });
+
+        jLabel97.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel97.setText("Last Name           :");
+        jLabel97.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewlname2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewlname2.setToolTipText("Insert Last Name");
+        tlviewlname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewlname2ActionPerformed(evt);
+            }
+        });
+
+        jLabel98.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel98.setText("Email                    :");
+        jLabel98.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewe2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewe2.setToolTipText("Insert Email");
+        tlviewe2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewe2ActionPerformed(evt);
+            }
+        });
+
+        jLabel99.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel99.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel99.setText("Contact Number :");
+
+        tlviewcn2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewcn2.setToolTipText("Insert Contact Number");
+        tlviewcn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewcn2ActionPerformed(evt);
+            }
+        });
+
+        jLabel100.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel100.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel100.setText("Address               :");
+        jLabel100.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewa2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewa2.setToolTipText("Insert Address");
+        tlviewa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewa2ActionPerformed(evt);
+            }
+        });
+
+        btn_viewlupdate2.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewlupdate2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlupdate2.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlupdate2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewlupdate2.setText("Update");
+        btn_viewlupdate2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlupdate2ActionPerformed(evt);
+            }
+        });
+
+        btn_viewlreset2.setBackground(new java.awt.Color(255, 102, 0));
+        btn_viewlreset2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlreset2.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewlreset2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewlreset2.setText("Reset");
+        btn_viewlreset2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlreset2ActionPerformed(evt);
+            }
+        });
+
+        jTLV2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTLV2);
+
+        jLabel101.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel101.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel101.setText("Lecture ID For Search");
+        jLabel101.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tlviewlidf2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tlviewlidf2.setToolTipText("Insert Valid Login ID");
+        tlviewlidf2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlviewlidf2ActionPerformed(evt);
+            }
+        });
+
+        btn_viewlsearch2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewlsearch2.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewlsearch2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewlsearch2.setText("Search");
+        btn_viewlsearch2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlsearch2ActionPerformed(evt);
+            }
+        });
+
+        pflview2.setBackground(new java.awt.Color(153, 153, 153));
+        pflview2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+
+        btn_viewlselectimage2.setBackground(new java.awt.Color(102, 102, 255));
+        btn_viewlselectimage2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_viewlselectimage2.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewlselectimage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewlselectimage2.setText("Select Image");
+        btn_viewlselectimage2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlselectimage2ActionPerformed(evt);
+            }
+        });
+
+        btn_viewadelete3.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewadelete3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewadelete3.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewadelete3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewadelete3.setText("Delete");
+        btn_viewadelete3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewadelete3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(btn_alback3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel92)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel99, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel97, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel98, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_viewlreset2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel13Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tlviewcn2)
+                                            .addComponent(tlviewa2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tlviewlname2)
+                                            .addComponent(tlviewfname2)
+                                            .addComponent(tlviewuname2)
+                                            .addComponent(tlviewuid2)
+                                            .addComponent(tlviewulid2)
+                                            .addComponent(tlviewe2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel13Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(btn_viewadelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btn_viewlupdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tlviewlidf2)
+                                    .addComponent(jLabel101, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                    .addComponent(btn_viewlsearch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewlselectimage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+                                .addComponent(pflview2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_alback3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel92))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tlviewlidf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_viewlsearch2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addComponent(btn_viewlselectimage2))
+                            .addComponent(pflview2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewulid2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewuid2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewuname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewfname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewlname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewe2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(tlviewcn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel99))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tlviewa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_viewlupdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewlreset2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewadelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5)
+                        .addContainerGap())))
+        );
+
+        javax.swing.GroupLayout jfviewsLayout = new javax.swing.GroupLayout(jfviews.getContentPane());
+        jfviews.getContentPane().setLayout(jfviewsLayout);
+        jfviewsLayout.setHorizontalGroup(
+            jfviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfviewsLayout.setVerticalGroup(
+            jfviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfviewsLayout.createSequentialGroup()
+                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1025,16 +3517,12 @@ public class Admin extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 51));
         jLabel10.setText("Add User");
 
-        jLabel11.setFont(new java.awt.Font("Source Code Pro Black", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 51));
-        jLabel11.setText("Update User");
-
         jLabel12.setFont(new java.awt.Font("Source Code Pro Black", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 51));
-        jLabel12.setText("View User");
+        jLabel12.setText("View & Update User");
 
         btn_addlc.setBackground(new java.awt.Color(102, 0, 102));
-        btn_addlc.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_addlc.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_addlc.setForeground(new java.awt.Color(0, 153, 153));
         btn_addlc.setText("Add Login Credentials");
         btn_addlc.addActionListener(new java.awt.event.ActionListener() {
@@ -1044,7 +3532,7 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_adda.setBackground(new java.awt.Color(102, 0, 102));
-        btn_adda.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_adda.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_adda.setForeground(new java.awt.Color(0, 153, 153));
         btn_adda.setText("Add Admin");
         btn_adda.addActionListener(new java.awt.event.ActionListener() {
@@ -1054,7 +3542,7 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addl.setBackground(new java.awt.Color(102, 0, 102));
-        btn_addl.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_addl.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_addl.setForeground(new java.awt.Color(0, 153, 153));
         btn_addl.setText("Add Lecturer ");
         btn_addl.addActionListener(new java.awt.event.ActionListener() {
@@ -1064,67 +3552,62 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_addto.setBackground(new java.awt.Color(102, 0, 102));
-        btn_addto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_addto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_addto.setForeground(new java.awt.Color(0, 153, 153));
         btn_addto.setText("Add Technical Officer");
+        btn_addto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addtoActionPerformed(evt);
+            }
+        });
 
         btn_adds.setBackground(new java.awt.Color(102, 0, 102));
-        btn_adds.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_adds.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_adds.setForeground(new java.awt.Color(0, 153, 153));
         btn_adds.setText("Add Student");
+        btn_adds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addsActionPerformed(evt);
+            }
+        });
 
         btn_views.setBackground(new java.awt.Color(153, 51, 255));
-        btn_views.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_views.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_views.setForeground(new java.awt.Color(102, 255, 255));
         btn_views.setText("View Student");
 
         btn_viewto.setBackground(new java.awt.Color(153, 51, 255));
-        btn_viewto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_viewto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_viewto.setForeground(new java.awt.Color(102, 255, 255));
         btn_viewto.setText("View Technical Officer");
 
         btn_viewl.setBackground(new java.awt.Color(153, 51, 255));
-        btn_viewl.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_viewl.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_viewl.setForeground(new java.awt.Color(102, 255, 255));
         btn_viewl.setText("View Lecturer ");
+        btn_viewl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlActionPerformed(evt);
+            }
+        });
 
         btn_viewa.setBackground(new java.awt.Color(153, 51, 255));
-        btn_viewa.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_viewa.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_viewa.setForeground(new java.awt.Color(102, 255, 255));
         btn_viewa.setText("View Admin");
+        btn_viewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewaActionPerformed(evt);
+            }
+        });
 
         btn_viewlc.setBackground(new java.awt.Color(153, 51, 255));
-        btn_viewlc.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        btn_viewlc.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_viewlc.setForeground(new java.awt.Color(102, 255, 255));
         btn_viewlc.setText("View Login Credentials");
-
-        btn_ups.setBackground(new java.awt.Color(153, 0, 153));
-        btn_ups.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        btn_ups.setForeground(new java.awt.Color(255, 255, 255));
-        btn_ups.setText("Update Student");
-
-        btn_upl.setBackground(new java.awt.Color(153, 0, 153));
-        btn_upl.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        btn_upl.setForeground(new java.awt.Color(255, 255, 255));
-        btn_upl.setText("Update Lecturer ");
-
-        btn_upa.setBackground(new java.awt.Color(153, 0, 153));
-        btn_upa.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        btn_upa.setForeground(new java.awt.Color(255, 255, 255));
-        btn_upa.setText("Update Admin");
-
-        btn_upto.setBackground(new java.awt.Color(153, 0, 153));
-        btn_upto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        btn_upto.setForeground(new java.awt.Color(255, 255, 255));
-        btn_upto.setText("Update Technical Officer");
-
-        btn_uplc.setBackground(new java.awt.Color(153, 0, 153));
-        btn_uplc.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        btn_uplc.setForeground(new java.awt.Color(255, 255, 255));
-        btn_uplc.setText("Update Login Credentials");
-        btn_uplc.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewlc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_uplcActionPerformed(evt);
+                btn_viewlcActionPerformed(evt);
             }
         });
 
@@ -1135,41 +3618,30 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jpuserLayout.createSequentialGroup()
                 .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpuserLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel10))
-                    .addGroup(jpuserLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_adds, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_addto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_addl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_adda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_addlc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(87, 87, 87)
+                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_addto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_addl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_adda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_addlc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_adds, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpuserLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addGap(120, 120, 120)))
                 .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpuserLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel11)
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel12)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jpuserLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpuserLayout.createSequentialGroup()
                         .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_upa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_uplc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_upl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_upto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_ups, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_viewto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_viewl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_viewa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_viewlc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btn_views, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42))))
+                            .addComponent(btn_viewto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_viewl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_viewa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_viewlc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_views, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69))))
         );
         jpuserLayout.setVerticalGroup(
             jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1177,41 +3649,30 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel11)
                     .addComponent(jLabel12))
                 .addGap(44, 44, 44)
                 .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpuserLayout.createSequentialGroup()
                         .addComponent(btn_addlc)
                         .addGap(34, 34, 34)
-                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_adda)
-                            .addComponent(btn_upa))
+                        .addComponent(btn_adda)
                         .addGap(34, 34, 34)
                         .addComponent(btn_addl)
                         .addGap(34, 34, 34)
                         .addComponent(btn_addto)
                         .addGap(34, 34, 34)
-                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_adds)
-                            .addComponent(btn_ups)))
+                        .addComponent(btn_adds))
                     .addGroup(jpuserLayout.createSequentialGroup()
-                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_viewlc)
-                            .addComponent(btn_uplc))
+                        .addComponent(btn_viewlc)
                         .addGap(34, 34, 34)
                         .addComponent(btn_viewa)
                         .addGap(34, 34, 34)
-                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_viewl)
-                            .addComponent(btn_upl))
+                        .addComponent(btn_viewl)
                         .addGap(34, 34, 34)
-                        .addGroup(jpuserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_viewto)
-                            .addComponent(btn_upto))
+                        .addComponent(btn_viewto)
                         .addGap(34, 34, 34)
                         .addComponent(btn_views)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         body.add(jpuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 620, 510));
@@ -1372,6 +3833,10 @@ public class Admin extends javax.swing.JFrame {
 
         body.add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 620, -1));
 
+        jpcourse.hide();
+        jpnotice.hide();
+        jptimetable.hide();
+
         bg.add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 610, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1443,10 +3908,6 @@ public class Admin extends javax.swing.JFrame {
         Admin adm = new Admin();
         adm.show();
     }//GEN-LAST:event_btn_alcbackActionPerformed
-
-    private void btn_uplcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uplcActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_uplcActionPerformed
 
     private void btn_addlcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addlcActionPerformed
         // TODO add your handling code here:
@@ -1551,16 +4012,20 @@ public class Admin extends javax.swing.JFrame {
                     //String r = "admin";
                     if (role.equals("admin")) {
                         String sql = "INSERT INTO `lms`.`admin_info` (`aid`, `uname`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('"+aid+"', '"+aun+"', '"+afn+"', '"+aln+"', '"+ae+"', '"+acn+"', '"+aa+"', '"+aulcid+"');";                        
-                        db_connection.setData(sql);
-                        JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
-                        aulid.setText("");
-                        auid.setText("");
-                        auname.setText("");
-                        aufname.setText("");
-                        aulname.setText("");
-                        aue.setText("");
-                        aucn.setText("");
-                        aua.setText("");
+                        try{    
+                            db_connection.setData(sql);
+                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            aulid.setText("");
+                            auid.setText("");
+                            auname.setText("");
+                            aufname.setText("");
+                            aulname.setText("");
+                            aue.setText("");
+                            aucn.setText("");
+                            aua.setText("");
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this,e);
+                        }
                     } else {
                         JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
                     }
@@ -1700,10 +4165,63 @@ public class Admin extends javax.swing.JFrame {
 
     private void btn_addlsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addlsubmitActionPerformed
         // TODO add your handling code here:
+        int llcid = Integer.parseInt(tllcid.getText());
+        String lid = tluid.getText();
+        String lun = tluname.getText();
+        String lfn = tlfname.getText();
+        String lln = tllname.getText();
+        String le = tlemail.getText();
+        String lcn = tlcn.getText();
+        String la = tla.getText();
+        
+        String query1 = "SELECT role FROM user WHERE uid='"+llcid+"';";
+        
+        if (lid.equals("")||lun.equals("")||lfn.equals("")||lln.equals("")||le.equals("")||lcn.equals("")||la.equals("")) {
+            JOptionPane.showMessageDialog(this,"Please Fill All Fields Before Submit");
+        } else {
+            try {
+                ResultSet rs = db_connection.getData(query1);
+                if(rs.next()){
+                    String role = rs.getString("role");
+                    //String r = "admin";
+                    if (role.equals("lecturer")) {
+                        String sql = "INSERT INTO `lms`.`lecturer_info` (`lecid`, `username`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('"+lid+"', '"+lun+"', '"+lfn+"', '"+lln+"', '"+le+"', '"+lcn+"', '"+la+"', '"+llcid+"');";                        
+                        try{   
+                            db_connection.setData(sql);
+                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            tllcid.setText("");
+                            tluid.setText("");
+                            tluname.setText("");
+                            tlfname.setText("");
+                            tllname.setText("");
+                            tlemail.setText("");
+                            tlcn.setText("");
+                            tla.setText("");
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this,e);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this,"Login Credentials Not Found Please Enter Valid User Login ID");
+                    } 
+            } catch (Exception ex) {
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_addlsubmitActionPerformed
 
     private void btn_addlresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addlresetActionPerformed
         // TODO add your handling code here:
+        tllcid.setText("");
+        tluid.setText("");
+        tluname.setText("");
+        tlfname.setText("");
+        tllname.setText("");
+        tlemail.setText("");
+        tlcn.setText("");
+        tla.setText("");
     }//GEN-LAST:event_btn_addlresetActionPerformed
 
     private void btn_addlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addlActionPerformed
@@ -1712,12 +4230,925 @@ public class Admin extends javax.swing.JFrame {
         jfaddl.show();
     }//GEN-LAST:event_btn_addlActionPerformed
 
+    private void tlunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlunameMouseClicked
+        // TODO add your handling code here:
+        try{            
+            int luid = Integer.parseInt(tllcid.getText());            
+            String query1 = "SELECT username FROM user WHERE uid='"+luid+"';";          
+            try {
+                ResultSet rs = db_connection.getData(query1);
+                if(rs.next()){
+                    String adun = rs.getString("username");
+                    tluname.setText(adun);
+                }else{
+                    tluname.setText("Cannot Find A User Name");
+                } 
+            } catch (Exception ex) {
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,"Please Enter Valid Login ID");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_tlunameMouseClicked
+
+    private void btn_atobackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atobackActionPerformed
+        // TODO add your handling code here:
+        jfaddto.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_atobackActionPerformed
+
+    private void ttoulcidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoulcidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttoulcidActionPerformed
+
+    private void ttouidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttouidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttouidActionPerformed
+
+    private void ttounameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ttounameMouseClicked
+        // TODO add your handling code here:
+         try{            
+            int luid = Integer.parseInt(ttoulcid.getText());            
+            String query1 = "SELECT username FROM user WHERE uid='"+luid+"';";          
+            try {
+                ResultSet rs = db_connection.getData(query1);
+                if(rs.next()){
+                    String adun = rs.getString("username");
+                    ttouname.setText(adun);
+                }else{
+                    ttouname.setText("Cannot Find A User Name");
+                } 
+            } catch (Exception ex) {
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,"Please Enter Valid Login ID");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_ttounameMouseClicked
+
+    private void ttounameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttounameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttounameActionPerformed
+
+    private void ttofnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttofnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttofnameActionPerformed
+
+    private void ttolnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttolnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttolnameActionPerformed
+
+    private void ttoemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttoemailActionPerformed
+
+    private void ttocnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttocnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttocnActionPerformed
+
+    private void ttoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ttoaActionPerformed
+
+    private void btn_addtosubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addtosubmitActionPerformed
+        // TODO add your handling code here:
+        int tolcid = Integer.parseInt(ttoulcid.getText());
+        String toid = ttouid.getText();
+        String toun = ttouname.getText();
+        String tofn = ttofname.getText();
+        String toln = ttolname.getText();
+        String toe = ttoemail.getText();
+        String tocn = ttocn.getText();
+        String toa = ttoa.getText();
+        
+        String query1 = "SELECT role FROM user WHERE uid='"+tolcid+"';";
+        
+        if (toid.equals("")||toun.equals("")||tofn.equals("")||toln.equals("")||toe.equals("")||tocn.equals("")||toa.equals("")) {
+            JOptionPane.showMessageDialog(this,"Please Fill All Fields Before Submit");
+        } else {
+            try {
+                ResultSet rs = db_connection.getData(query1);
+                if(rs.next()){
+                    String role = rs.getString("role");
+                    if (role.equals("t_Officer")) {
+                        String sql = "INSERT INTO `lms`.`technical_officer_info` (`toid`, `uname`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('"+toid+"', '"+toun+"', '"+tofn+"', '"+toln+"', '"+toe+"', '"+tocn+"', '"+toa+"', '"+tolcid+"');";                        
+                        try{   
+                            db_connection.setData(sql);
+                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            ttoulcid.setText("");
+                            ttouid.setText("");
+                            ttouname.setText("");
+                            ttofname.setText("");
+                            ttolname.setText("");
+                            ttoemail.setText("");
+                            ttocn.setText("");
+                            ttoa.setText("");
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this,e);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this,"Login Credentials Not Found Please Enter Valid User Login ID");
+                    } 
+            } catch (Exception ex) {
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btn_addtosubmitActionPerformed
+
+    private void btn_addtoresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addtoresetActionPerformed
+        // Reset Button OF The Technical Officer Information Insert Frame
+        ttoulcid.setText("");
+        ttouid.setText("");
+        ttouname.setText("");
+        ttofname.setText("");
+        ttolname.setText("");
+        ttoemail.setText("");
+        ttocn.setText("");
+        ttoa.setText("");
+    }//GEN-LAST:event_btn_addtoresetActionPerformed
+
+    private void btn_addtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addtoActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        jfaddto.show();
+    }//GEN-LAST:event_btn_addtoActionPerformed
+
+    private void btn_asbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asbackActionPerformed
+        // Back To Main Menu Button OF The Student Information Insert Frame
+        jfadds.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_asbackActionPerformed
+
+    private void tsulcidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsulcidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsulcidActionPerformed
+
+    private void tsuidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsuidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsuidActionPerformed
+
+    private void tsunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tsunameMouseClicked
+        // TODO add your handling code here:
+        try{            
+            int luid = Integer.parseInt(tsulcid.getText());            
+            String query1 = "SELECT username FROM user WHERE uid='"+luid+"';";          
+            try {
+                ResultSet rs = db_connection.getData(query1);
+                if(rs.next()){
+                    String adun = rs.getString("username");
+                    tsuname.setText(adun);
+                }else{
+                    tsuname.setText("Cannot Find A User Name");
+                } 
+            } catch (Exception ex) {
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,"Please Enter Valid Login ID");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_tsunameMouseClicked
+
+    private void tsunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsunameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsunameActionPerformed
+
+    private void tsfnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsfnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsfnameActionPerformed
+
+    private void tslnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tslnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tslnameActionPerformed
+
+    private void tsemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsemailActionPerformed
+
+    private void tscnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tscnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tscnActionPerformed
+
+    private void tsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsaActionPerformed
+
+    private void btn_addssubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addssubmitActionPerformed
+        // Submit Button OF The Student Information Insert Frame
+        int slcid = Integer.parseInt(tsulcid.getText());
+        String sid = tsuid.getText();
+        String sun = tsuname.getText();
+        String sfn = tsfname.getText();
+        String sln = tslname.getText();
+        String sfun = tsfullname.getText();
+        String se = tsemail.getText();
+        String scn = tscn.getText();
+        String sa = tsa.getText();
+        String srd = tsregdate.getText();
+        String sd = tsdep.getSelectedItem().toString();
+        String query1 = "SELECT role FROM user WHERE uid='"+slcid+"';";
+        
+        if (sid.equals("")||sun.equals("")||sfn.equals("")||sln.equals("")||sfun.equals("")||se.equals("")||scn.equals("")||sa.equals("")||srd.equals("")) {
+            JOptionPane.showMessageDialog(this,"Please Fill All Fields Before Submit");
+        } else {
+            try {
+                ResultSet rs = db_connection.getData(query1);
+                if(rs.next()){
+                    String role = rs.getString("role");
+                    if (role.equals("student")) {
+                        String sql = "INSERT INTO `lms`.`student_info` (`index_no`, `username`, `fname`, `lname`, `fullname`, `email`, `tnumber`, `address`, `regdate`, `did`, `uid`)  VALUES ('"+sid+"', '"+sun+"', '"+sfn+"', '"+sln+"', '"+sfun+"', '"+se+"', '"+scn+"', '"+sa+"', '"+srd+"', '"+sd+"', '"+slcid+"');";                        
+                        try{ 
+                            db_connection.setData(sql);
+                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            tsulcid.setText("");
+                            tsuid.setText("");
+                            tsuname.setText("");
+                            tsfname.setText("");
+                            tslname.setText("");
+                            tsfullname.setText("");
+                            tsemail.setText("");
+                            tscn.setText("");
+                            tsa.setText("");        
+                            tsregdate.setText("");
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this,e);
+                        }
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this,"Login Credentials Not Found Please Enter Valid User Login ID");
+                    } 
+            } catch (Exception ex) {
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btn_addssubmitActionPerformed
+
+    private void btn_addsresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addsresetActionPerformed
+        // Reset Button OF The Student Information Insert Frame
+        tsulcid.setText("");
+        tsuid.setText("");
+        tsuname.setText("");
+        tsfname.setText("");
+        tslname.setText("");
+        tsfullname.setText("");
+        tsemail.setText("");
+        tscn.setText("");
+        tsa.setText("");        
+        tsregdate.setText("");
+    }//GEN-LAST:event_btn_addsresetActionPerformed
+
+    private void tsfullnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsfullnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsfullnameActionPerformed
+
+    private void tsregdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsregdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsregdateActionPerformed
+
+    private void btn_addsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addsActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        jfadds.show();
+    }//GEN-LAST:event_btn_addsActionPerformed
+
+    private void tlcviewunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlcviewunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlcviewunActionPerformed
+
+    private void tlcviewrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlcviewrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlcviewrActionPerformed
+
+    private void btn_viewlcupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcupdateActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(tlcviewid.getText());
+        String uname = tlcviewun.getText();
+        String pass = tlcviewp.getText();
+        String role = tlcviewr.getSelectedItem().toString();
+        if (tlcviewid.getText().equals("")||uname.equals("")||pass.equals("")) {
+            JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
+        } else {
+            String sql = "UPDATE `lms`.`user` SET `username` = '"+uname+"', `password` = '"+pass+"', `role` = '"+role+"' WHERE (`uid` = '"+id+"');";
+            try {
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "User Updated!");
+                show_tablevlc();
+                tlcviewid.setText("");
+                tlcviewidf.setText("");
+                tlcviewun.setText("");
+                tlcviewp.setText("");
+                tlcviewr.setSelectedItem("admin");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btn_viewlcupdateActionPerformed
+
+    private void btn_viewlcresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcresetActionPerformed
+        // TODO add your handling code here:
+        tlcviewid.setText("");
+        tlcviewidf.setText("");
+        tlcviewun.setText("");
+        tlcviewp.setText("");
+        tlcviewr.setSelectedItem("admin");
+    }//GEN-LAST:event_btn_viewlcresetActionPerformed
+
+    private void btn_vlcbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vlcbackActionPerformed
+        // TODO add your handling code here:
+        jfviewlc.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_vlcbackActionPerformed
+
+    private void btn_viewlcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        show_tablevlc();
+        jfviewlc.show();
+    }//GEN-LAST:event_btn_viewlcActionPerformed
+
+    private void jTALCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTALCMouseClicked
+        // TODO add your handling code here:
+        int row = jTALC.getSelectedRow();
+        tlcviewid.setText(jTALC.getModel().getValueAt(row, 0).toString());
+        tlcviewun.setText(jTALC.getModel().getValueAt(row, 1).toString());
+        tlcviewp.setText(jTALC.getModel().getValueAt(row, 2).toString());
+        tlcviewr.setSelectedItem(jTALC.getModel().getValueAt(row, 3).toString());
+    }//GEN-LAST:event_jTALCMouseClicked
+
+    private void tlcviewidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlcviewidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlcviewidActionPerformed
+
+    private void btn_viewlcsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcsearchActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(tlcviewidf.getText());
+        String sql = "SELECT * FROM user WHERE id='"+id+"';";
+        try {
+            ResultSet rs = db_connection.getData(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(this, "User Found!");                
+                int uid = rs.getInt("uid");                
+                tlcviewid.setText(String.valueOf(uid));
+                tlcviewun.setText(rs.getString("username"));
+                tlcviewp.setText(rs.getString("password"));
+                tlcviewr.setSelectedItem(rs.getString("role"));
+            }else{
+                JOptionPane.showMessageDialog(this, "No Results Found");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewlcsearchActionPerformed
+
+    private void btn_aviewbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aviewbackActionPerformed
+        // TODO add your handling code here:
+        jfviewa.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_aviewbackActionPerformed
+
+    private void taviewunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taviewunMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewunMouseClicked
+
+    private void taviewunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewunActionPerformed
+
+    private void taviewufnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewufnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewufnActionPerformed
+
+    private void taviewulnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewulnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewulnActionPerformed
+
+    private void tavieweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tavieweActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tavieweActionPerformed
+
+    private void taviewcnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewcnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewcnActionPerformed
+
+    private void taviewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewaActionPerformed
+
+    private void btn_viewaupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewaupdateActionPerformed
+        // TODO add your handling code here:
+        int lcid = Integer.parseInt(taviewulid.getText());
+        String id = taviewuid.getText();
+        String uname = taviewun.getText();
+        String fname = taviewufn.getText();
+        String lname = taviewuln.getText();
+        String email = taviewe.getText();
+        String num = taviewcn.getText();
+        String address = taviewa.getText();
+        if (taviewulid.getText().equals("")||id.equals("")||uname.equals("")||fname.equals("")||lname.equals("")||email.equals("")||num.equals("")||address.equals("")) {
+            JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
+        } else {
+            String sql = "UPDATE `lms`.`admin_info` SET `aid` = '"+id+"', `fname` = '"+fname+"', `lname` = '"+lname+"', `email` = '"+email+"', `tnumber` = '"+num+"', `address` = '"+address+"', `uid` = '"+lcid+"' WHERE (`uname` = '"+uname+"');";
+            try {
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "User Updated!");
+                show_tableva();
+                taviewlidf.setText("");
+                taviewulid.setText("");
+                taviewuid.setText("");
+                taviewun.setText("");
+                taviewufn.setText("");
+                taviewuln.setText("");
+                taviewe.setText("");
+                taviewcn.setText("");
+                taviewa.setText("");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewaupdateActionPerformed
+
+    private void btn_viewaresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewaresetActionPerformed
+        // TODO add your handling code here:
+        taviewlidf.setText("");
+        taviewulid.setText("");
+        taviewuid.setText("");
+        taviewun.setText("");
+        taviewufn.setText("");
+        taviewuln.setText("");
+        taviewe.setText("");
+        taviewcn.setText("");
+        taviewa.setText("");
+    }//GEN-LAST:event_btn_viewaresetActionPerformed
+
+    private void taviewlidfComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_taviewlidfComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewlidfComponentAdded
+
+    private void taviewlidfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewlidfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewlidfActionPerformed
+
+    private void taviewlidfPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_taviewlidfPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewlidfPropertyChange
+
+    private void taviewuidComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_taviewuidComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewuidComponentAdded
+
+    private void taviewuidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewuidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewuidActionPerformed
+
+    private void taviewuidPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_taviewuidPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewuidPropertyChange
+
+    private void taviewulidComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_taviewulidComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewulidComponentAdded
+
+    private void taviewulidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taviewulidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewulidActionPerformed
+
+    private void taviewulidPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_taviewulidPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taviewulidPropertyChange
+
+    private void btn_viewasearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewasearchActionPerformed
+        // TODO add your handling code here:
+        String id = taviewlidf.getText();
+        String sql = "SELECT * FROM admin_info WHERE aid='"+id+"';";
+        try {
+            ResultSet rs = db_connection.getData(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(this, "User Found!");
+                taviewulid.setText(String.valueOf(rs.getInt("uid")));
+                taviewuid.setText(rs.getString("aid"));
+                taviewun.setText(rs.getString("uname"));
+                taviewufn.setText(rs.getString("fname"));
+                taviewuln.setText(rs.getString("lname"));
+                taviewe.setText(rs.getString("email"));
+                taviewcn.setText(rs.getString("tnumber"));
+                taviewa.setText(rs.getString("address"));
+            }else{
+                JOptionPane.showMessageDialog(this, "No Results Found");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewasearchActionPerformed
+
+    private void btn_viewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewaActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        show_tableva();
+        jfviewa.show();
+    }//GEN-LAST:event_btn_viewaActionPerformed
+
+    private void jTAVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTAVMouseClicked
+        // TODO add your handling code here:
+        int row = jTAV.getSelectedRow();
+        taviewuid.setText(jTAV.getModel().getValueAt(row, 0).toString());
+        taviewun.setText(jTAV.getModel().getValueAt(row, 1).toString());
+        taviewufn.setText(jTAV.getModel().getValueAt(row, 2).toString());
+        taviewuln.setText(jTAV.getModel().getValueAt(row, 3).toString());
+        taviewe.setText(jTAV.getModel().getValueAt(row, 4).toString());
+        taviewcn.setText(jTAV.getModel().getValueAt(row, 5).toString());
+        taviewa.setText(jTAV.getModel().getValueAt(row, 6).toString());
+        taviewulid.setText(jTAV.getModel().getValueAt(row, 7).toString());
+    }//GEN-LAST:event_jTAVMouseClicked
+
+    private void btn_viewlcdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcdeleteActionPerformed
+        // Delete Row From User Table
+        int id = Integer.parseInt(tlcviewid.getText());
+        String sql = "DELETE FROM user WHERE uid='"+id+"';";        
+        try {
+            db_connection.setData(sql);
+            JOptionPane.showMessageDialog(this, "User Deleted!");
+            tlcviewid.setText("");
+            tlcviewidf.setText("");
+            tlcviewun.setText("");
+            tlcviewp.setText("");
+            tlcviewr.setSelectedItem("admin");
+            show_tablevlc();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewlcdeleteActionPerformed
+
+    private void btn_viewadeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewadeleteActionPerformed
+        // Delete Row From admin_info Table
+        int id = Integer.parseInt(taviewulid.getText());
+        String sql = "DELETE FROM admin_info WHERE uid='"+id+"';";
+        try {
+            db_connection.setData(sql);
+            JOptionPane.showMessageDialog(this, "User Deleted!");
+            taviewlidf.setText("");
+            taviewulid.setText("");
+            taviewuid.setText("");
+            taviewun.setText("");
+            taviewufn.setText("");
+            taviewuln.setText("");
+            taviewe.setText("");
+            taviewcn.setText("");
+            taviewa.setText("");
+            show_tableva();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewadeleteActionPerformed
+
+    private void btn_lviewbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lviewbackActionPerformed
+        // TODO add your handling code here:
+        jfviewl.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_lviewbackActionPerformed
+
+    private void tlviewulidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewulidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewulidActionPerformed
+
+    private void tlviewuidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewuidActionPerformed
+
+    private void tlviewunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlviewunameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewunameMouseClicked
+
+    private void tlviewunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewunameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewunameActionPerformed
+
+    private void tlviewfnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewfnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewfnameActionPerformed
+
+    private void tlviewlnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewlnameActionPerformed
+
+    private void tlvieweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlvieweActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlvieweActionPerformed
+
+    private void tlviewcnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewcnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewcnActionPerformed
+
+    private void tlviewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewaActionPerformed
+
+    private void btn_viewlupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlupdateActionPerformed
+        // TODO add your handling code here:
+        int lcid = Integer.parseInt(tlviewulid.getText());
+        String id = tlviewuid.getText();
+        String uname = tlviewuname.getText();
+        String fname = tlviewfname.getText();
+        String lname = tlviewlname.getText();
+        String email = tlviewe.getText();
+        String num = tlviewcn.getText();
+        String address = tlviewa.getText();
+        if (taviewulid.getText().equals("")||id.equals("")||uname.equals("")||fname.equals("")||lname.equals("")||email.equals("")||num.equals("")||address.equals("")) {
+            JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
+        } else {
+            String sql = "UPDATE `lms`.`admin_info` SET `aid` = '"+id+"', `fname` = '"+fname+"', `lname` = '"+lname+"', `email` = '"+email+"', `tnumber` = '"+num+"', `address` = '"+address+"', `uid` = '"+lcid+"' WHERE (`uname` = '"+uname+"');";
+            try {
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "User Updated!");
+                show_tableva();
+                tlviewuid.setText("");
+                tlviewuname.setText("");
+                tlviewfname.setText("");
+                tlviewlname.setText("");
+                tlviewe.setText("");
+                tlviewcn.setText("");
+                tlviewa.setText("");        
+                tlviewulid.setText("");
+                tlviewlidf.setText("");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewlupdateActionPerformed
+
+    private void btn_viewlresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlresetActionPerformed
+        // TODO add your handling code here:
+        tlviewuid.setText("");
+        tlviewuname.setText("");
+        tlviewfname.setText("");
+        tlviewlname.setText("");
+        tlviewe.setText("");
+        tlviewcn.setText("");
+        tlviewa.setText("");        
+        tlviewulid.setText("");
+        tlviewlidf.setText("");
+    }//GEN-LAST:event_btn_viewlresetActionPerformed
+
+    private void tlviewlidfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlidfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewlidfActionPerformed
+
+    private void btn_viewlsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlsearchActionPerformed
+        // TODO add your handling code here:
+        String id = tlviewlidf.getText();
+        String sql = "SELECT * FROM lecturer_info WHERE lecid='"+id+"';";
+        try {
+            ResultSet rs = db_connection.getData(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(this, "User Found!");
+                tlviewulid.setText(String.valueOf(rs.getInt("uid")));
+                tlviewuid.setText(rs.getString("lecid"));
+                tlviewuname.setText(rs.getString("username"));
+                tlviewfname.setText(rs.getString("fname"));
+                tlviewlname.setText(rs.getString("lname"));
+                tlviewe.setText(rs.getString("email"));
+                taviewcn.setText(rs.getString("tnumber"));
+                tlviewa.setText(rs.getString("address"));
+            }else{
+                JOptionPane.showMessageDialog(this, "No Results Found");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+        
+    }//GEN-LAST:event_btn_viewlsearchActionPerformed
+
+    private void btn_viewlselectimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlselectimageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlselectimageActionPerformed
+
+    private void btn_viewldeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewldeleteActionPerformed
+        // Delete Row From admin_info Table
+        int id = Integer.parseInt(taviewulid.getText());
+        String sql = "DELETE FROM lecturer_info WHERE uid='"+id+"';";
+        try {
+            db_connection.setData(sql);
+            JOptionPane.showMessageDialog(this, "User Deleted!");
+            tlviewuid.setText("");
+            tlviewuname.setText("");
+            tlviewfname.setText("");
+            tlviewlname.setText("");
+            tlviewe.setText("");
+            tlviewcn.setText("");
+            tlviewa.setText("");        
+            tlviewulid.setText("");
+            tlviewlidf.setText("");
+            show_tablevl();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+        
+    }//GEN-LAST:event_btn_viewldeleteActionPerformed
+
+    private void btn_alback2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alback2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_alback2ActionPerformed
+
+    private void tlviewulid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewulid1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewulid1ActionPerformed
+
+    private void tlviewuid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuid1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewuid1ActionPerformed
+
+    private void tlviewuname1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlviewuname1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewuname1MouseClicked
+
+    private void tlviewuname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewuname1ActionPerformed
+
+    private void tlviewfname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewfname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewfname1ActionPerformed
+
+    private void tlviewlname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewlname1ActionPerformed
+
+    private void tlviewe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewe1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewe1ActionPerformed
+
+    private void tlviewcn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewcn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewcn1ActionPerformed
+
+    private void tlviewa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewa1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewa1ActionPerformed
+
+    private void btn_viewlupdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlupdate1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlupdate1ActionPerformed
+
+    private void btn_viewlreset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlreset1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlreset1ActionPerformed
+
+    private void tlviewlidf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlidf1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewlidf1ActionPerformed
+
+    private void btn_viewlsearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlsearch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlsearch1ActionPerformed
+
+    private void btn_viewlselectimage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlselectimage1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlselectimage1ActionPerformed
+
+    private void btn_viewadelete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewadelete2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewadelete2ActionPerformed
+
+    private void btn_alback3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alback3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_alback3ActionPerformed
+
+    private void tlviewulid2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewulid2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewulid2ActionPerformed
+
+    private void tlviewuid2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuid2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewuid2ActionPerformed
+
+    private void tlviewuname2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlviewuname2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewuname2MouseClicked
+
+    private void tlviewuname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewuname2ActionPerformed
+
+    private void tlviewfname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewfname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewfname2ActionPerformed
+
+    private void tlviewlname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewlname2ActionPerformed
+
+    private void tlviewe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewe2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewe2ActionPerformed
+
+    private void tlviewcn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewcn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewcn2ActionPerformed
+
+    private void tlviewa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewa2ActionPerformed
+
+    private void btn_viewlupdate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlupdate2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlupdate2ActionPerformed
+
+    private void btn_viewlreset2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlreset2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlreset2ActionPerformed
+
+    private void tlviewlidf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlidf2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlviewlidf2ActionPerformed
+
+    private void btn_viewlsearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlsearch2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlsearch2ActionPerformed
+
+    private void btn_viewlselectimage2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlselectimage2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewlselectimage2ActionPerformed
+
+    private void btn_viewadelete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewadelete3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewadelete3ActionPerformed
+
+    private void btn_viewlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        show_tablevl();
+        jfviewl.show();
+    }//GEN-LAST:event_btn_viewlActionPerformed
+
+    private void jTLVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTLVMouseClicked
+        // TODO add your handling code here:
+        int row = jTLV.getSelectedRow();
+        tlviewuid.setText(jTLV.getModel().getValueAt(row, 0).toString());
+        tlviewuname.setText(jTLV.getModel().getValueAt(row, 1).toString());
+        tlviewfname.setText(jTLV.getModel().getValueAt(row, 2).toString());
+        tlviewlname.setText(jTLV.getModel().getValueAt(row, 3).toString());
+        tlviewe.setText(jTLV.getModel().getValueAt(row, 4).toString());
+        tlviewcn.setText(jTLV.getModel().getValueAt(row, 5).toString());
+        tlviewa.setText(jTLV.getModel().getValueAt(row, 6).toString());        
+        tlviewulid.setText(jTLV.getModel().getValueAt(row, 7).toString());
+    }//GEN-LAST:event_jTLVMouseClicked
+
     void setColor(JPanel panel){
         panel.setBackground(new Color(85,65,118));
     }
     
     void resetColor(JPanel panel){
         panel.setBackground(new Color(64,43,100));
+    }
+    
+    public void show_tablevlc(){
+        //Import Mysql user Table To Jtable
+        try {
+            String sql = "SELECT * FROM `lms`.`user`";
+            ResultSet rs = db_connection.getData(sql);
+            jTALC.setModel(DbUtils.resultSetToTableModel(rs));            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
+    
+    public void show_tableva(){
+        //Import Mysql admin_info Table To Jtable
+        try {
+            String sql = "SELECT * FROM `lms`.`admin_info`";
+            ResultSet rs = db_connection.getData(sql);
+            jTAV.setModel(DbUtils.resultSetToTableModel(rs));            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
+    
+    public void show_tablevl(){
+        //Import Mysql lecturer_info Table To Jtable
+        try {
+            String sql = "SELECT * FROM `lms`.`lecturer_info`";
+            ResultSet rs = db_connection.getData(sql);
+            jTLV.setModel(DbUtils.resultSetToTableModel(rs));            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
     }
     /**
      * @param args the command line arguments
@@ -1778,42 +5209,96 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btn_addlsubmit;
     private javax.swing.JButton btn_addn;
     private javax.swing.JButton btn_adds;
+    private javax.swing.JButton btn_addsreset;
+    private javax.swing.JButton btn_addssubmit;
     private javax.swing.JButton btn_addt;
     private javax.swing.JButton btn_addto;
+    private javax.swing.JButton btn_addtoreset;
+    private javax.swing.JButton btn_addtosubmit;
     private javax.swing.JButton btn_alback;
+    private javax.swing.JButton btn_alback2;
+    private javax.swing.JButton btn_alback3;
     private javax.swing.JButton btn_alcback;
+    private javax.swing.JButton btn_asback;
+    private javax.swing.JButton btn_atoback;
+    private javax.swing.JButton btn_aviewback;
     private javax.swing.JPanel btn_courses;
+    private javax.swing.JButton btn_lviewback;
     private javax.swing.JPanel btn_notices;
     private javax.swing.JPanel btn_timetables;
-    private javax.swing.JButton btn_upa;
     private javax.swing.JButton btn_upc;
-    private javax.swing.JButton btn_upl;
-    private javax.swing.JButton btn_uplc;
     private javax.swing.JButton btn_upn;
-    private javax.swing.JButton btn_ups;
     private javax.swing.JButton btn_upt;
-    private javax.swing.JButton btn_upto;
     private javax.swing.JPanel btn_users;
     private javax.swing.JButton btn_viewa;
+    private javax.swing.JButton btn_viewadelete;
+    private javax.swing.JButton btn_viewadelete2;
+    private javax.swing.JButton btn_viewadelete3;
+    private javax.swing.JButton btn_viewareset;
+    private javax.swing.JButton btn_viewasearch;
+    private javax.swing.JButton btn_viewaselectimage;
+    private javax.swing.JButton btn_viewaupdate;
     private javax.swing.JButton btn_viewc;
     private javax.swing.JButton btn_viewl;
     private javax.swing.JButton btn_viewlc;
+    private javax.swing.JButton btn_viewlcdelete;
+    private javax.swing.JButton btn_viewlcreset;
+    private javax.swing.JButton btn_viewlcsearch;
+    private javax.swing.JButton btn_viewlcupdate;
+    private javax.swing.JButton btn_viewldelete;
+    private javax.swing.JButton btn_viewlreset;
+    private javax.swing.JButton btn_viewlreset1;
+    private javax.swing.JButton btn_viewlreset2;
+    private javax.swing.JButton btn_viewlsearch;
+    private javax.swing.JButton btn_viewlsearch1;
+    private javax.swing.JButton btn_viewlsearch2;
+    private javax.swing.JButton btn_viewlselectimage;
+    private javax.swing.JButton btn_viewlselectimage1;
+    private javax.swing.JButton btn_viewlselectimage2;
+    private javax.swing.JButton btn_viewlupdate;
+    private javax.swing.JButton btn_viewlupdate1;
+    private javax.swing.JButton btn_viewlupdate2;
     private javax.swing.JButton btn_viewn;
     private javax.swing.JButton btn_views;
     private javax.swing.JButton btn_viewt;
     private javax.swing.JButton btn_viewto;
+    private javax.swing.JButton btn_vlcback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTALC;
+    private javax.swing.JTable jTAV;
+    private javax.swing.JTable jTLV;
+    private javax.swing.JTable jTLV1;
+    private javax.swing.JTable jTLV2;
     private javax.swing.JFrame jfadda;
     private javax.swing.JFrame jfaddl;
     private javax.swing.JFrame jfaddlc;
+    private javax.swing.JFrame jfadds;
+    private javax.swing.JFrame jfaddto;
+    private javax.swing.JFrame jfviewa;
+    private javax.swing.JFrame jfviewl;
+    private javax.swing.JFrame jfviewlc;
+    private javax.swing.JFrame jfviews;
+    private javax.swing.JFrame jfviewto;
     private javax.swing.JPanel jpcourse;
     private javax.swing.JPanel jpnotice;
     private javax.swing.JPanel jptimetable;
@@ -1821,14 +5306,78 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> lcrole;
     private javax.swing.JTextField lcuname;
     private javax.swing.JPasswordField lcupass;
+    private javax.swing.JLabel pfaview;
+    private javax.swing.JLabel pflview;
+    private javax.swing.JLabel pflview1;
+    private javax.swing.JLabel pflview2;
     private javax.swing.JPanel sidepanel;
+    private javax.swing.JTextField taviewa;
+    private javax.swing.JTextField taviewcn;
+    private javax.swing.JTextField taviewe;
+    private javax.swing.JTextField taviewlidf;
+    private javax.swing.JTextField taviewufn;
+    private javax.swing.JTextField taviewuid;
+    private javax.swing.JTextField taviewulid;
+    private javax.swing.JTextField taviewuln;
+    private javax.swing.JTextField taviewun;
     private javax.swing.JTextField tla;
     private javax.swing.JTextField tlcn;
+    private javax.swing.JTextField tlcviewid;
+    private javax.swing.JTextField tlcviewidf;
+    private javax.swing.JPasswordField tlcviewp;
+    private javax.swing.JComboBox<String> tlcviewr;
+    private javax.swing.JTextField tlcviewun;
     private javax.swing.JTextField tlemail;
     private javax.swing.JTextField tlfname;
     private javax.swing.JTextField tllcid;
     private javax.swing.JTextField tllname;
     private javax.swing.JTextField tluid;
     private javax.swing.JTextField tluname;
+    private javax.swing.JTextField tlviewa;
+    private javax.swing.JTextField tlviewa1;
+    private javax.swing.JTextField tlviewa2;
+    private javax.swing.JTextField tlviewcn;
+    private javax.swing.JTextField tlviewcn1;
+    private javax.swing.JTextField tlviewcn2;
+    private javax.swing.JTextField tlviewe;
+    private javax.swing.JTextField tlviewe1;
+    private javax.swing.JTextField tlviewe2;
+    private javax.swing.JTextField tlviewfname;
+    private javax.swing.JTextField tlviewfname1;
+    private javax.swing.JTextField tlviewfname2;
+    private javax.swing.JTextField tlviewlidf;
+    private javax.swing.JTextField tlviewlidf1;
+    private javax.swing.JTextField tlviewlidf2;
+    private javax.swing.JTextField tlviewlname;
+    private javax.swing.JTextField tlviewlname1;
+    private javax.swing.JTextField tlviewlname2;
+    private javax.swing.JTextField tlviewuid;
+    private javax.swing.JTextField tlviewuid1;
+    private javax.swing.JTextField tlviewuid2;
+    private javax.swing.JTextField tlviewulid;
+    private javax.swing.JTextField tlviewulid1;
+    private javax.swing.JTextField tlviewulid2;
+    private javax.swing.JTextField tlviewuname;
+    private javax.swing.JTextField tlviewuname1;
+    private javax.swing.JTextField tlviewuname2;
+    private javax.swing.JTextField tsa;
+    private javax.swing.JTextField tscn;
+    private javax.swing.JComboBox<String> tsdep;
+    private javax.swing.JTextField tsemail;
+    private javax.swing.JTextField tsfname;
+    private javax.swing.JTextField tsfullname;
+    private javax.swing.JTextField tslname;
+    private javax.swing.JTextField tsregdate;
+    private javax.swing.JTextField tsuid;
+    private javax.swing.JTextField tsulcid;
+    private javax.swing.JTextField tsuname;
+    private javax.swing.JTextField ttoa;
+    private javax.swing.JTextField ttocn;
+    private javax.swing.JTextField ttoemail;
+    private javax.swing.JTextField ttofname;
+    private javax.swing.JTextField ttolname;
+    private javax.swing.JTextField ttouid;
+    private javax.swing.JTextField ttoulcid;
+    private javax.swing.JTextField ttouname;
     // End of variables declaration//GEN-END:variables
 }
