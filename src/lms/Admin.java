@@ -4,19 +4,39 @@
  */
 package lms;
 
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.Image;
+import java.io.File;
+import java.sql.DriverManager;
 import javax.swing.JPanel;
 import net.proteanit.sql.DbUtils;
+import java.sql.ResultSet;
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.Objects;
+import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author niraj
  */
 public class Admin extends javax.swing.JFrame {
+
+    String selectedImagePath = "";
+    String selectedImageName = "";
+    private Connection connect = null;
+    private Statement statement = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
+    private ImageIcon format = null;
 
     /**
      * Creates new form Admin
@@ -190,6 +210,7 @@ public class Admin extends javax.swing.JFrame {
         jTAV = new javax.swing.JTable();
         btn_viewaselectimage = new javax.swing.JButton();
         btn_viewadelete = new javax.swing.JButton();
+        btn_viewaupdatei = new javax.swing.JButton();
         jfviewl = new javax.swing.JFrame();
         jPanel11 = new javax.swing.JPanel();
         btn_lviewback = new javax.swing.JButton();
@@ -220,66 +241,156 @@ public class Admin extends javax.swing.JFrame {
         pflview = new javax.swing.JLabel();
         btn_viewlselectimage = new javax.swing.JButton();
         btn_viewldelete = new javax.swing.JButton();
+        btn_viewlupdatei = new javax.swing.JButton();
         jfviewto = new javax.swing.JFrame();
         jPanel12 = new javax.swing.JPanel();
-        btn_alback2 = new javax.swing.JButton();
+        btn_toviewback = new javax.swing.JButton();
         javax.swing.JLabel jLabel82 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel83 = new javax.swing.JLabel();
-        tlviewulid1 = new javax.swing.JTextField();
+        ttoviewulid = new javax.swing.JTextField();
         javax.swing.JLabel jLabel84 = new javax.swing.JLabel();
-        tlviewuid1 = new javax.swing.JTextField();
+        ttoviewuid = new javax.swing.JTextField();
         javax.swing.JLabel jLabel85 = new javax.swing.JLabel();
-        tlviewuname1 = new javax.swing.JTextField();
+        ttoviewuname = new javax.swing.JTextField();
         javax.swing.JLabel jLabel86 = new javax.swing.JLabel();
-        tlviewfname1 = new javax.swing.JTextField();
+        ttoviewfname = new javax.swing.JTextField();
         javax.swing.JLabel jLabel87 = new javax.swing.JLabel();
-        tlviewlname1 = new javax.swing.JTextField();
+        ttoviewlname = new javax.swing.JTextField();
         javax.swing.JLabel jLabel88 = new javax.swing.JLabel();
-        tlviewe1 = new javax.swing.JTextField();
+        ttoviewe = new javax.swing.JTextField();
         javax.swing.JLabel jLabel89 = new javax.swing.JLabel();
-        tlviewcn1 = new javax.swing.JTextField();
+        ttoviewcn = new javax.swing.JTextField();
         javax.swing.JLabel jLabel90 = new javax.swing.JLabel();
-        tlviewa1 = new javax.swing.JTextField();
-        btn_viewlupdate1 = new javax.swing.JButton();
-        btn_viewlreset1 = new javax.swing.JButton();
+        ttoviewa = new javax.swing.JTextField();
+        btn_viewtoupdate = new javax.swing.JButton();
+        btn_viewtoreset = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTLV1 = new javax.swing.JTable();
+        jTTOV = new javax.swing.JTable();
         javax.swing.JLabel jLabel91 = new javax.swing.JLabel();
-        tlviewlidf1 = new javax.swing.JTextField();
-        btn_viewlsearch1 = new javax.swing.JButton();
-        pflview1 = new javax.swing.JLabel();
-        btn_viewlselectimage1 = new javax.swing.JButton();
-        btn_viewadelete2 = new javax.swing.JButton();
+        ttoviewlidf = new javax.swing.JTextField();
+        btn_viewtosearch = new javax.swing.JButton();
+        pftoview = new javax.swing.JLabel();
+        btn_viewtoselectimage = new javax.swing.JButton();
+        btn_viewtodelete = new javax.swing.JButton();
+        btn_viewtoupdatei = new javax.swing.JButton();
         jfviews = new javax.swing.JFrame();
         jPanel13 = new javax.swing.JPanel();
-        btn_alback3 = new javax.swing.JButton();
+        btn_sviewback = new javax.swing.JButton();
         javax.swing.JLabel jLabel92 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel93 = new javax.swing.JLabel();
-        tlviewulid2 = new javax.swing.JTextField();
+        tsviewulid = new javax.swing.JTextField();
         javax.swing.JLabel jLabel94 = new javax.swing.JLabel();
-        tlviewuid2 = new javax.swing.JTextField();
+        tsviewuid = new javax.swing.JTextField();
         javax.swing.JLabel jLabel95 = new javax.swing.JLabel();
-        tlviewuname2 = new javax.swing.JTextField();
+        tsviewuname = new javax.swing.JTextField();
         javax.swing.JLabel jLabel96 = new javax.swing.JLabel();
-        tlviewfname2 = new javax.swing.JTextField();
+        tsviewfname = new javax.swing.JTextField();
         javax.swing.JLabel jLabel97 = new javax.swing.JLabel();
-        tlviewlname2 = new javax.swing.JTextField();
+        tsviewlname = new javax.swing.JTextField();
         javax.swing.JLabel jLabel98 = new javax.swing.JLabel();
-        tlviewe2 = new javax.swing.JTextField();
+        tsviewfullname = new javax.swing.JTextField();
         javax.swing.JLabel jLabel99 = new javax.swing.JLabel();
-        tlviewcn2 = new javax.swing.JTextField();
+        tsviewe = new javax.swing.JTextField();
         javax.swing.JLabel jLabel100 = new javax.swing.JLabel();
-        tlviewa2 = new javax.swing.JTextField();
-        btn_viewlupdate2 = new javax.swing.JButton();
-        btn_viewlreset2 = new javax.swing.JButton();
+        tsviewcn = new javax.swing.JTextField();
+        btn_viewsupdate = new javax.swing.JButton();
+        btn_viewsreset = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTLV2 = new javax.swing.JTable();
+        jTSV = new javax.swing.JTable();
         javax.swing.JLabel jLabel101 = new javax.swing.JLabel();
-        tlviewlidf2 = new javax.swing.JTextField();
-        btn_viewlsearch2 = new javax.swing.JButton();
-        pflview2 = new javax.swing.JLabel();
-        btn_viewlselectimage2 = new javax.swing.JButton();
-        btn_viewadelete3 = new javax.swing.JButton();
+        tsviewlidf = new javax.swing.JTextField();
+        btn_viewssearch = new javax.swing.JButton();
+        pfsview = new javax.swing.JLabel();
+        btn_viewsselectimage = new javax.swing.JButton();
+        btn_viewsdelete = new javax.swing.JButton();
+        javax.swing.JLabel jLabel102 = new javax.swing.JLabel();
+        tsviewa = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel103 = new javax.swing.JLabel();
+        tsviewregdate = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel104 = new javax.swing.JLabel();
+        tviewsd = new javax.swing.JComboBox<>();
+        btn_viewsupdatei = new javax.swing.JButton();
+        jfaddcourse = new javax.swing.JFrame();
+        jPanel6 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel105 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel106 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel107 = new javax.swing.JLabel();
+        taddcid = new javax.swing.JTextField();
+        taddcd = new javax.swing.JComboBox<>();
+        btn_addcsubmit = new javax.swing.JButton();
+        btn_addcreset = new javax.swing.JButton();
+        btn_acback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel108 = new javax.swing.JLabel();
+        taddccd = new javax.swing.JTextField();
+        taddcn = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel109 = new javax.swing.JLabel();
+        taddcc = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel110 = new javax.swing.JLabel();
+        jfviewcourse = new javax.swing.JFrame();
+        jPanel7 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel111 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel112 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel113 = new javax.swing.JLabel();
+        tviewcid = new javax.swing.JTextField();
+        tviewcd = new javax.swing.JComboBox<>();
+        btn_viewcupdate = new javax.swing.JButton();
+        btn_viewcreset = new javax.swing.JButton();
+        btn_viewcback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel114 = new javax.swing.JLabel();
+        tviewccd = new javax.swing.JTextField();
+        tviewcn = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel115 = new javax.swing.JLabel();
+        tviewcc = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel116 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTVC = new javax.swing.JTable();
+        javax.swing.JLabel jLabel117 = new javax.swing.JLabel();
+        tviewci = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel118 = new javax.swing.JLabel();
+        tviewcidf = new javax.swing.JTextField();
+        btn_viewcsearch = new javax.swing.JButton();
+        btn_viewcdelete = new javax.swing.JButton();
+        jFnotices = new javax.swing.JFrame();
+        jPanel14 = new javax.swing.JPanel();
+        btn_viewnback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel119 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
+        tnoticeids = new javax.swing.JTextField();
+        btn_noticesearch = new javax.swing.JButton();
+        javax.swing.JLabel jLabel120 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel121 = new javax.swing.JLabel();
+        tnid = new javax.swing.JTextField();
+        tnt = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel122 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tnc = new javax.swing.JTextArea();
+        javax.swing.JLabel jLabel123 = new javax.swing.JLabel();
+        tna = new javax.swing.JTextField();
+        btn_noticereset = new javax.swing.JButton();
+        btn_noticedelete = new javax.swing.JButton();
+        btn_noticesubmit = new javax.swing.JButton();
+        btn_noticeupdate = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTN = new javax.swing.JTable();
+        jFtimetables = new javax.swing.JFrame();
+        jPanel15 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTTA = new javax.swing.JTable();
+        btn_viewtback = new javax.swing.JButton();
+        javax.swing.JLabel jLabel124 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel125 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel126 = new javax.swing.JLabel();
+        ttctn = new javax.swing.JComboBox<>();
+        btn_vtcreate = new javax.swing.JButton();
+        btn_vtsearch = new javax.swing.JButton();
+        btn_vtupdate = new javax.swing.JButton();
+        btn_vtdelete = new javax.swing.JButton();
+        btn_vtreset = new javax.swing.JButton();
+        ttn = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTTS = new javax.swing.JTable();
+        ttctns = new javax.swing.JComboBox<>();
+        btn_vtinsert = new javax.swing.JButton();
         bg = new javax.swing.JPanel();
         sidepanel = new javax.swing.JPanel();
         btn_users = new javax.swing.JPanel();
@@ -314,14 +425,9 @@ public class Admin extends javax.swing.JFrame {
         jpcourse = new javax.swing.JPanel();
         btn_addc = new javax.swing.JButton();
         btn_upc = new javax.swing.JButton();
-        btn_viewc = new javax.swing.JButton();
         jpnotice = new javax.swing.JPanel();
-        btn_addn = new javax.swing.JButton();
         btn_upn = new javax.swing.JButton();
-        btn_viewn = new javax.swing.JButton();
         jptimetable = new javax.swing.JPanel();
-        btn_addt = new javax.swing.JButton();
-        btn_upt = new javax.swing.JButton();
         btn_viewt = new javax.swing.JButton();
 
         jfaddlc.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1612,7 +1718,6 @@ public class Admin extends javax.swing.JFrame {
         jfviewlc.setIconImages(null);
         jfviewlc.setMinimumSize(new java.awt.Dimension(1000, 800));
         jfviewlc.setName("adduserlc"); // NOI18N
-        jfviewlc.setPreferredSize(new java.awt.Dimension(1000, 800));
         jfviewlc.setLocationRelativeTo(null);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -1733,6 +1838,7 @@ public class Admin extends javax.swing.JFrame {
 
         btn_viewlcsearch.setBackground(new java.awt.Color(51, 51, 51));
         btn_viewlcsearch.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_viewlcsearch.setForeground(new java.awt.Color(255, 255, 255));
         btn_viewlcsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
         btn_viewlcsearch.setText("Search");
         btn_viewlcsearch.addActionListener(new java.awt.event.ActionListener() {
@@ -1846,7 +1952,7 @@ public class Admin extends javax.swing.JFrame {
         );
 
         jfviewa.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jfviewa.setTitle("Add Admin Information");
+        jfviewa.setTitle("View All Admin Information");
         jfviewa.setFocusCycleRoot(false);
         jfviewa.setIconImages(null);
         jfviewa.setMinimumSize(new java.awt.Dimension(1000, 800));
@@ -1974,7 +2080,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel69.setPreferredSize(new java.awt.Dimension(170, 19));
 
         taviewlidf.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        taviewlidf.setToolTipText("Enter User Login ID Correctly");
+        taviewlidf.setToolTipText("Enter Admin ID For Search");
         taviewlidf.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 taviewlidfComponentAdded(evt);
@@ -2105,6 +2211,11 @@ public class Admin extends javax.swing.JFrame {
         btn_viewaselectimage.setBackground(new java.awt.Color(102, 102, 255));
         btn_viewaselectimage.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btn_viewaselectimage.setText("Select Image");
+        btn_viewaselectimage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewaselectimageActionPerformed(evt);
+            }
+        });
 
         btn_viewadelete.setBackground(new java.awt.Color(255, 0, 51));
         btn_viewadelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -2114,6 +2225,15 @@ public class Admin extends javax.swing.JFrame {
         btn_viewadelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_viewadeleteActionPerformed(evt);
+            }
+        });
+
+        btn_viewaupdatei.setBackground(new java.awt.Color(51, 51, 255));
+        btn_viewaupdatei.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_viewaupdatei.setText("Update Image");
+        btn_viewaupdatei.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewaupdateiActionPerformed(evt);
             }
         });
 
@@ -2173,7 +2293,8 @@ public class Admin extends javax.swing.JFrame {
                                                 .addComponent(taviewlidf, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel69, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                                                 .addComponent(btn_viewasearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(btn_viewaselectimage, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(btn_viewaselectimage, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_viewaupdatei, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(20, 20, 20)))
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(taviewulid, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2204,8 +2325,10 @@ public class Admin extends javax.swing.JFrame {
                                 .addComponent(taviewlidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_viewasearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                                .addComponent(btn_viewaselectimage)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                                .addComponent(btn_viewaselectimage)
+                                .addGap(11, 11, 11)
+                                .addComponent(btn_viewaupdatei)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(taviewulid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2262,11 +2385,10 @@ public class Admin extends javax.swing.JFrame {
         );
 
         jfviewl.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jfviewl.setTitle("Add Lecturer Informations");
+        jfviewl.setTitle("View All Lecturer Informations");
         jfviewl.setIconImages(null);
         jfviewl.setMinimumSize(new java.awt.Dimension(1000, 800));
         jfviewl.setName("adduserl"); // NOI18N
-        jfviewl.setPreferredSize(new java.awt.Dimension(1000, 800));
         jfviewl.setLocationRelativeTo(null);
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
@@ -2284,8 +2406,8 @@ public class Admin extends javax.swing.JFrame {
         });
 
         jLabel72.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel72.setForeground(new java.awt.Color(153, 51, 255));
-        jLabel72.setText("Add Lecturer Informations");
+        jLabel72.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel72.setText("View All Lecturer Informations");
 
         jLabel73.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel73.setForeground(new java.awt.Color(255, 255, 255));
@@ -2306,7 +2428,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel74.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tlviewuid.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewuid.setToolTipText("Insert Lecyure ID");
+        tlviewuid.setToolTipText("Insert Lecture ID");
         tlviewuid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tlviewuidActionPerformed(evt);
@@ -2428,7 +2550,15 @@ public class Admin extends javax.swing.JFrame {
             new String [] {
                 "Lecture ID", "User Name", "First Name", "Last Name", "Email", "Conatact Number", "Address", "User Login ID"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTLV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTLVMouseClicked(evt);
@@ -2442,7 +2572,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel81.setPreferredSize(new java.awt.Dimension(167, 26));
 
         tlviewlidf.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewlidf.setToolTipText("Insert Valid Login ID");
+        tlviewlidf.setToolTipText("Insert Lecturer ID For Search");
         tlviewlidf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tlviewlidfActionPerformed(evt);
@@ -2481,6 +2611,15 @@ public class Admin extends javax.swing.JFrame {
         btn_viewldelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_viewldeleteActionPerformed(evt);
+            }
+        });
+
+        btn_viewlupdatei.setBackground(new java.awt.Color(51, 51, 255));
+        btn_viewlupdatei.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_viewlupdatei.setText("Update Image");
+        btn_viewlupdatei.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewlupdateiActionPerformed(evt);
             }
         });
 
@@ -2531,8 +2670,9 @@ public class Admin extends javax.swing.JFrame {
                                     .addComponent(tlviewlidf)
                                     .addComponent(jLabel81, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                                     .addComponent(btn_viewlsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_viewlselectimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(25, 25, 25)
+                                    .addComponent(btn_viewlselectimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewlupdatei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(32, 32, 32)
                                 .addComponent(pflview, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
@@ -2542,9 +2682,9 @@ public class Admin extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_lviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel72))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel72)
+                    .addComponent(btn_lviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
@@ -2555,8 +2695,11 @@ public class Admin extends javax.swing.JFrame {
                                 .addComponent(tlviewlidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_viewlsearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(btn_viewlselectimage))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                                .addComponent(btn_viewlselectimage)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_viewlupdatei)
+                                .addGap(8, 8, 8))
                             .addComponent(pflview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -2615,39 +2758,39 @@ public class Admin extends javax.swing.JFrame {
         );
 
         jfviewto.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jfviewto.setTitle("Add Lecturer Informations");
+        jfviewto.setTitle("View All Technical Officer Informations");
         jfviewto.setIconImages(null);
         jfviewto.setMinimumSize(new java.awt.Dimension(1000, 800));
         jfviewto.setName("adduserl"); // NOI18N
-        jfviewl.setLocationRelativeTo(null);
+        jfviewto.setLocationRelativeTo(null);
 
         jPanel12.setBackground(new java.awt.Color(51, 51, 51));
         jPanel12.setMinimumSize(new java.awt.Dimension(1000, 800));
 
-        btn_alback2.setBackground(new java.awt.Color(51, 51, 51));
-        btn_alback2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
-        btn_alback2.setToolTipText("Go To Admin Main Panel");
-        btn_alback2.setBorder(null);
-        btn_alback2.addActionListener(new java.awt.event.ActionListener() {
+        btn_toviewback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_toviewback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_toviewback.setToolTipText("Go To Admin Main Panel");
+        btn_toviewback.setBorder(null);
+        btn_toviewback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_alback2ActionPerformed(evt);
+                btn_toviewbackActionPerformed(evt);
             }
         });
 
         jLabel82.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel82.setForeground(new java.awt.Color(153, 51, 255));
-        jLabel82.setText("Add Lecturer Informations");
+        jLabel82.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel82.setText("View All Technical Officer Informations");
 
         jLabel83.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel83.setForeground(new java.awt.Color(255, 255, 255));
         jLabel83.setText("User Login ID      :");
         jLabel83.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewulid1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewulid1.setToolTipText("Insert Valid Login ID");
-        tlviewulid1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewulid.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewulid.setToolTipText("Insert Valid Login ID");
+        ttoviewulid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewulid1ActionPerformed(evt);
+                ttoviewulidActionPerformed(evt);
             }
         });
 
@@ -2656,11 +2799,11 @@ public class Admin extends javax.swing.JFrame {
         jLabel84.setText("Lecturer ID          :");
         jLabel84.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewuid1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewuid1.setToolTipText("Insert Lecyure ID");
-        tlviewuid1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewuid.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewuid.setToolTipText("Insert Lecyure ID");
+        ttoviewuid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewuid1ActionPerformed(evt);
+                ttoviewuidActionPerformed(evt);
             }
         });
 
@@ -2669,17 +2812,17 @@ public class Admin extends javax.swing.JFrame {
         jLabel85.setText("User Name          :");
         jLabel85.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewuname1.setEditable(false);
-        tlviewuname1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewuname1.setToolTipText("User Name Will Genarate Auto With Login ID");
-        tlviewuname1.addMouseListener(new java.awt.event.MouseAdapter() {
+        ttoviewuname.setEditable(false);
+        ttoviewuname.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewuname.setToolTipText("User Name Will Genarate Auto With Login ID");
+        ttoviewuname.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tlviewuname1MouseClicked(evt);
+                ttoviewunameMouseClicked(evt);
             }
         });
-        tlviewuname1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewuname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewuname1ActionPerformed(evt);
+                ttoviewunameActionPerformed(evt);
             }
         });
 
@@ -2688,11 +2831,11 @@ public class Admin extends javax.swing.JFrame {
         jLabel86.setText("First Name          :");
         jLabel86.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewfname1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewfname1.setToolTipText("Insert First Name");
-        tlviewfname1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewfname.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewfname.setToolTipText("Insert First Name");
+        ttoviewfname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewfname1ActionPerformed(evt);
+                ttoviewfnameActionPerformed(evt);
             }
         });
 
@@ -2701,11 +2844,11 @@ public class Admin extends javax.swing.JFrame {
         jLabel87.setText("Last Name           :");
         jLabel87.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewlname1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewlname1.setToolTipText("Insert Last Name");
-        tlviewlname1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewlname.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewlname.setToolTipText("Insert Last Name");
+        ttoviewlname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewlname1ActionPerformed(evt);
+                ttoviewlnameActionPerformed(evt);
             }
         });
 
@@ -2714,11 +2857,11 @@ public class Admin extends javax.swing.JFrame {
         jLabel88.setText("Email                    :");
         jLabel88.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewe1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewe1.setToolTipText("Insert Email");
-        tlviewe1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewe.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewe.setToolTipText("Insert Email");
+        ttoviewe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewe1ActionPerformed(evt);
+                ttovieweActionPerformed(evt);
             }
         });
 
@@ -2726,11 +2869,11 @@ public class Admin extends javax.swing.JFrame {
         jLabel89.setForeground(new java.awt.Color(255, 255, 255));
         jLabel89.setText("Contact Number :");
 
-        tlviewcn1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewcn1.setToolTipText("Insert Contact Number");
-        tlviewcn1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewcn.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewcn.setToolTipText("Insert Contact Number");
+        ttoviewcn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewcn1ActionPerformed(evt);
+                ttoviewcnActionPerformed(evt);
             }
         });
 
@@ -2739,94 +2882,116 @@ public class Admin extends javax.swing.JFrame {
         jLabel90.setText("Address               :");
         jLabel90.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewa1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewa1.setToolTipText("Insert Address");
-        tlviewa1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewa.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewa.setToolTipText("Insert Address");
+        ttoviewa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewa1ActionPerformed(evt);
+                ttoviewaActionPerformed(evt);
             }
         });
 
-        btn_viewlupdate1.setBackground(new java.awt.Color(0, 204, 51));
-        btn_viewlupdate1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewlupdate1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_viewlupdate1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
-        btn_viewlupdate1.setText("Update");
-        btn_viewlupdate1.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewtoupdate.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewtoupdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewtoupdate.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewtoupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewtoupdate.setText("Update");
+        btn_viewtoupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlupdate1ActionPerformed(evt);
+                btn_viewtoupdateActionPerformed(evt);
             }
         });
 
-        btn_viewlreset1.setBackground(new java.awt.Color(255, 102, 0));
-        btn_viewlreset1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewlreset1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_viewlreset1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
-        btn_viewlreset1.setText("Reset");
-        btn_viewlreset1.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewtoreset.setBackground(new java.awt.Color(255, 102, 0));
+        btn_viewtoreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewtoreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewtoreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewtoreset.setText("Reset");
+        btn_viewtoreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlreset1ActionPerformed(evt);
+                btn_viewtoresetActionPerformed(evt);
             }
         });
 
-        jTLV1.setModel(new javax.swing.table.DefaultTableModel(
+        jTTOV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "TO ID", "Login User Name", "First Name", "Last Name", "Email", "Contact Number", "Address", "User Login ID"
             }
-        ));
-        jScrollPane4.setViewportView(jTLV1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTTOV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTTOVMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTTOV);
 
         jLabel91.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel91.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel91.setText("Lecture ID For Search");
+        jLabel91.setText("TO ID For Search");
         jLabel91.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewlidf1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewlidf1.setToolTipText("Insert Valid Login ID");
-        tlviewlidf1.addActionListener(new java.awt.event.ActionListener() {
+        ttoviewlidf.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ttoviewlidf.setToolTipText("Insert TTO ID For Search");
+        ttoviewlidf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewlidf1ActionPerformed(evt);
+                ttoviewlidfActionPerformed(evt);
             }
         });
 
-        btn_viewlsearch1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewlsearch1.setForeground(new java.awt.Color(204, 204, 204));
-        btn_viewlsearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
-        btn_viewlsearch1.setText("Search");
-        btn_viewlsearch1.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewtosearch.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewtosearch.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewtosearch.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewtosearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewtosearch.setText("Search");
+        btn_viewtosearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlsearch1ActionPerformed(evt);
+                btn_viewtosearchActionPerformed(evt);
             }
         });
 
-        pflview1.setBackground(new java.awt.Color(153, 153, 153));
-        pflview1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        pftoview.setBackground(new java.awt.Color(153, 153, 153));
+        pftoview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
-        btn_viewlselectimage1.setBackground(new java.awt.Color(102, 102, 255));
-        btn_viewlselectimage1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btn_viewlselectimage1.setForeground(new java.awt.Color(204, 204, 204));
-        btn_viewlselectimage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
-        btn_viewlselectimage1.setText("Select Image");
-        btn_viewlselectimage1.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewtoselectimage.setBackground(new java.awt.Color(102, 102, 255));
+        btn_viewtoselectimage.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_viewtoselectimage.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewtoselectimage.setText("Select Image");
+        btn_viewtoselectimage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlselectimage1ActionPerformed(evt);
+                btn_viewtoselectimageActionPerformed(evt);
             }
         });
 
-        btn_viewadelete2.setBackground(new java.awt.Color(255, 0, 51));
-        btn_viewadelete2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewadelete2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_viewadelete2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
-        btn_viewadelete2.setText("Delete");
-        btn_viewadelete2.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewtodelete.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewtodelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewtodelete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewtodelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewtodelete.setText("Delete");
+        btn_viewtodelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewadelete2ActionPerformed(evt);
+                btn_viewtodeleteActionPerformed(evt);
+            }
+        });
+
+        btn_viewtoupdatei.setBackground(new java.awt.Color(51, 51, 255));
+        btn_viewtoupdatei.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_viewtoupdatei.setText("Update Image");
+        btn_viewtoupdatei.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewtoupdateiActionPerformed(evt);
             }
         });
 
@@ -2838,7 +3003,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(btn_alback2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_toviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel82)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -2856,32 +3021,31 @@ public class Admin extends javax.swing.JFrame {
                                         .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel87, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel88, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btn_viewlreset1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_viewtoreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ttoviewcn)
+                                        .addComponent(ttoviewa, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ttoviewlname)
+                                        .addComponent(ttoviewfname)
+                                        .addComponent(ttoviewuname)
+                                        .addComponent(ttoviewuid)
+                                        .addComponent(ttoviewulid)
+                                        .addComponent(ttoviewe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel12Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tlviewcn1)
-                                            .addComponent(tlviewa1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tlviewlname1)
-                                            .addComponent(tlviewfname1)
-                                            .addComponent(tlviewuname1)
-                                            .addComponent(tlviewuid1)
-                                            .addComponent(tlviewulid1)
-                                            .addComponent(tlviewe1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel12Layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(btn_viewadelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn_viewtodelete, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27)
-                                        .addComponent(btn_viewlupdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btn_viewtoupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tlviewlidf1)
+                                    .addComponent(ttoviewlidf)
                                     .addComponent(jLabel91, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                    .addComponent(btn_viewlsearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_viewlselectimage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(25, 25, 25)
-                                .addComponent(pflview1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btn_viewtosearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewtoselectimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewtoupdatei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(26, 26, 26)
+                                .addComponent(pftoview, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -2890,9 +3054,9 @@ public class Admin extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_alback2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel82))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel82)
+                    .addComponent(btn_toviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
@@ -2900,49 +3064,51 @@ public class Admin extends javax.swing.JFrame {
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tlviewlidf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ttoviewlidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_viewlsearch1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(btn_viewlselectimage1))
-                            .addComponent(pflview1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btn_viewtosearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                                .addComponent(btn_viewtoselectimage)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_viewtoupdatei))
+                            .addComponent(pftoview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewulid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttoviewulid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewuid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttoviewuid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewuname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttoviewuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewfname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttoviewfname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewlname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttoviewlname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttoviewe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewcn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttoviewcn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel89))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tlviewa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ttoviewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_viewlupdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_viewlreset1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_viewadelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_viewtoupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewtoreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewtodelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jScrollPane4)
@@ -2963,218 +3129,274 @@ public class Admin extends javax.swing.JFrame {
         );
 
         jfviews.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jfviews.setTitle("Add Lecturer Informations");
+        jfviews.setTitle("View All Student Informations");
         jfviews.setIconImages(null);
         jfviews.setMinimumSize(new java.awt.Dimension(1000, 800));
         jfviews.setName("adduserl"); // NOI18N
-        jfviewl.setLocationRelativeTo(null);
+        jfviews.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jfviews.setLocationRelativeTo(null);
 
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
         jPanel13.setMinimumSize(new java.awt.Dimension(1000, 800));
 
-        btn_alback3.setBackground(new java.awt.Color(51, 51, 51));
-        btn_alback3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
-        btn_alback3.setToolTipText("Go To Admin Main Panel");
-        btn_alback3.setBorder(null);
-        btn_alback3.addActionListener(new java.awt.event.ActionListener() {
+        btn_sviewback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_sviewback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_sviewback.setToolTipText("Go To Admin Main Panel");
+        btn_sviewback.setBorder(null);
+        btn_sviewback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_alback3ActionPerformed(evt);
+                btn_sviewbackActionPerformed(evt);
             }
         });
 
         jLabel92.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel92.setForeground(new java.awt.Color(153, 51, 255));
-        jLabel92.setText("Add Lecturer Informations");
+        jLabel92.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel92.setText("View All Student Informations");
 
-        jLabel93.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel93.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel93.setForeground(new java.awt.Color(255, 255, 255));
         jLabel93.setText("User Login ID      :");
         jLabel93.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewulid2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewulid2.setToolTipText("Insert Valid Login ID");
-        tlviewulid2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewulid.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewulid.setToolTipText("Insert Valid Login ID");
+        tsviewulid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewulid2ActionPerformed(evt);
+                tsviewulidActionPerformed(evt);
             }
         });
 
-        jLabel94.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel94.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel94.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel94.setText("Lecturer ID          :");
+        jLabel94.setText("Index Number    :");
         jLabel94.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewuid2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewuid2.setToolTipText("Insert Lecyure ID");
-        tlviewuid2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewuid.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewuid.setToolTipText("Insert Lecyure ID");
+        tsviewuid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewuid2ActionPerformed(evt);
+                tsviewuidActionPerformed(evt);
             }
         });
 
-        jLabel95.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel95.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("User Name          :");
         jLabel95.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewuname2.setEditable(false);
-        tlviewuname2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewuname2.setToolTipText("User Name Will Genarate Auto With Login ID");
-        tlviewuname2.addMouseListener(new java.awt.event.MouseAdapter() {
+        tsviewuname.setEditable(false);
+        tsviewuname.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewuname.setToolTipText("User Name Will Genarate Auto With Login ID");
+        tsviewuname.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tlviewuname2MouseClicked(evt);
+                tsviewunameMouseClicked(evt);
             }
         });
-        tlviewuname2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewuname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewuname2ActionPerformed(evt);
+                tsviewunameActionPerformed(evt);
             }
         });
 
-        jLabel96.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel96.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(255, 255, 255));
         jLabel96.setText("First Name          :");
         jLabel96.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewfname2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewfname2.setToolTipText("Insert First Name");
-        tlviewfname2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewfname.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewfname.setToolTipText("Insert First Name");
+        tsviewfname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewfname2ActionPerformed(evt);
+                tsviewfnameActionPerformed(evt);
             }
         });
 
-        jLabel97.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel97.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(255, 255, 255));
         jLabel97.setText("Last Name           :");
         jLabel97.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewlname2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewlname2.setToolTipText("Insert Last Name");
-        tlviewlname2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewlname.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewlname.setToolTipText("Insert Last Name");
+        tsviewlname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewlname2ActionPerformed(evt);
+                tsviewlnameActionPerformed(evt);
             }
         });
 
-        jLabel98.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("Email                    :");
         jLabel98.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewe2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewe2.setToolTipText("Insert Email");
-        tlviewe2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewfullname.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewfullname.setToolTipText("Insert Email");
+        tsviewfullname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewe2ActionPerformed(evt);
+                tsviewfullnameActionPerformed(evt);
             }
         });
 
-        jLabel99.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel99.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(255, 255, 255));
         jLabel99.setText("Contact Number :");
 
-        tlviewcn2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewcn2.setToolTipText("Insert Contact Number");
-        tlviewcn2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewe.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewe.setToolTipText("Insert Contact Number");
+        tsviewe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewcn2ActionPerformed(evt);
+                tsvieweActionPerformed(evt);
             }
         });
 
-        jLabel100.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel100.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel100.setForeground(new java.awt.Color(255, 255, 255));
         jLabel100.setText("Address               :");
         jLabel100.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewa2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewa2.setToolTipText("Insert Address");
-        tlviewa2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewcn.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewcn.setToolTipText("Insert Address");
+        tsviewcn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewa2ActionPerformed(evt);
+                tsviewcnActionPerformed(evt);
             }
         });
 
-        btn_viewlupdate2.setBackground(new java.awt.Color(0, 204, 51));
-        btn_viewlupdate2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewlupdate2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_viewlupdate2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
-        btn_viewlupdate2.setText("Update");
-        btn_viewlupdate2.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewsupdate.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewsupdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewsupdate.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewsupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewsupdate.setText("Update");
+        btn_viewsupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlupdate2ActionPerformed(evt);
+                btn_viewsupdateActionPerformed(evt);
             }
         });
 
-        btn_viewlreset2.setBackground(new java.awt.Color(255, 102, 0));
-        btn_viewlreset2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewlreset2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_viewlreset2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
-        btn_viewlreset2.setText("Reset");
-        btn_viewlreset2.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewsreset.setBackground(new java.awt.Color(255, 102, 0));
+        btn_viewsreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewsreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewsreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewsreset.setText("Reset");
+        btn_viewsreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlreset2ActionPerformed(evt);
+                btn_viewsresetActionPerformed(evt);
             }
         });
 
-        jTLV2.setModel(new javax.swing.table.DefaultTableModel(
+        jTSV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Index Number", "Login User Name", "First Name", "Last Name", "Full Name", "Email", "Contact Number", "Address", "Registered Date", "Department", "User Login ID"
             }
-        ));
-        jScrollPane5.setViewportView(jTLV2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTSV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTSVMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jTSV);
 
         jLabel101.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel101.setText("Lecture ID For Search");
+        jLabel101.setText("Index No. For Search");
         jLabel101.setPreferredSize(new java.awt.Dimension(167, 26));
 
-        tlviewlidf2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        tlviewlidf2.setToolTipText("Insert Valid Login ID");
-        tlviewlidf2.addActionListener(new java.awt.event.ActionListener() {
+        tsviewlidf.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        tsviewlidf.setToolTipText("Insert Index Number For Search");
+        tsviewlidf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tlviewlidf2ActionPerformed(evt);
+                tsviewlidfActionPerformed(evt);
             }
         });
 
-        btn_viewlsearch2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewlsearch2.setForeground(new java.awt.Color(204, 204, 204));
-        btn_viewlsearch2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
-        btn_viewlsearch2.setText("Search");
-        btn_viewlsearch2.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewssearch.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewssearch.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewssearch.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewssearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewssearch.setText("Search");
+        btn_viewssearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlsearch2ActionPerformed(evt);
+                btn_viewssearchActionPerformed(evt);
             }
         });
 
-        pflview2.setBackground(new java.awt.Color(153, 153, 153));
-        pflview2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        pfsview.setBackground(new java.awt.Color(153, 153, 153));
+        pfsview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
-        btn_viewlselectimage2.setBackground(new java.awt.Color(102, 102, 255));
-        btn_viewlselectimage2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btn_viewlselectimage2.setForeground(new java.awt.Color(204, 204, 204));
-        btn_viewlselectimage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
-        btn_viewlselectimage2.setText("Select Image");
-        btn_viewlselectimage2.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewsselectimage.setBackground(new java.awt.Color(102, 102, 255));
+        btn_viewsselectimage.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_viewsselectimage.setForeground(new java.awt.Color(204, 204, 204));
+        btn_viewsselectimage.setText("Select Image");
+        btn_viewsselectimage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewlselectimage2ActionPerformed(evt);
+                btn_viewsselectimageActionPerformed(evt);
             }
         });
 
-        btn_viewadelete3.setBackground(new java.awt.Color(255, 0, 51));
-        btn_viewadelete3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_viewadelete3.setForeground(new java.awt.Color(255, 255, 255));
-        btn_viewadelete3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
-        btn_viewadelete3.setText("Delete");
-        btn_viewadelete3.addActionListener(new java.awt.event.ActionListener() {
+        btn_viewsdelete.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewsdelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewsdelete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewsdelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewsdelete.setText("Delete");
+        btn_viewsdelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewadelete3ActionPerformed(evt);
+                btn_viewsdeleteActionPerformed(evt);
+            }
+        });
+
+        jLabel102.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel102.setText("Register Date      :");
+        jLabel102.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsviewa.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewa.setToolTipText("Insert Address");
+        tsviewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsviewaActionPerformed(evt);
+            }
+        });
+
+        jLabel103.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel103.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel103.setText("Full Name            :");
+        jLabel103.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tsviewregdate.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tsviewregdate.setToolTipText("Insert Address");
+        tsviewregdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsviewregdateActionPerformed(evt);
+            }
+        });
+
+        jLabel104.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel104.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel104.setText("Department        :");
+        jLabel104.setPreferredSize(new java.awt.Dimension(167, 26));
+
+        tviewsd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICT", "BST", "ET" }));
+
+        btn_viewsupdatei.setBackground(new java.awt.Color(51, 51, 255));
+        btn_viewsupdatei.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_viewsupdatei.setText("Update Image");
+        btn_viewsupdatei.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewsupdateiActionPerformed(evt);
             }
         });
 
@@ -3186,7 +3408,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(btn_alback3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_sviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel92)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -3196,7 +3418,10 @@ public class Admin extends javax.swing.JFrame {
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel99, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -3204,32 +3429,33 @@ public class Admin extends javax.swing.JFrame {
                                         .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel97, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel98, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btn_viewlreset2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_viewsreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tlviewcn2)
-                                            .addComponent(tlviewa2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tlviewlname2)
-                                            .addComponent(tlviewfname2)
-                                            .addComponent(tlviewuname2)
-                                            .addComponent(tlviewuid2)
-                                            .addComponent(tlviewulid2)
-                                            .addComponent(tlviewe2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(btn_viewadelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn_viewsdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27)
-                                        .addComponent(btn_viewlupdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btn_viewsupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tsviewe, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewcn, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewlname, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewfname, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewuname, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewuid, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewulid, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewfullname, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewa, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tsviewregdate, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tviewsd, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tlviewlidf2)
+                                    .addComponent(tsviewlidf)
                                     .addComponent(jLabel101, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                    .addComponent(btn_viewlsearch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_viewlselectimage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(25, 25, 25)
-                                .addComponent(pflview2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btn_viewssearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewsselectimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_viewsupdatei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(44, 44, 44)
+                                .addComponent(pfsview, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -3237,61 +3463,75 @@ public class Admin extends javax.swing.JFrame {
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_alback3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel92))
-                .addGap(39, 39, 39)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel92)
+                    .addComponent(btn_sviewback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tlviewlidf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tsviewlidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_viewlsearch2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(btn_viewlselectimage2))
-                            .addComponent(pflview2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                                .addComponent(btn_viewssearch)
+                                .addGap(27, 27, 27)
+                                .addComponent(btn_viewsselectimage)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_viewsupdatei))
+                            .addComponent(pfsview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewulid2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tsviewulid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewuid2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tsviewuid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewuname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tsviewuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewfname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tsviewfname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewlname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tsviewlname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewe2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(tlviewcn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel99))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tlviewa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_viewlupdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_viewlreset2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_viewadelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40))
+                            .addComponent(tsviewfullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tsviewe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tsviewcn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel99))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tsviewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tsviewregdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tviewsd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_viewsupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewsreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewsdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(63, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jScrollPane5)
                         .addContainerGap())))
@@ -3308,6 +3548,952 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jfviewsLayout.createSequentialGroup()
                 .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+
+        jfaddcourse.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfaddcourse.setTitle("Add New Course");
+        jfaddcourse.setFocusCycleRoot(false);
+        jfaddcourse.setIconImages(null);
+        jfaddcourse.setMinimumSize(new java.awt.Dimension(800, 600));
+        jfaddcourse.setName("adduserlc"); // NOI18N
+        jfaddcourse.setResizable(false);
+        jfaddcourse.setLocationRelativeTo(null);
+
+        jPanel6.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel6.setToolTipText("");
+        jPanel6.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanel6.setMinimumSize(new java.awt.Dimension(800, 600));
+
+        jLabel105.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel105.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel105.setText("Course ID                    :");
+
+        jLabel106.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel106.setText("Course Discription   :");
+
+        jLabel107.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel107.setText("Department               :");
+
+        taddcid.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        taddcid.setToolTipText("Insert Course ID");
+        taddcid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taddcidActionPerformed(evt);
+            }
+        });
+
+        taddcd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        taddcd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICT", "ET", "BST" }));
+        taddcd.setToolTipText("Select Department");
+        taddcd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taddcdActionPerformed(evt);
+            }
+        });
+
+        btn_addcsubmit.setBackground(new java.awt.Color(0, 204, 51));
+        btn_addcsubmit.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_addcsubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addcsubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
+        btn_addcsubmit.setText("Submit");
+        btn_addcsubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addcsubmitActionPerformed(evt);
+            }
+        });
+
+        btn_addcreset.setBackground(new java.awt.Color(255, 0, 51));
+        btn_addcreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_addcreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_addcreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_addcreset.setText("Reset");
+        btn_addcreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addcresetActionPerformed(evt);
+            }
+        });
+
+        btn_acback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_acback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_acback.setToolTipText("Go To Admin Main Panel");
+        btn_acback.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_acback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_acbackActionPerformed(evt);
+            }
+        });
+
+        jLabel108.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel108.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel108.setText("Add New Course");
+
+        taddccd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        taddccd.setToolTipText("Insert Course Discription");
+        taddccd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taddccdActionPerformed(evt);
+            }
+        });
+
+        taddcn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        taddcn.setToolTipText("Insert Course Name");
+        taddcn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taddcnActionPerformed(evt);
+            }
+        });
+
+        jLabel109.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel109.setText("Course Name             :");
+
+        taddcc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        taddcc.setToolTipText("Insert Course Credits");
+        taddcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taddccActionPerformed(evt);
+            }
+        });
+
+        jLabel110.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel110.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel110.setText("Course Credits          :");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(btn_addcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addComponent(btn_addcsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btn_acback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(186, 186, 186)
+                .addComponent(jLabel108)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel105, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel109, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel106, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel107, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(taddcid)
+                            .addComponent(taddcd, 0, 360, Short.MAX_VALUE)
+                            .addComponent(taddccd)
+                            .addComponent(taddcn)
+                            .addComponent(taddcc))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel108)
+                    .addComponent(btn_acback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(taddcid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel105))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(taddcn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel109))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(taddcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel110))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel106)
+                    .addComponent(taddccd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(taddcd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel107))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_addcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_addcsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jfaddcourseLayout = new javax.swing.GroupLayout(jfaddcourse.getContentPane());
+        jfaddcourse.getContentPane().setLayout(jfaddcourseLayout);
+        jfaddcourseLayout.setHorizontalGroup(
+            jfaddcourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jfaddcourseLayout.setVerticalGroup(
+            jfaddcourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jfviewcourse.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jfviewcourse.setTitle("View All Courses");
+        jfviewcourse.setFocusCycleRoot(false);
+        jfviewcourse.setIconImages(null);
+        jfviewcourse.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jfviewcourse.setName("adduserlc"); // NOI18N
+        jfviewcourse.setLocationRelativeTo(null);
+
+        jPanel7.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel7.setToolTipText("");
+        jPanel7.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jPanel7.setPreferredSize(new java.awt.Dimension(1000, 800));
+
+        jLabel111.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel111.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel111.setText("Course ID                    :");
+
+        jLabel112.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel112.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel112.setText("Course Discription   :");
+
+        jLabel113.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel113.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel113.setText("Department               :");
+
+        tviewcid.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tviewcid.setToolTipText("Insert Course ID");
+        tviewcid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tviewcidActionPerformed(evt);
+            }
+        });
+
+        tviewcd.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tviewcd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICT", "ET", "BST" }));
+        tviewcd.setToolTipText("Select Department");
+        tviewcd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tviewcdActionPerformed(evt);
+            }
+        });
+
+        btn_viewcupdate.setBackground(new java.awt.Color(0, 204, 51));
+        btn_viewcupdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewcupdate.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewcupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_viewcupdate.setText("Update");
+        btn_viewcupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewcupdateActionPerformed(evt);
+            }
+        });
+
+        btn_viewcreset.setBackground(new java.awt.Color(255, 102, 0));
+        btn_viewcreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewcreset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewcreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_viewcreset.setText("Reset");
+        btn_viewcreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewcresetActionPerformed(evt);
+            }
+        });
+
+        btn_viewcback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewcback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_viewcback.setToolTipText("Go To Admin Main Panel");
+        btn_viewcback.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_viewcback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewcbackActionPerformed(evt);
+            }
+        });
+
+        jLabel114.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel114.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel114.setText("View All Courses");
+
+        tviewccd.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tviewccd.setToolTipText("Insert Course Discription");
+        tviewccd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tviewccdActionPerformed(evt);
+            }
+        });
+
+        tviewcn.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tviewcn.setToolTipText("Insert Course Name");
+        tviewcn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tviewcnActionPerformed(evt);
+            }
+        });
+
+        jLabel115.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel115.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel115.setText("Course Name             :");
+
+        tviewcc.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tviewcc.setToolTipText("Insert Course Credits");
+        tviewcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tviewccActionPerformed(evt);
+            }
+        });
+
+        jLabel116.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel116.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel116.setText("Course Credits          :");
+
+        jTVC.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Index", "Course ID", "Course Name", "Course Credits", "Course Discription", "Department"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTVC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTVCMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTVC);
+
+        jLabel117.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel117.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel117.setText("Index                           :");
+
+        tviewci.setEditable(false);
+        tviewci.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tviewci.setToolTipText("Index Can't Change");
+        tviewci.setEnabled(false);
+        tviewci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tviewciActionPerformed(evt);
+            }
+        });
+
+        jLabel118.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel118.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel118.setText("Course ID For Search :");
+
+        tviewcidf.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tviewcidf.setToolTipText("Insert Course ID For Search");
+        tviewcidf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tviewcidfActionPerformed(evt);
+            }
+        });
+
+        btn_viewcsearch.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewcsearch.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewcsearch.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewcsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_viewcsearch.setText("Search");
+        btn_viewcsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewcsearchActionPerformed(evt);
+            }
+        });
+
+        btn_viewcdelete.setBackground(new java.awt.Color(255, 0, 51));
+        btn_viewcdelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_viewcdelete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_viewcdelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_viewcdelete.setText("Delete");
+        btn_viewcdelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewcdeleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(btn_viewcback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel114)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel115, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel111, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel113, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel112, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_viewcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tviewcc)
+                                        .addComponent(tviewcid)
+                                        .addComponent(tviewccd)
+                                        .addComponent(tviewcd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tviewci)
+                                        .addComponent(tviewcn, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(btn_viewcdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_viewcupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel118, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tviewcidf)
+                                    .addComponent(btn_viewcsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_viewcback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel114))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6)
+                        .addContainerGap())
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addComponent(jLabel118)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tviewcidf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_viewcsearch)
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tviewci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel117))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tviewcid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel111))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tviewcn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel115))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tviewcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel116))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel112)
+                            .addComponent(tviewccd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel113)
+                            .addComponent(tviewcd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_viewcreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewcupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_viewcdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(56, 56, 56))))
+        );
+
+        javax.swing.GroupLayout jfviewcourseLayout = new javax.swing.GroupLayout(jfviewcourse.getContentPane());
+        jfviewcourse.getContentPane().setLayout(jfviewcourseLayout);
+        jfviewcourseLayout.setHorizontalGroup(
+            jfviewcourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfviewcourseLayout.setVerticalGroup(
+            jfviewcourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jFnotices.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFnotices.setTitle("View All Notices");
+        jFnotices.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jFnotices.setLocationRelativeTo(null);
+
+        jPanel14.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel14.setMinimumSize(new java.awt.Dimension(1000, 800));
+
+        btn_viewnback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewnback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_viewnback.setToolTipText("Go To Admin Main Panel");
+        btn_viewnback.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_viewnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewnbackActionPerformed(evt);
+            }
+        });
+
+        jLabel119.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel119.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel119.setText("View All Notices");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Notice ID For Search");
+
+        tnoticeids.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tnoticeids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tnoticeidsActionPerformed(evt);
+            }
+        });
+
+        btn_noticesearch.setBackground(new java.awt.Color(51, 51, 51));
+        btn_noticesearch.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_noticesearch.setForeground(new java.awt.Color(255, 255, 255));
+        btn_noticesearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_noticesearch.setText("Search");
+        btn_noticesearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_noticesearchActionPerformed(evt);
+            }
+        });
+
+        jLabel120.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel120.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel120.setText("Notice ID");
+
+        jLabel121.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel121.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel121.setText("Notice Title");
+
+        tnid.setEditable(false);
+        tnid.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+
+        tnt.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+
+        jLabel122.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel122.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel122.setText("Notice Content");
+
+        tnc.setColumns(20);
+        tnc.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        tnc.setRows(5);
+        jScrollPane8.setViewportView(tnc);
+
+        jLabel123.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel123.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel123.setText("Author Of The Notice");
+
+        tna.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+
+        btn_noticereset.setBackground(new java.awt.Color(102, 0, 255));
+        btn_noticereset.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_noticereset.setForeground(new java.awt.Color(0, 0, 0));
+        btn_noticereset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_noticereset.setText("Reset");
+        btn_noticereset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_noticeresetActionPerformed(evt);
+            }
+        });
+
+        btn_noticedelete.setBackground(new java.awt.Color(255, 0, 0));
+        btn_noticedelete.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_noticedelete.setForeground(new java.awt.Color(0, 0, 0));
+        btn_noticedelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_noticedelete.setText("Delete");
+        btn_noticedelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_noticedeleteActionPerformed(evt);
+            }
+        });
+
+        btn_noticesubmit.setBackground(new java.awt.Color(255, 255, 51));
+        btn_noticesubmit.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_noticesubmit.setForeground(new java.awt.Color(0, 0, 0));
+        btn_noticesubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
+        btn_noticesubmit.setText("Submit");
+        btn_noticesubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_noticesubmitActionPerformed(evt);
+            }
+        });
+
+        btn_noticeupdate.setBackground(new java.awt.Color(0, 204, 51));
+        btn_noticeupdate.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_noticeupdate.setForeground(new java.awt.Color(0, 0, 0));
+        btn_noticeupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_noticeupdate.setText("Update");
+        btn_noticeupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_noticeupdateActionPerformed(evt);
+            }
+        });
+
+        jTN.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Notice ID", "Notice Title", "Notice Content", "Notice Author"
+            }
+        ));
+        jTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTNMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(jTN);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(btn_viewnback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel119)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(btn_noticereset)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_noticedelete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_noticesubmit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_noticeupdate))
+                            .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel122)
+                            .addComponent(jLabel121)
+                            .addComponent(jLabel120)
+                            .addComponent(tna, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane8)
+                            .addComponent(tnt)
+                            .addComponent(tnid)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tnoticeids)
+                                    .addComponent(btn_noticesearch, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel119)
+                    .addComponent(btn_viewnback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tnoticeids, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_noticesearch)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel120)
+                        .addGap(10, 10, 10)
+                        .addComponent(tnid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel121)
+                        .addGap(10, 10, 10)
+                        .addComponent(tnt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel122)
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel123)
+                        .addGap(10, 10, 10)
+                        .addComponent(tna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_noticereset)
+                            .addComponent(btn_noticedelete)
+                            .addComponent(btn_noticesubmit)
+                            .addComponent(btn_noticeupdate))
+                        .addGap(50, 50, 50))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jScrollPane7)
+                        .addContainerGap())))
+        );
+
+        javax.swing.GroupLayout jFnoticesLayout = new javax.swing.GroupLayout(jFnotices.getContentPane());
+        jFnotices.getContentPane().setLayout(jFnoticesLayout);
+        jFnoticesLayout.setHorizontalGroup(
+            jFnoticesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jFnoticesLayout.setVerticalGroup(
+            jFnoticesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jFtimetables.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFtimetables.setTitle("View All Timetables");
+        jFtimetables.setMinimumSize(new java.awt.Dimension(1000, 800));
+
+        jPanel15.setBackground(new java.awt.Color(51, 51, 51));
+
+        jTTA.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Index", "Table Name", "Table Discription", "Department"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTTA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTTAMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(jTTA);
+
+        btn_viewtback.setBackground(new java.awt.Color(51, 51, 51));
+        btn_viewtback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_home_28px.png"))); // NOI18N
+        btn_viewtback.setToolTipText("Go To Admin Main Panel");
+        btn_viewtback.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_viewtback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewtbackActionPerformed(evt);
+            }
+        });
+
+        jLabel124.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        jLabel124.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel124.setText("View All Timetables");
+
+        jLabel125.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel125.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel125.setText("Create Table");
+
+        jLabel126.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel126.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel126.setText("Search Table");
+
+        ttctn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level1-Semester1-ICT", "Level1-Semester2-ICT", "Level2-Semester1-ICT", "Level2-Semester2-ICT", "Level3-Semester1-ICT", "Level3-Semester2-ICT", "Level4-Semester1-ICT", "Level4-Semester2-ICT", "Level1-Semester1-BST", "Level1-Semester2-BST", "Level2-Semester1-BST", "Level2-Semester2-BST", "Level3-Semester1-BST", "Level3-Semester2-BST", "Level4-Semester1-BST", "Level4-Semester2-BST", "Level1-Semester1-ET", "Level1-Semester2-ET", "Level2-Semester1-ET", "Level2-Semester2-ET", "Level3-Semester1-ET", "Level3-Semester2-ET", "Level4-Semester1-ET", "Level4-Semester2-ET" }));
+
+        btn_vtcreate.setBackground(new java.awt.Color(0, 255, 153));
+        btn_vtcreate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_vtcreate.setForeground(new java.awt.Color(0, 0, 0));
+        btn_vtcreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_create_20px.png"))); // NOI18N
+        btn_vtcreate.setText("Create");
+        btn_vtcreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vtcreateActionPerformed(evt);
+            }
+        });
+
+        btn_vtsearch.setBackground(new java.awt.Color(153, 153, 0));
+        btn_vtsearch.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_vtsearch.setForeground(new java.awt.Color(0, 0, 0));
+        btn_vtsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_search_10px.png"))); // NOI18N
+        btn_vtsearch.setText("Search");
+        btn_vtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vtsearchActionPerformed(evt);
+            }
+        });
+
+        btn_vtupdate.setBackground(new java.awt.Color(153, 51, 0));
+        btn_vtupdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_vtupdate.setForeground(new java.awt.Color(0, 0, 0));
+        btn_vtupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_update_20px.png"))); // NOI18N
+        btn_vtupdate.setText("Update");
+
+        btn_vtdelete.setBackground(new java.awt.Color(255, 0, 51));
+        btn_vtdelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_vtdelete.setForeground(new java.awt.Color(0, 0, 0));
+        btn_vtdelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_Delete_20px_2.png"))); // NOI18N
+        btn_vtdelete.setText("Delete");
+        btn_vtdelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vtdeleteActionPerformed(evt);
+            }
+        });
+
+        btn_vtreset.setBackground(new java.awt.Color(102, 51, 255));
+        btn_vtreset.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_vtreset.setForeground(new java.awt.Color(0, 0, 0));
+        btn_vtreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_broom_20px.png"))); // NOI18N
+        btn_vtreset.setText("Reset");
+        btn_vtreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vtresetActionPerformed(evt);
+            }
+        });
+
+        ttn.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        ttn.setForeground(new java.awt.Color(102, 255, 255));
+        ttn.setText("Table Name");
+
+        jTTS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Index", "Time", "Monday", "tuesday", "wednesday", "thursday", "friday"
+            }
+        ));
+        jScrollPane10.setViewportView(jTTS);
+
+        ttctns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level1-Semester1-ICT", "Level1-Semester2-ICT", "Level2-Semester1-ICT", "Level2-Semester2-ICT", "Level3-Semester1-ICT", "Level3-Semester2-ICT", "Level4-Semester1-ICT", "Level4-Semester2-ICT", "Level1-Semester1-BST", "Level1-Semester2-BST", "Level2-Semester1-BST", "Level2-Semester2-BST", "Level3-Semester1-BST", "Level3-Semester2-BST", "Level4-Semester1-BST", "Level4-Semester2-BST", "Level1-Semester1-ET", "Level1-Semester2-ET", "Level2-Semester1-ET", "Level2-Semester2-ET", "Level3-Semester1-ET", "Level3-Semester2-ET", "Level4-Semester1-ET", "Level4-Semester2-ET" }));
+
+        btn_vtinsert.setBackground(new java.awt.Color(153, 51, 255));
+        btn_vtinsert.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_vtinsert.setForeground(new java.awt.Color(0, 0, 0));
+        btn_vtinsert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/icons/icons8_upload_to_cloud_20px.png"))); // NOI18N
+        btn_vtinsert.setText("Insert");
+        btn_vtinsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vtinsertActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ttn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane10))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addComponent(btn_viewtback, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel124)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel15Layout.createSequentialGroup()
+                                                .addComponent(jLabel126)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(ttctns, 0, 202, Short.MAX_VALUE))
+                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                .addComponent(jLabel125)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(ttctn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btn_vtcreate, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_vtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                                        .addComponent(btn_vtinsert, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btn_vtupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                        .addComponent(btn_vtdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_vtreset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel124)
+                    .addComponent(btn_viewtback, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel125)
+                            .addComponent(ttctn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_vtcreate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel126)
+                            .addComponent(btn_vtsearch)
+                            .addComponent(ttctns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_vtreset)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_vtupdate)
+                            .addComponent(btn_vtdelete)
+                            .addComponent(btn_vtinsert))))
+                .addGap(18, 18, 18)
+                .addComponent(ttn)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane10)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jFtimetablesLayout = new javax.swing.GroupLayout(jFtimetables.getContentPane());
+        jFtimetables.getContentPane().setLayout(jFtimetablesLayout);
+        jFtimetablesLayout.setHorizontalGroup(
+            jFtimetablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jFtimetablesLayout.setVerticalGroup(
+            jFtimetablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -3575,11 +4761,21 @@ public class Admin extends javax.swing.JFrame {
         btn_views.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_views.setForeground(new java.awt.Color(102, 255, 255));
         btn_views.setText("View Student");
+        btn_views.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewsActionPerformed(evt);
+            }
+        });
 
         btn_viewto.setBackground(new java.awt.Color(153, 51, 255));
         btn_viewto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         btn_viewto.setForeground(new java.awt.Color(102, 255, 255));
         btn_viewto.setText("View Technical Officer");
+        btn_viewto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewtoActionPerformed(evt);
+            }
+        });
 
         btn_viewl.setBackground(new java.awt.Color(153, 51, 255));
         btn_viewl.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
@@ -3692,19 +4888,10 @@ public class Admin extends javax.swing.JFrame {
 
         btn_upc.setBackground(new java.awt.Color(102, 0, 255));
         btn_upc.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_upc.setText("Update Courses");
+        btn_upc.setText("Update or View Courses");
         btn_upc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_upcActionPerformed(evt);
-            }
-        });
-
-        btn_viewc.setBackground(new java.awt.Color(102, 0, 255));
-        btn_viewc.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_viewc.setText("View Courses");
-        btn_viewc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewcActionPerformed(evt);
             }
         });
 
@@ -3713,23 +4900,20 @@ public class Admin extends javax.swing.JFrame {
         jpcourseLayout.setHorizontalGroup(
             jpcourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpcourseLayout.createSequentialGroup()
-                .addGap(217, 217, 217)
+                .addGap(188, 188, 188)
                 .addGroup(jpcourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_addc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_viewc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_upc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jpcourseLayout.setVerticalGroup(
             jpcourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpcourseLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(177, 177, 177)
                 .addComponent(btn_addc)
                 .addGap(92, 92, 92)
                 .addComponent(btn_upc)
-                .addGap(92, 92, 92)
-                .addComponent(btn_viewc)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         body.add(jpcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 620, -1));
@@ -3738,40 +4922,30 @@ public class Admin extends javax.swing.JFrame {
         jpnotice.setMaximumSize(new java.awt.Dimension(610, 510));
         jpnotice.setMinimumSize(new java.awt.Dimension(610, 510));
 
-        btn_addn.setBackground(new java.awt.Color(102, 0, 255));
-        btn_addn.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_addn.setText("Add New Notice");
-
         btn_upn.setBackground(new java.awt.Color(102, 0, 255));
         btn_upn.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_upn.setText("Update Notice");
-
-        btn_viewn.setBackground(new java.awt.Color(102, 0, 255));
-        btn_viewn.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_viewn.setText("View Notices");
+        btn_upn.setText("Add, Update or View Notice");
+        btn_upn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_upnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpnoticeLayout = new javax.swing.GroupLayout(jpnotice);
         jpnotice.setLayout(jpnoticeLayout);
         jpnoticeLayout.setHorizontalGroup(
             jpnoticeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnoticeLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addGroup(jpnoticeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btn_addn, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(btn_upn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_viewn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addGap(170, 170, 170)
+                .addComponent(btn_upn)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         jpnoticeLayout.setVerticalGroup(
             jpnoticeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnoticeLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(btn_addn)
-                .addGap(92, 92, 92)
+                .addGap(239, 239, 239)
                 .addComponent(btn_upn)
-                .addGap(92, 92, 92)
-                .addComponent(btn_viewn)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         body.add(jpnotice, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 620, -1));
@@ -3780,27 +4954,9 @@ public class Admin extends javax.swing.JFrame {
         jptimetable.setMaximumSize(new java.awt.Dimension(610, 510));
         jptimetable.setMinimumSize(new java.awt.Dimension(610, 510));
 
-        btn_addt.setBackground(new java.awt.Color(102, 0, 255));
-        btn_addt.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_addt.setText("Add New Timetable");
-        btn_addt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addtActionPerformed(evt);
-            }
-        });
-
-        btn_upt.setBackground(new java.awt.Color(102, 0, 255));
-        btn_upt.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_upt.setText("Update Timetable");
-        btn_upt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_uptActionPerformed(evt);
-            }
-        });
-
         btn_viewt.setBackground(new java.awt.Color(102, 0, 255));
         btn_viewt.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        btn_viewt.setText("View Timetables");
+        btn_viewt.setText("Add, Update or View Timetables");
         btn_viewt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_viewtActionPerformed(evt);
@@ -3812,23 +4968,16 @@ public class Admin extends javax.swing.JFrame {
         jptimetableLayout.setHorizontalGroup(
             jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jptimetableLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addGroup(jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_addt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_viewt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_upt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGap(150, 150, 150)
+                .addComponent(btn_viewt)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jptimetableLayout.setVerticalGroup(
             jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jptimetableLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(btn_addt)
-                .addGap(92, 92, 92)
-                .addComponent(btn_upt)
-                .addGap(92, 92, 92)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jptimetableLayout.createSequentialGroup()
+                .addContainerGap(239, Short.MAX_VALUE)
                 .addComponent(btn_viewt)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(239, 239, 239))
         );
 
         body.add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 620, -1));
@@ -3871,7 +5020,7 @@ public class Admin extends javax.swing.JFrame {
         setColor(btn_courses);
         resetColor(btn_users);
         resetColor(btn_notices);
-        resetColor(btn_timetables);        
+        resetColor(btn_timetables);
         jpuser.hide();
         jpnotice.hide();
         jptimetable.hide();
@@ -3884,7 +5033,7 @@ public class Admin extends javax.swing.JFrame {
         resetColor(btn_courses);
         resetColor(btn_users);
         resetColor(btn_timetables);
-        jpuser.hide();        
+        jpuser.hide();
         jptimetable.hide();
         jpcourse.hide();
         jpnotice.show();
@@ -3912,7 +5061,7 @@ public class Admin extends javax.swing.JFrame {
     private void btn_addlcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addlcActionPerformed
         // TODO add your handling code here:
         dispose();
-        jfaddlc.show();               
+        jfaddlc.show();
     }//GEN-LAST:event_btn_addlcActionPerformed
 
     private void lcunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lcunameActionPerformed
@@ -3928,22 +5077,22 @@ public class Admin extends javax.swing.JFrame {
         String lcname = lcuname.getText();
         String lcpassword = lcupass.getText();
         String lcurole = lcrole.getSelectedItem().toString();
-        if (lcname.equals("")&&lcpassword.equals("")) {
-            JOptionPane.showMessageDialog(this,"Please Fill All Fields");
-        }else if(lcname.equals("")){
-            JOptionPane.showMessageDialog(this,"Please Add A User Name");
-        }else if(lcpassword.equals("")){
-            JOptionPane.showMessageDialog(this,"Please Add A Password");
-        }else{
+        if (lcname.equals("") && lcpassword.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Fill All Fields");
+        } else if (lcname.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Add A User Name");
+        } else if (lcpassword.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Add A Password");
+        } else {
             try {
-                String sql = "INSERT INTO user (`username`, `password`, `role`) VALUES ('"+lcname+"', '"+lcpassword+"', '"+lcurole+"');";
-                db_connection.setData(sql); 
-                JOptionPane.showMessageDialog(this,"User Record is inserted in the table successfully");
+                String sql = "INSERT INTO user (`username`, `password`, `role`) VALUES ('" + lcname + "', '" + lcpassword + "', '" + lcurole + "');";
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "User Record is inserted in the table successfully");
                 lcuname.setText("");
                 lcupass.setText("");
             } catch (Exception ex) {
                 System.out.println(ex);
-            } 
+            }
         }
     }//GEN-LAST:event_btn_addlcsubmitActionPerformed
 
@@ -3955,27 +5104,16 @@ public class Admin extends javax.swing.JFrame {
 
     private void btn_addcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addcActionPerformed
         // TODO add your handling code here:
+        dispose();
+        jfaddcourse.show();
     }//GEN-LAST:event_btn_addcActionPerformed
 
     private void btn_upcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upcActionPerformed
         // TODO add your handling code here:
+        dispose();
+        jfviewcourse.show();
+        show_tablevc();
     }//GEN-LAST:event_btn_upcActionPerformed
-
-    private void btn_viewcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewcActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewcActionPerformed
-
-    private void btn_addtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_addtActionPerformed
-
-    private void btn_uptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uptActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_uptActionPerformed
-
-    private void btn_viewtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewtActionPerformed
 
     private void btn_aabackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aabackActionPerformed
         // TODO add your handling code here:
@@ -3998,23 +5136,23 @@ public class Admin extends javax.swing.JFrame {
         String ae = aue.getText();
         String acn = aucn.getText();
         String aa = aua.getText();
-        
-        String query1 = "SELECT role FROM user WHERE uid='"+aulcid+"';";
-        
-        if (aid.equals("")||aun.equals("")||afn.equals("")||aln.equals("")||ae.equals("")||acn.equals("")||aa.equals("")) {
-            JOptionPane.showMessageDialog(this,"Please Fill All Fields Before Submit");
+
+        String query1 = "SELECT role FROM user WHERE uid='" + aulcid + "';";
+
+        if (aid.equals("") || aun.equals("") || afn.equals("") || aln.equals("") || ae.equals("") || acn.equals("") || aa.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Fill All Fields Before Submit");
         } else {
 
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String role = rs.getString("role");
                     //String r = "admin";
                     if (role.equals("admin")) {
-                        String sql = "INSERT INTO `lms`.`admin_info` (`aid`, `uname`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('"+aid+"', '"+aun+"', '"+afn+"', '"+aln+"', '"+ae+"', '"+acn+"', '"+aa+"', '"+aulcid+"');";                        
-                        try{    
+                        String sql = "INSERT INTO `lms`.`admin_info` (`aid`, `uname`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('" + aid + "', '" + aun + "', '" + afn + "', '" + aln + "', '" + ae + "', '" + acn + "', '" + aa + "', '" + aulcid + "');";
+                        try {
                             db_connection.setData(sql);
-                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            JOptionPane.showMessageDialog(this, "User Record Is Inserted Into The Table Successfully");
                             aulid.setText("");
                             auid.setText("");
                             auname.setText("");
@@ -4023,20 +5161,20 @@ public class Admin extends javax.swing.JFrame {
                             aue.setText("");
                             aucn.setText("");
                             aua.setText("");
-                        }catch(Exception e){
-                            JOptionPane.showMessageDialog(this,e);
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, e);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
+                        JOptionPane.showMessageDialog(this, "User Role Missmatch With The Login Credentials");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(this,"Login Credentials Not Found Please Enter Valid User Login ID");
-                    } 
+                } else {
+                    JOptionPane.showMessageDialog(this, "Login Credentials Not Found Please Enter Valid User Login ID");
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        }               
+
+        }
     }//GEN-LAST:event_btn_addasubmitActionPerformed
 
     private void btn_addaresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addaresetActionPerformed
@@ -4091,23 +5229,22 @@ public class Admin extends javax.swing.JFrame {
 
     private void aunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aunameMouseClicked
         // TODO add your handling code here:
-        try{            
-            int auid = Integer.parseInt(this.aulid.getText());            
-            String query1 = "SELECT username FROM user WHERE uid='"+auid+"';";          
+        try {
+            int auid = Integer.parseInt(this.aulid.getText());
+            String query1 = "SELECT username FROM user WHERE uid='" + auid + "';";
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String adun = rs.getString("username");
                     auname.setText(adun);
-                }else{
+                } else {
                     auname.setText("Cannot Find A User Name");
-                } 
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(this,"Please Enter Valid Login ID");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please Enter Valid Login ID");
             ex.printStackTrace();
         }
     }//GEN-LAST:event_aunameMouseClicked
@@ -4173,22 +5310,22 @@ public class Admin extends javax.swing.JFrame {
         String le = tlemail.getText();
         String lcn = tlcn.getText();
         String la = tla.getText();
-        
-        String query1 = "SELECT role FROM user WHERE uid='"+llcid+"';";
-        
-        if (lid.equals("")||lun.equals("")||lfn.equals("")||lln.equals("")||le.equals("")||lcn.equals("")||la.equals("")) {
-            JOptionPane.showMessageDialog(this,"Please Fill All Fields Before Submit");
+
+        String query1 = "SELECT role FROM user WHERE uid='" + llcid + "';";
+
+        if (lid.equals("") || lun.equals("") || lfn.equals("") || lln.equals("") || le.equals("") || lcn.equals("") || la.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Fill All Fields Before Submit");
         } else {
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String role = rs.getString("role");
                     //String r = "admin";
                     if (role.equals("lecturer")) {
-                        String sql = "INSERT INTO `lms`.`lecturer_info` (`lecid`, `username`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('"+lid+"', '"+lun+"', '"+lfn+"', '"+lln+"', '"+le+"', '"+lcn+"', '"+la+"', '"+llcid+"');";                        
-                        try{   
+                        String sql = "INSERT INTO `lms`.`lecturer_info` (`lecid`, `username`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('" + lid + "', '" + lun + "', '" + lfn + "', '" + lln + "', '" + le + "', '" + lcn + "', '" + la + "', '" + llcid + "');";
+                        try {
                             db_connection.setData(sql);
-                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            JOptionPane.showMessageDialog(this, "User Record Is Inserted Into The Table Successfully");
                             tllcid.setText("");
                             tluid.setText("");
                             tluname.setText("");
@@ -4197,15 +5334,15 @@ public class Admin extends javax.swing.JFrame {
                             tlemail.setText("");
                             tlcn.setText("");
                             tla.setText("");
-                        }catch(Exception e){
-                            JOptionPane.showMessageDialog(this,e);
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, e);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
+                        JOptionPane.showMessageDialog(this, "User Role Missmatch With The Login Credentials");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(this,"Login Credentials Not Found Please Enter Valid User Login ID");
-                    } 
+                } else {
+                    JOptionPane.showMessageDialog(this, "Login Credentials Not Found Please Enter Valid User Login ID");
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -4232,23 +5369,22 @@ public class Admin extends javax.swing.JFrame {
 
     private void tlunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlunameMouseClicked
         // TODO add your handling code here:
-        try{            
-            int luid = Integer.parseInt(tllcid.getText());            
-            String query1 = "SELECT username FROM user WHERE uid='"+luid+"';";          
+        try {
+            int luid = Integer.parseInt(tllcid.getText());
+            String query1 = "SELECT username FROM user WHERE uid='" + luid + "';";
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String adun = rs.getString("username");
                     tluname.setText(adun);
-                }else{
+                } else {
                     tluname.setText("Cannot Find A User Name");
-                } 
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(this,"Please Enter Valid Login ID");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please Enter Valid Login ID");
             ex.printStackTrace();
         }
     }//GEN-LAST:event_tlunameMouseClicked
@@ -4270,23 +5406,22 @@ public class Admin extends javax.swing.JFrame {
 
     private void ttounameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ttounameMouseClicked
         // TODO add your handling code here:
-         try{            
-            int luid = Integer.parseInt(ttoulcid.getText());            
-            String query1 = "SELECT username FROM user WHERE uid='"+luid+"';";          
+        try {
+            int luid = Integer.parseInt(ttoulcid.getText());
+            String query1 = "SELECT username FROM user WHERE uid='" + luid + "';";
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String adun = rs.getString("username");
                     ttouname.setText(adun);
-                }else{
+                } else {
                     ttouname.setText("Cannot Find A User Name");
-                } 
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(this,"Please Enter Valid Login ID");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please Enter Valid Login ID");
             ex.printStackTrace();
         }
     }//GEN-LAST:event_ttounameMouseClicked
@@ -4325,21 +5460,21 @@ public class Admin extends javax.swing.JFrame {
         String toe = ttoemail.getText();
         String tocn = ttocn.getText();
         String toa = ttoa.getText();
-        
-        String query1 = "SELECT role FROM user WHERE uid='"+tolcid+"';";
-        
-        if (toid.equals("")||toun.equals("")||tofn.equals("")||toln.equals("")||toe.equals("")||tocn.equals("")||toa.equals("")) {
-            JOptionPane.showMessageDialog(this,"Please Fill All Fields Before Submit");
+
+        String query1 = "SELECT role FROM user WHERE uid='" + tolcid + "';";
+
+        if (toid.equals("") || toun.equals("") || tofn.equals("") || toln.equals("") || toe.equals("") || tocn.equals("") || toa.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Fill All Fields Before Submit");
         } else {
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String role = rs.getString("role");
                     if (role.equals("t_Officer")) {
-                        String sql = "INSERT INTO `lms`.`technical_officer_info` (`toid`, `uname`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('"+toid+"', '"+toun+"', '"+tofn+"', '"+toln+"', '"+toe+"', '"+tocn+"', '"+toa+"', '"+tolcid+"');";                        
-                        try{   
+                        String sql = "INSERT INTO `lms`.`technical_officer_info` (`toid`, `uname`, `fname`, `lname`, `email`, `tnumber`, `address`, `uid`) VALUES ('" + toid + "', '" + toun + "', '" + tofn + "', '" + toln + "', '" + toe + "', '" + tocn + "', '" + toa + "', '" + tolcid + "');";
+                        try {
                             db_connection.setData(sql);
-                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            JOptionPane.showMessageDialog(this, "User Record Is Inserted Into The Table Successfully");
                             ttoulcid.setText("");
                             ttouid.setText("");
                             ttouname.setText("");
@@ -4348,15 +5483,15 @@ public class Admin extends javax.swing.JFrame {
                             ttoemail.setText("");
                             ttocn.setText("");
                             ttoa.setText("");
-                        }catch(Exception e){
-                            JOptionPane.showMessageDialog(this,e);
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, e);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
+                        JOptionPane.showMessageDialog(this, "User Role Missmatch With The Login Credentials");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(this,"Login Credentials Not Found Please Enter Valid User Login ID");
-                    } 
+                } else {
+                    JOptionPane.showMessageDialog(this, "Login Credentials Not Found Please Enter Valid User Login ID");
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -4398,23 +5533,22 @@ public class Admin extends javax.swing.JFrame {
 
     private void tsunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tsunameMouseClicked
         // TODO add your handling code here:
-        try{            
-            int luid = Integer.parseInt(tsulcid.getText());            
-            String query1 = "SELECT username FROM user WHERE uid='"+luid+"';";          
+        try {
+            int luid = Integer.parseInt(tsulcid.getText());
+            String query1 = "SELECT username FROM user WHERE uid='" + luid + "';";
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String adun = rs.getString("username");
                     tsuname.setText(adun);
-                }else{
+                } else {
                     tsuname.setText("Cannot Find A User Name");
-                } 
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(this,"Please Enter Valid Login ID");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please Enter Valid Login ID");
             ex.printStackTrace();
         }
     }//GEN-LAST:event_tsunameMouseClicked
@@ -4456,20 +5590,20 @@ public class Admin extends javax.swing.JFrame {
         String sa = tsa.getText();
         String srd = tsregdate.getText();
         String sd = tsdep.getSelectedItem().toString();
-        String query1 = "SELECT role FROM user WHERE uid='"+slcid+"';";
-        
-        if (sid.equals("")||sun.equals("")||sfn.equals("")||sln.equals("")||sfun.equals("")||se.equals("")||scn.equals("")||sa.equals("")||srd.equals("")) {
-            JOptionPane.showMessageDialog(this,"Please Fill All Fields Before Submit");
+        String query1 = "SELECT role FROM user WHERE uid='" + slcid + "';";
+
+        if (sid.equals("") || sun.equals("") || sfn.equals("") || sln.equals("") || sfun.equals("") || se.equals("") || scn.equals("") || sa.equals("") || srd.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Fill All Fields Before Submit");
         } else {
             try {
                 ResultSet rs = db_connection.getData(query1);
-                if(rs.next()){
+                if (rs.next()) {
                     String role = rs.getString("role");
                     if (role.equals("student")) {
-                        String sql = "INSERT INTO `lms`.`student_info` (`index_no`, `username`, `fname`, `lname`, `fullname`, `email`, `tnumber`, `address`, `regdate`, `did`, `uid`)  VALUES ('"+sid+"', '"+sun+"', '"+sfn+"', '"+sln+"', '"+sfun+"', '"+se+"', '"+scn+"', '"+sa+"', '"+srd+"', '"+sd+"', '"+slcid+"');";                        
-                        try{ 
+                        String sql = "INSERT INTO `lms`.`student_info` (`index_no`, `username`, `fname`, `lname`, `fullname`, `email`, `tnumber`, `address`, `regdate`, `did`, `uid`)  VALUES ('" + sid + "', '" + sun + "', '" + sfn + "', '" + sln + "', '" + sfun + "', '" + se + "', '" + scn + "', '" + sa + "', '" + srd + "', '" + sd + "', '" + slcid + "');";
+                        try {
                             db_connection.setData(sql);
-                            JOptionPane.showMessageDialog(this,"User Record Is Inserted Into The Table Successfully");
+                            JOptionPane.showMessageDialog(this, "User Record Is Inserted Into The Table Successfully");
                             tsulcid.setText("");
                             tsuid.setText("");
                             tsuname.setText("");
@@ -4478,18 +5612,18 @@ public class Admin extends javax.swing.JFrame {
                             tsfullname.setText("");
                             tsemail.setText("");
                             tscn.setText("");
-                            tsa.setText("");        
+                            tsa.setText("");
                             tsregdate.setText("");
-                        }catch(Exception e){
-                            JOptionPane.showMessageDialog(this,e);
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, e);
                         }
-                        
+
                     } else {
-                        JOptionPane.showMessageDialog(this,"User Role Missmatch With The Login Credentials");
+                        JOptionPane.showMessageDialog(this, "User Role Missmatch With The Login Credentials");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(this,"Login Credentials Not Found Please Enter Valid User Login ID");
-                    } 
+                } else {
+                    JOptionPane.showMessageDialog(this, "Login Credentials Not Found Please Enter Valid User Login ID");
+                }
             } catch (Exception ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -4506,7 +5640,7 @@ public class Admin extends javax.swing.JFrame {
         tsfullname.setText("");
         tsemail.setText("");
         tscn.setText("");
-        tsa.setText("");        
+        tsa.setText("");
         tsregdate.setText("");
     }//GEN-LAST:event_btn_addsresetActionPerformed
 
@@ -4538,10 +5672,10 @@ public class Admin extends javax.swing.JFrame {
         String uname = tlcviewun.getText();
         String pass = tlcviewp.getText();
         String role = tlcviewr.getSelectedItem().toString();
-        if (tlcviewid.getText().equals("")||uname.equals("")||pass.equals("")) {
+        if (tlcviewid.getText().equals("") || uname.equals("") || pass.equals("")) {
             JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
         } else {
-            String sql = "UPDATE `lms`.`user` SET `username` = '"+uname+"', `password` = '"+pass+"', `role` = '"+role+"' WHERE (`uid` = '"+id+"');";
+            String sql = "UPDATE `lms`.`user` SET `username` = '" + uname + "', `password` = '" + pass + "', `role` = '" + role + "' WHERE (`uid` = '" + id + "');";
             try {
                 db_connection.setData(sql);
                 JOptionPane.showMessageDialog(this, "User Updated!");
@@ -4555,8 +5689,8 @@ public class Admin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e);
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_btn_viewlcupdateActionPerformed
 
     private void btn_viewlcresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcresetActionPerformed
@@ -4566,6 +5700,7 @@ public class Admin extends javax.swing.JFrame {
         tlcviewun.setText("");
         tlcviewp.setText("");
         tlcviewr.setSelectedItem("admin");
+        show_tablevlc();
     }//GEN-LAST:event_btn_viewlcresetActionPerformed
 
     private void btn_vlcbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vlcbackActionPerformed
@@ -4598,17 +5733,17 @@ public class Admin extends javax.swing.JFrame {
     private void btn_viewlcsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcsearchActionPerformed
         // TODO add your handling code here:
         int id = Integer.parseInt(tlcviewidf.getText());
-        String sql = "SELECT * FROM user WHERE id='"+id+"';";
+        String sql = "SELECT * FROM user WHERE uid='" + id + "';";
         try {
             ResultSet rs = db_connection.getData(sql);
-            if(rs.next()){
-                JOptionPane.showMessageDialog(this, "User Found!");                
-                int uid = rs.getInt("uid");                
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "User Found!");
+                int uid = rs.getInt("uid");
                 tlcviewid.setText(String.valueOf(uid));
                 tlcviewun.setText(rs.getString("username"));
                 tlcviewp.setText(rs.getString("password"));
                 tlcviewr.setSelectedItem(rs.getString("role"));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "No Results Found");
             }
         } catch (Exception e) {
@@ -4661,10 +5796,10 @@ public class Admin extends javax.swing.JFrame {
         String email = taviewe.getText();
         String num = taviewcn.getText();
         String address = taviewa.getText();
-        if (taviewulid.getText().equals("")||id.equals("")||uname.equals("")||fname.equals("")||lname.equals("")||email.equals("")||num.equals("")||address.equals("")) {
+        if (taviewulid.getText().equals("") || id.equals("") || uname.equals("") || fname.equals("") || lname.equals("") || email.equals("") || num.equals("") || address.equals("")) {
             JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
         } else {
-            String sql = "UPDATE `lms`.`admin_info` SET `aid` = '"+id+"', `fname` = '"+fname+"', `lname` = '"+lname+"', `email` = '"+email+"', `tnumber` = '"+num+"', `address` = '"+address+"', `uid` = '"+lcid+"' WHERE (`uname` = '"+uname+"');";
+            String sql = "UPDATE `lms`.`admin_info` SET `aid` = '" + id + "', `fname` = '" + fname + "', `lname` = '" + lname + "', `email` = '" + email + "', `tnumber` = '" + num + "', `address` = '" + address + "', `uid` = '" + lcid + "' WHERE (`uname` = '" + uname + "');";
             try {
                 db_connection.setData(sql);
                 JOptionPane.showMessageDialog(this, "User Updated!");
@@ -4695,6 +5830,8 @@ public class Admin extends javax.swing.JFrame {
         taviewe.setText("");
         taviewcn.setText("");
         taviewa.setText("");
+        pfaview.setIcon(null);
+        show_tableva();
     }//GEN-LAST:event_btn_viewaresetActionPerformed
 
     private void taviewlidfComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_taviewlidfComponentAdded
@@ -4736,12 +5873,28 @@ public class Admin extends javax.swing.JFrame {
     private void btn_viewasearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewasearchActionPerformed
         // TODO add your handling code here:
         String id = taviewlidf.getText();
-        String sql = "SELECT * FROM admin_info WHERE aid='"+id+"';";
+        String sql = "SELECT * FROM admin_info WHERE aid='" + id + "';";
         try {
             ResultSet rs = db_connection.getData(sql);
-            if(rs.next()){
+            if (rs.next()) {
                 JOptionPane.showMessageDialog(this, "User Found!");
                 taviewulid.setText(String.valueOf(rs.getInt("uid")));
+                String sql2 = "SELECT image FROM pro_pic WHERE uid='" + rs.getInt("uid") + "';";
+                try {
+                    ResultSet rs2 = db_connection.getData(sql2);
+                    if (rs2.next()) {
+                        byte[] pro_pic_data = rs2.getBytes("image");
+                        if (Objects.nonNull(pro_pic_data)) {
+                            format = new ImageIcon(pro_pic_data);
+                            Image mm = format.getImage();
+                            Image img2 = mm.getScaledInstance(pfaview.getWidth(), pfaview.getHeight(), Image.SCALE_SMOOTH);
+                            ImageIcon image = new ImageIcon(img2);
+                            pfaview.setIcon(image);
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex);
+                }
                 taviewuid.setText(rs.getString("aid"));
                 taviewun.setText(rs.getString("uname"));
                 taviewufn.setText(rs.getString("fname"));
@@ -4749,7 +5902,7 @@ public class Admin extends javax.swing.JFrame {
                 taviewe.setText(rs.getString("email"));
                 taviewcn.setText(rs.getString("tnumber"));
                 taviewa.setText(rs.getString("address"));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "No Results Found");
             }
         } catch (Exception e) {
@@ -4775,12 +5928,28 @@ public class Admin extends javax.swing.JFrame {
         taviewcn.setText(jTAV.getModel().getValueAt(row, 5).toString());
         taviewa.setText(jTAV.getModel().getValueAt(row, 6).toString());
         taviewulid.setText(jTAV.getModel().getValueAt(row, 7).toString());
+        String sql2 = "SELECT image FROM pro_pic WHERE uid='" + jTAV.getModel().getValueAt(row, 7).toString() + "';";
+        try {
+            ResultSet rs2 = db_connection.getData(sql2);
+            if (rs2.next()) {
+                byte[] pro_pic_data = rs2.getBytes("image");
+                if (Objects.nonNull(pro_pic_data)) {
+                    format = new ImageIcon(pro_pic_data);
+                    Image mm = format.getImage();
+                    Image img2 = mm.getScaledInstance(pfsview.getWidth(), pfsview.getHeight(), Image.SCALE_SMOOTH);
+                    ImageIcon image = new ImageIcon(img2);
+                    pfsview.setIcon(image);
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
     }//GEN-LAST:event_jTAVMouseClicked
 
     private void btn_viewlcdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlcdeleteActionPerformed
         // Delete Row From User Table
         int id = Integer.parseInt(tlcviewid.getText());
-        String sql = "DELETE FROM user WHERE uid='"+id+"';";        
+        String sql = "DELETE FROM user WHERE uid='" + id + "';";
         try {
             db_connection.setData(sql);
             JOptionPane.showMessageDialog(this, "User Deleted!");
@@ -4798,7 +5967,7 @@ public class Admin extends javax.swing.JFrame {
     private void btn_viewadeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewadeleteActionPerformed
         // Delete Row From admin_info Table
         int id = Integer.parseInt(taviewulid.getText());
-        String sql = "DELETE FROM admin_info WHERE uid='"+id+"';";
+        String sql = "DELETE FROM admin_info WHERE uid='" + id + "';";
         try {
             db_connection.setData(sql);
             JOptionPane.showMessageDialog(this, "User Deleted!");
@@ -4870,21 +6039,21 @@ public class Admin extends javax.swing.JFrame {
         String email = tlviewe.getText();
         String num = tlviewcn.getText();
         String address = tlviewa.getText();
-        if (taviewulid.getText().equals("")||id.equals("")||uname.equals("")||fname.equals("")||lname.equals("")||email.equals("")||num.equals("")||address.equals("")) {
+        if (tlviewuid.getText().equals("") || id.equals("") || uname.equals("") || fname.equals("") || lname.equals("") || email.equals("") || num.equals("") || address.equals("")) {
             JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
         } else {
-            String sql = "UPDATE `lms`.`admin_info` SET `aid` = '"+id+"', `fname` = '"+fname+"', `lname` = '"+lname+"', `email` = '"+email+"', `tnumber` = '"+num+"', `address` = '"+address+"', `uid` = '"+lcid+"' WHERE (`uname` = '"+uname+"');";
+            String sql = "UPDATE `lms`.`lecturer_info` SET `lecid` = '" + id + "', `fname` = '" + fname + "', `lname` = '" + lname + "', `email` = '" + email + "', `tnumber` = '" + num + "', `address` = '" + address + "', `uid` = '" + lcid + "' WHERE (`username` = '" + uname + "');";
             try {
                 db_connection.setData(sql);
                 JOptionPane.showMessageDialog(this, "User Updated!");
-                show_tableva();
+                show_tablevl();
                 tlviewuid.setText("");
                 tlviewuname.setText("");
                 tlviewfname.setText("");
                 tlviewlname.setText("");
                 tlviewe.setText("");
                 tlviewcn.setText("");
-                tlviewa.setText("");        
+                tlviewa.setText("");
                 tlviewulid.setText("");
                 tlviewlidf.setText("");
             } catch (Exception e) {
@@ -4901,9 +6070,11 @@ public class Admin extends javax.swing.JFrame {
         tlviewlname.setText("");
         tlviewe.setText("");
         tlviewcn.setText("");
-        tlviewa.setText("");        
+        tlviewa.setText("");
         tlviewulid.setText("");
         tlviewlidf.setText("");
+        pflview.setIcon(null);
+        show_tablevl();
     }//GEN-LAST:event_btn_viewlresetActionPerformed
 
     private void tlviewlidfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlidfActionPerformed
@@ -4913,36 +6084,68 @@ public class Admin extends javax.swing.JFrame {
     private void btn_viewlsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlsearchActionPerformed
         // TODO add your handling code here:
         String id = tlviewlidf.getText();
-        String sql = "SELECT * FROM lecturer_info WHERE lecid='"+id+"';";
+        String sql = "SELECT * FROM lecturer_info WHERE lecid='" + id + "';";
         try {
             ResultSet rs = db_connection.getData(sql);
-            if(rs.next()){
+            if (rs.next()) {
                 JOptionPane.showMessageDialog(this, "User Found!");
                 tlviewulid.setText(String.valueOf(rs.getInt("uid")));
+                String sql2 = "SELECT image FROM pro_pic WHERE uid='" + rs.getInt("uid") + "';";
+                try {
+                    ResultSet rs2 = db_connection.getData(sql2);
+                    if (rs2.next()) {
+                        byte[] pro_pic_data = rs2.getBytes("image");
+                        if (Objects.nonNull(pro_pic_data)) {
+                            format = new ImageIcon(pro_pic_data);
+                            Image mm = format.getImage();
+                            Image img2 = mm.getScaledInstance(pflview.getWidth(), pflview.getHeight(), Image.SCALE_SMOOTH);
+                            ImageIcon image = new ImageIcon(img2);
+                            pflview.setIcon(image);
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex);
+                }
                 tlviewuid.setText(rs.getString("lecid"));
                 tlviewuname.setText(rs.getString("username"));
                 tlviewfname.setText(rs.getString("fname"));
                 tlviewlname.setText(rs.getString("lname"));
                 tlviewe.setText(rs.getString("email"));
-                taviewcn.setText(rs.getString("tnumber"));
+                tlviewcn.setText(rs.getString("tnumber"));
                 tlviewa.setText(rs.getString("address"));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "No Results Found");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
-        
+
     }//GEN-LAST:event_btn_viewlsearchActionPerformed
 
     private void btn_viewlselectimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlselectimageActionPerformed
         // TODO add your handling code here:
+        JFileChooser browseImageFile = new JFileChooser("C:\\Users\\Public\\Pictures\\Sample Pictures");
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            selectedImagePath = selectedImageFile.getAbsolutePath();
+            selectedImageName = selectedImageFile.getName();
+            //Display image on jlable
+            ImageIcon ii = new ImageIcon(selectedImagePath);
+//            Resize image to fit jlabel
+            Image image = ii.getImage().getScaledInstance(pflview.getWidth(), pflview.getHeight(), Image.SCALE_SMOOTH);
+            pflview.setIcon(new ImageIcon(image));
+        }
     }//GEN-LAST:event_btn_viewlselectimageActionPerformed
 
     private void btn_viewldeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewldeleteActionPerformed
-        // Delete Row From admin_info Table
-        int id = Integer.parseInt(taviewulid.getText());
-        String sql = "DELETE FROM lecturer_info WHERE uid='"+id+"';";
+        // Delete Row From lecturer_info Table
+        String id = tlviewuid.getText();
+        String sql = "DELETE FROM lecturer_info WHERE lecid='" + id + "';";
         try {
             db_connection.setData(sql);
             JOptionPane.showMessageDialog(this, "User Deleted!");
@@ -4952,143 +6155,352 @@ public class Admin extends javax.swing.JFrame {
             tlviewlname.setText("");
             tlviewe.setText("");
             tlviewcn.setText("");
-            tlviewa.setText("");        
+            tlviewa.setText("");
             tlviewulid.setText("");
             tlviewlidf.setText("");
             show_tablevl();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
-        
+
     }//GEN-LAST:event_btn_viewldeleteActionPerformed
 
-    private void btn_alback2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alback2ActionPerformed
+    private void btn_toviewbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_toviewbackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_alback2ActionPerformed
+        jfviewto.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_toviewbackActionPerformed
 
-    private void tlviewulid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewulid1ActionPerformed
+    private void ttoviewulidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewulidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewulid1ActionPerformed
+    }//GEN-LAST:event_ttoviewulidActionPerformed
 
-    private void tlviewuid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuid1ActionPerformed
+    private void ttoviewuidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewuidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewuid1ActionPerformed
+    }//GEN-LAST:event_ttoviewuidActionPerformed
 
-    private void tlviewuname1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlviewuname1MouseClicked
+    private void ttoviewunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ttoviewunameMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewuname1MouseClicked
+    }//GEN-LAST:event_ttoviewunameMouseClicked
 
-    private void tlviewuname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuname1ActionPerformed
+    private void ttoviewunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewunameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewuname1ActionPerformed
+    }//GEN-LAST:event_ttoviewunameActionPerformed
 
-    private void tlviewfname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewfname1ActionPerformed
+    private void ttoviewfnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewfnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewfname1ActionPerformed
+    }//GEN-LAST:event_ttoviewfnameActionPerformed
 
-    private void tlviewlname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlname1ActionPerformed
+    private void ttoviewlnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewlnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewlname1ActionPerformed
+    }//GEN-LAST:event_ttoviewlnameActionPerformed
 
-    private void tlviewe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewe1ActionPerformed
+    private void ttovieweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttovieweActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewe1ActionPerformed
+    }//GEN-LAST:event_ttovieweActionPerformed
 
-    private void tlviewcn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewcn1ActionPerformed
+    private void ttoviewcnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewcnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewcn1ActionPerformed
+    }//GEN-LAST:event_ttoviewcnActionPerformed
 
-    private void tlviewa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewa1ActionPerformed
+    private void ttoviewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewa1ActionPerformed
+    }//GEN-LAST:event_ttoviewaActionPerformed
 
-    private void btn_viewlupdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlupdate1ActionPerformed
+    private void btn_viewtoupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtoupdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlupdate1ActionPerformed
+        int lcid = Integer.parseInt(ttoviewulid.getText());
+        String id = ttoviewuid.getText();
+        String uname = ttoviewuname.getText();
+        String fname = ttoviewfname.getText();
+        String lname = ttoviewlname.getText();
+        String email = ttoviewe.getText();
+        String num = ttoviewcn.getText();
+        String address = ttoviewa.getText();
+        if (ttoviewuid.getText().equals("") || id.equals("") || uname.equals("") || fname.equals("") || lname.equals("") || email.equals("") || num.equals("") || address.equals("")) {
+            JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
+        } else {
+            String sql = "UPDATE `lms`.`technical_officer_info` SET `toid` = '" + id + "', `fname` = '" + fname + "', `lname` = '" + lname + "', `email` = '" + email + "', `tnumber` = '" + num + "', `address` = '" + address + "', `uid` = '" + lcid + "' WHERE (`uname` = '" + uname + "');";
+            try {
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "User Updated!");
+                show_tablevto();
+                ttoviewuid.setText("");
+                ttoviewuname.setText("");
+                ttoviewfname.setText("");
+                ttoviewlname.setText("");
+                ttoviewe.setText("");
+                ttoviewcn.setText("");
+                ttoviewa.setText("");
+                ttoviewulid.setText("");
+                ttoviewlidf.setText("");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewtoupdateActionPerformed
 
-    private void btn_viewlreset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlreset1ActionPerformed
+    private void btn_viewtoresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtoresetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlreset1ActionPerformed
+        ttoviewuid.setText("");
+        ttoviewuname.setText("");
+        ttoviewfname.setText("");
+        ttoviewlname.setText("");
+        ttoviewe.setText("");
+        ttoviewcn.setText("");
+        ttoviewa.setText("");
+        ttoviewulid.setText("");
+        ttoviewlidf.setText("");
+        show_tablevto();
+        pftoview.setIcon(null);
+    }//GEN-LAST:event_btn_viewtoresetActionPerformed
 
-    private void tlviewlidf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlidf1ActionPerformed
+    private void ttoviewlidfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttoviewlidfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewlidf1ActionPerformed
+    }//GEN-LAST:event_ttoviewlidfActionPerformed
 
-    private void btn_viewlsearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlsearch1ActionPerformed
+    private void btn_viewtosearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtosearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlsearch1ActionPerformed
+        String id = ttoviewlidf.getText();
+        String sql = "SELECT * FROM technical_officer_info WHERE toid='" + id + "';";
+        try {
+            ResultSet rs = db_connection.getData(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "User Found!");
+                ttoviewulid.setText(String.valueOf(rs.getInt("uid")));
+                ttoviewuid.setText(rs.getString("toid"));
+                ttoviewuname.setText(rs.getString("uname"));
+                ttoviewfname.setText(rs.getString("fname"));
+                ttoviewlname.setText(rs.getString("lname"));
+                ttoviewe.setText(rs.getString("email"));
+                ttoviewcn.setText(rs.getString("tnumber"));
+                ttoviewa.setText(rs.getString("address"));
+            } else {
+                JOptionPane.showMessageDialog(this, "No Results Found");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewtosearchActionPerformed
 
-    private void btn_viewlselectimage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlselectimage1ActionPerformed
+    private void btn_viewtoselectimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtoselectimageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlselectimage1ActionPerformed
+        JFileChooser browseImageFile = new JFileChooser("C:\\Users\\Public\\Pictures\\Sample Pictures");
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
 
-    private void btn_viewadelete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewadelete2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewadelete2ActionPerformed
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            selectedImagePath = selectedImageFile.getAbsolutePath();
+            selectedImageName = selectedImageFile.getName();
+            //Display image on jlable
+            ImageIcon ii = new ImageIcon(selectedImagePath);
+//            Resize image to fit jlabel
+            Image image = ii.getImage().getScaledInstance(pftoview.getWidth(), pftoview.getHeight(), Image.SCALE_SMOOTH);
+            pftoview.setIcon(new ImageIcon(image));
+        }
+    }//GEN-LAST:event_btn_viewtoselectimageActionPerformed
 
-    private void btn_alback3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alback3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_alback3ActionPerformed
+    private void btn_viewtodeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtodeleteActionPerformed
+        // Delete Selected Row of technical_officer_info
+        String id = ttoviewuid.getText();
+        String sql = "DELETE FROM technical_officer_info WHERE toid='" + id + "';";
+        try {
+            db_connection.setData(sql);
+            JOptionPane.showMessageDialog(this, "User Deleted!");
+            ttoviewuid.setText("");
+            ttoviewuname.setText("");
+            ttoviewfname.setText("");
+            ttoviewlname.setText("");
+            ttoviewe.setText("");
+            ttoviewcn.setText("");
+            ttoviewa.setText("");
+            ttoviewulid.setText("");
+            ttoviewlidf.setText("");
+            show_tablevto();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewtodeleteActionPerformed
 
-    private void tlviewulid2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewulid2ActionPerformed
+    private void btn_sviewbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sviewbackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewulid2ActionPerformed
+        jfviews.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_sviewbackActionPerformed
 
-    private void tlviewuid2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuid2ActionPerformed
+    private void tsviewulidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewulidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewuid2ActionPerformed
+    }//GEN-LAST:event_tsviewulidActionPerformed
 
-    private void tlviewuname2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlviewuname2MouseClicked
+    private void tsviewuidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewuidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewuname2MouseClicked
+    }//GEN-LAST:event_tsviewuidActionPerformed
 
-    private void tlviewuname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewuname2ActionPerformed
+    private void tsviewunameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tsviewunameMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewuname2ActionPerformed
+    }//GEN-LAST:event_tsviewunameMouseClicked
 
-    private void tlviewfname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewfname2ActionPerformed
+    private void tsviewunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewunameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewfname2ActionPerformed
+    }//GEN-LAST:event_tsviewunameActionPerformed
 
-    private void tlviewlname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlname2ActionPerformed
+    private void tsviewfnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewfnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewlname2ActionPerformed
+    }//GEN-LAST:event_tsviewfnameActionPerformed
 
-    private void tlviewe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewe2ActionPerformed
+    private void tsviewlnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewlnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewe2ActionPerformed
+    }//GEN-LAST:event_tsviewlnameActionPerformed
 
-    private void tlviewcn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewcn2ActionPerformed
+    private void tsviewfullnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewfullnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewcn2ActionPerformed
+    }//GEN-LAST:event_tsviewfullnameActionPerformed
 
-    private void tlviewa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewa2ActionPerformed
+    private void tsvieweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsvieweActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewa2ActionPerformed
+    }//GEN-LAST:event_tsvieweActionPerformed
 
-    private void btn_viewlupdate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlupdate2ActionPerformed
+    private void tsviewcnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewcnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlupdate2ActionPerformed
+    }//GEN-LAST:event_tsviewcnActionPerformed
 
-    private void btn_viewlreset2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlreset2ActionPerformed
+    private void btn_viewsupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewsupdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlreset2ActionPerformed
+        int lcid = Integer.parseInt(tsviewulid.getText());
+        String id = tsviewuid.getText();
+        String uname = tsviewuname.getText();
+        String fname = tsviewfname.getText();
+        String lname = tsviewlname.getText();
+        String full = tsviewfullname.getText();
+        String email = tsviewe.getText();
+        String num = tsviewcn.getText();
+        String address = tsviewa.getText();
+        String regdate = tsviewregdate.getText();
+        String dep = tviewsd.getSelectedItem().toString();
+        if (tsviewuid.getText().equals("") || id.equals("") || uname.equals("") || fname.equals("") || lname.equals("") || full.equals("") || email.equals("") || num.equals("") || address.equals("") || regdate.equals("") || dep.equals("")) {
+            JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
+        } else {
+            String sql = "UPDATE `lms`.`student_info` SET `index_no` = '" + id + "', `fname` = '" + fname + "', `lname` = '" + lname + "', `fullname` = '" + full + "', `email` = '" + email + "', `tnumber` = '" + num + "', `address` = '" + address + "', `regdate` = '" + regdate + "', `did` = '" + dep + "', `uid` = '" + lcid + "' WHERE (`username` = '" + uname + "'););";
+            try {
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "User Updated!");
+                show_tablevl();
+                tsviewulid.setText("");
+                tsviewuid.setText("");
+                tsviewuname.setText("");
+                tsviewfname.setText("");
+                tsviewlname.setText("");
+                tsviewfullname.setText("");
+                tsviewe.setText("");
+                tsviewcn.setText("");
+                tsviewa.setText("");
+                tsviewregdate.setText("");
+                tviewsd.setSelectedItem("ICT");
+                tsviewlidf.setText("");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewsupdateActionPerformed
 
-    private void tlviewlidf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlviewlidf2ActionPerformed
+    private void btn_viewsresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewsresetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tlviewlidf2ActionPerformed
+        tsviewulid.setText("");
+        tsviewuid.setText("");
+        tsviewuname.setText("");
+        tsviewfname.setText("");
+        tsviewlname.setText("");
+        tsviewfullname.setText("");
+        tsviewe.setText("");
+        tsviewcn.setText("");
+        tsviewa.setText("");
+        tsviewregdate.setText("");
+        tviewsd.setSelectedItem("ICT");
+        tsviewlidf.setText("");
+        show_tablevs();
+        pfsview.setIcon(null);
+    }//GEN-LAST:event_btn_viewsresetActionPerformed
 
-    private void btn_viewlsearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlsearch2ActionPerformed
+    private void tsviewlidfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewlidfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlsearch2ActionPerformed
+    }//GEN-LAST:event_tsviewlidfActionPerformed
 
-    private void btn_viewlselectimage2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlselectimage2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewlselectimage2ActionPerformed
+    private void btn_viewssearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewssearchActionPerformed
+        // Search From student_info Table
+        String id = tsviewlidf.getText();
+        String sql = "SELECT * FROM student_info WHERE index_no='" + id + "';";
+        try {
+            ResultSet rs = db_connection.getData(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "User Found!");
+                tsviewulid.setText(String.valueOf(rs.getInt("uid")));
+                tsviewuid.setText(rs.getString("index_no"));
+                tsviewuname.setText(rs.getString("username"));
+                tsviewfname.setText(rs.getString("fname"));
+                tsviewlname.setText(rs.getString("lname"));
+                tsviewfullname.setText(rs.getString("fullname"));
+                tsviewe.setText(rs.getString("email"));
+                tsviewcn.setText(rs.getString("tnumber"));
+                tsviewa.setText(rs.getString("address"));
+                tsviewregdate.setText(rs.getString("regdate"));
+                tviewsd.setSelectedItem(rs.getString("did"));
+            } else {
+                JOptionPane.showMessageDialog(this, "No Results Found");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewssearchActionPerformed
 
-    private void btn_viewadelete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewadelete3ActionPerformed
+    private void btn_viewsselectimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewsselectimageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewadelete3ActionPerformed
+        JFileChooser browseImageFile = new JFileChooser("C:\\Users\\Public\\Pictures\\Sample Pictures");
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            selectedImagePath = selectedImageFile.getAbsolutePath();
+            selectedImageName = selectedImageFile.getName();
+            //Display image on jlable
+            ImageIcon ii = new ImageIcon(selectedImagePath);
+//            Resize image to fit jlabel
+            Image image = ii.getImage().getScaledInstance(pfsview.getWidth(), pfsview.getHeight(), Image.SCALE_SMOOTH);
+            pfsview.setIcon(new ImageIcon(image));
+        }
+    }//GEN-LAST:event_btn_viewsselectimageActionPerformed
+
+    private void btn_viewsdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewsdeleteActionPerformed
+        // Delete Row From student_info Table
+        String id = tsviewuid.getText();
+        String sql = "DELETE FROM student_info WHERE index_no='" + id + "';";
+        try {
+            db_connection.setData(sql);
+            JOptionPane.showMessageDialog(this, "User Deleted!");
+            tsviewulid.setText("");
+            tsviewuid.setText("");
+            tsviewuname.setText("");
+            tsviewfname.setText("");
+            tsviewlname.setText("");
+            tsviewfullname.setText("");
+            tsviewe.setText("");
+            tsviewcn.setText("");
+            tsviewa.setText("");
+            tsviewregdate.setText("");
+            tviewsd.setSelectedItem("ICT");
+            tsviewlidf.setText("");
+            show_tablevs();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewsdeleteActionPerformed
 
     private void btn_viewlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlActionPerformed
         // TODO add your handling code here:
@@ -5106,50 +6518,1800 @@ public class Admin extends javax.swing.JFrame {
         tlviewlname.setText(jTLV.getModel().getValueAt(row, 3).toString());
         tlviewe.setText(jTLV.getModel().getValueAt(row, 4).toString());
         tlviewcn.setText(jTLV.getModel().getValueAt(row, 5).toString());
-        tlviewa.setText(jTLV.getModel().getValueAt(row, 6).toString());        
+        tlviewa.setText(jTLV.getModel().getValueAt(row, 6).toString());
         tlviewulid.setText(jTLV.getModel().getValueAt(row, 7).toString());
+        String sql2 = "SELECT image FROM pro_pic WHERE uid='" + jTLV.getModel().getValueAt(row, 7).toString() + "';";
+        try {
+            ResultSet rs2 = db_connection.getData(sql2);
+            if (rs2.next()) {
+                byte[] pro_pic_data = rs2.getBytes("image");
+                if (Objects.nonNull(pro_pic_data)) {
+                    format = new ImageIcon(pro_pic_data);
+                    Image mm = format.getImage();
+                    Image img2 = mm.getScaledInstance(pflview.getWidth(), pflview.getHeight(), Image.SCALE_SMOOTH);
+                    ImageIcon image = new ImageIcon(img2);
+                    pflview.setIcon(image);
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
     }//GEN-LAST:event_jTLVMouseClicked
 
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(85,65,118));
+    private void btn_viewtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtoActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        show_tablevto();
+        jfviewto.show();
+    }//GEN-LAST:event_btn_viewtoActionPerformed
+
+    private void btn_viewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewsActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        show_tablevs();
+        jfviews.show();
+    }//GEN-LAST:event_btn_viewsActionPerformed
+
+    private void jTTOVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTOVMouseClicked
+        // TODO add your handling code here:
+        int row = jTTOV.getSelectedRow();
+        ttoviewuid.setText(jTTOV.getModel().getValueAt(row, 0).toString());
+        ttoviewuname.setText(jTTOV.getModel().getValueAt(row, 1).toString());
+        ttoviewfname.setText(jTTOV.getModel().getValueAt(row, 2).toString());
+        ttoviewlname.setText(jTTOV.getModel().getValueAt(row, 3).toString());
+        ttoviewe.setText(jTTOV.getModel().getValueAt(row, 4).toString());
+        ttoviewcn.setText(jTTOV.getModel().getValueAt(row, 5).toString());
+        ttoviewa.setText(jTTOV.getModel().getValueAt(row, 6).toString());
+        ttoviewulid.setText(jTTOV.getModel().getValueAt(row, 7).toString());
+    }//GEN-LAST:event_jTTOVMouseClicked
+
+    private void tsviewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsviewaActionPerformed
+
+    private void tsviewregdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewregdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsviewregdateActionPerformed
+
+    private void jTSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTSVMouseClicked
+        // TODO add your handling code here:
+        int row = jTSV.getSelectedRow();
+        tsviewuid.setText(jTSV.getModel().getValueAt(row, 0).toString());
+        tsviewuname.setText(jTSV.getModel().getValueAt(row, 1).toString());
+        tsviewfname.setText(jTSV.getModel().getValueAt(row, 2).toString());
+        tsviewlname.setText(jTSV.getModel().getValueAt(row, 3).toString());
+        tsviewfullname.setText(jTSV.getModel().getValueAt(row, 4).toString());
+        tsviewe.setText(jTSV.getModel().getValueAt(row, 5).toString());
+        tsviewcn.setText(jTSV.getModel().getValueAt(row, 6).toString());
+        tsviewa.setText(jTSV.getModel().getValueAt(row, 7).toString());
+        tsviewregdate.setText(jTSV.getModel().getValueAt(row, 8).toString());
+        tviewsd.setSelectedItem(jTSV.getModel().getValueAt(row, 9).toString());
+        tsviewulid.setText(jTSV.getModel().getValueAt(row, 10).toString());
+    }//GEN-LAST:event_jTSVMouseClicked
+
+    private void btn_upnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        jFnotices.show();
+        show_tablevn();
+    }//GEN-LAST:event_btn_upnActionPerformed
+
+    private void btn_viewtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        show_tablevt();
+        jFtimetables.show();
+    }//GEN-LAST:event_btn_viewtActionPerformed
+
+    private void taddcidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taddcidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taddcidActionPerformed
+
+    private void taddcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taddcdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taddcdActionPerformed
+
+    private void btn_addcsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addcsubmitActionPerformed
+        // TODO add your handling code here:
+        String cid = taddcid.getText();
+        String cn = taddcn.getText();
+        int cc = Integer.parseInt(taddcc.getText());
+        String cd = taddccd.getText();
+        String dep = taddcd.getSelectedItem().toString();
+        if (cid.equals("") || cn.equals("") || (taddcc.getText()).equals("") || cd.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Fill All Fields");
+        } else {
+            try {
+                String sql = "INSERT INTO `lms`.`course` (`cid`, `coursename`, `coursecredits`, `coursediscription`, `did`) VALUES ('" + cid + "', '" + cn + "', '" + cc + "', '" + cd + "', '" + dep + "');";
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "Course Record is inserted in the table successfully");
+                taddcid.setText("");
+                taddcn.setText("");
+                taddcc.setText("");
+                taddccd.setText("");
+                taddcd.setSelectedItem("ICT");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+
+    }//GEN-LAST:event_btn_addcsubmitActionPerformed
+
+    private void btn_addcresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addcresetActionPerformed
+        // TODO add your handling code here:
+        taddcid.setText("");
+        taddcn.setText("");
+        taddcc.setText("");
+        taddccd.setText("");
+        taddcd.setSelectedItem("ICT");
+    }//GEN-LAST:event_btn_addcresetActionPerformed
+
+    private void btn_acbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acbackActionPerformed
+        // TODO add your handling code here:
+        jfaddcourse.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_acbackActionPerformed
+
+    private void taddccdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taddccdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taddccdActionPerformed
+
+    private void taddcnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taddcnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taddcnActionPerformed
+
+    private void taddccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taddccActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taddccActionPerformed
+
+    private void tviewcidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tviewcidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tviewcidActionPerformed
+
+    private void tviewcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tviewcdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tviewcdActionPerformed
+
+    private void btn_viewcupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewcupdateActionPerformed
+        // TODO add your handling code here:
+        int idx = Integer.parseInt(tviewci.getText());
+        String cid = tviewcid.getText();
+        String cn = tviewcn.getText();
+        int cc = Integer.parseInt(tviewcc.getText());
+        String cd = tviewccd.getText();
+        String dep = tviewcd.getSelectedItem().toString();
+        if (cid.equals("") || cn.equals("") || (tviewcc.getText()).equals("") || cd.equals("")) {
+            JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
+        } else {
+            String sql = "UPDATE `lms`.`course` SET `cid` = '" + cid + "', `coursename` = '" + cn + "', `coursecredits` = '" + cc + "', `coursediscription` = '" + cd + "', `did` = '" + dep + "' WHERE `idx` = '" + idx + "'";
+            try {
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "Course Updated!");
+                tviewcidf.setText("");
+                tviewci.setText("");
+                tviewcid.setText("");
+                tviewcn.setText("");
+                tviewcc.setText("");
+                tviewccd.setText("");
+                tviewcd.setSelectedItem("ICT");
+                show_tablevc();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewcupdateActionPerformed
+
+    private void btn_viewcresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewcresetActionPerformed
+        // TODO add your handling code here:
+        tviewcidf.setText("");
+        tviewci.setText("");
+        tviewcid.setText("");
+        tviewcn.setText("");
+        tviewcc.setText("");
+        tviewccd.setText("");
+        tviewcd.setSelectedItem("ICT");
+        show_tablevc();
+    }//GEN-LAST:event_btn_viewcresetActionPerformed
+
+    private void btn_viewcbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewcbackActionPerformed
+        // TODO add your handling code here:
+        jfviewcourse.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_viewcbackActionPerformed
+
+    private void tviewccdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tviewccdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tviewccdActionPerformed
+
+    private void tviewcnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tviewcnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tviewcnActionPerformed
+
+    private void tviewccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tviewccActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tviewccActionPerformed
+
+    private void tviewciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tviewciActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tviewciActionPerformed
+
+    private void tviewcidfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tviewcidfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tviewcidfActionPerformed
+
+    private void btn_viewcdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewcdeleteActionPerformed
+        // Delete Row From course Table
+        String id = tviewci.getText();
+        String sql = "DELETE FROM course WHERE idx='" + id + "';";
+        try {
+            db_connection.setData(sql);
+            JOptionPane.showMessageDialog(this, "Course Deleted!");
+            tviewcidf.setText("");
+            tviewci.setText("");
+            tviewcid.setText("");
+            tviewcn.setText("");
+            tviewcc.setText("");
+            tviewccd.setText("");
+            tviewcd.setSelectedItem("ICT");
+            show_tablevc();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewcdeleteActionPerformed
+
+    private void btn_viewcsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewcsearchActionPerformed
+        // TODO add your handling code here:
+        String id = tviewcidf.getText();
+        String sql = "SELECT * FROM course WHERE cid='" + id + "';";
+        try {
+            ResultSet rs = db_connection.getData(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Course Found!");
+                tviewci.setText(String.valueOf(rs.getInt("idx")));
+                tviewcid.setText(rs.getString("cid"));
+                tviewcn.setText(rs.getString("coursename"));
+                tviewcc.setText(rs.getString("coursecredits"));
+                tviewccd.setText(rs.getString("coursediscription"));
+                tviewcd.setSelectedItem(rs.getString("did"));
+            } else {
+                JOptionPane.showMessageDialog(this, "No Results Found");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_viewcsearchActionPerformed
+
+    private void jTVCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTVCMouseClicked
+        // TODO add your handling code here:
+        int row = jTVC.getSelectedRow();
+        tviewci.setText(jTVC.getModel().getValueAt(row, 0).toString());
+        tviewcid.setText(jTVC.getModel().getValueAt(row, 1).toString());
+        tviewcn.setText(jTVC.getModel().getValueAt(row, 2).toString());
+        tviewcc.setText(jTVC.getModel().getValueAt(row, 3).toString());
+        tviewccd.setText(jTVC.getModel().getValueAt(row, 4).toString());
+        tviewcd.setSelectedItem(jTVC.getModel().getValueAt(row, 5).toString());
+    }//GEN-LAST:event_jTVCMouseClicked
+
+    private void btn_viewnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewnbackActionPerformed
+        // TODO add your handling code here:
+        jFnotices.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_viewnbackActionPerformed
+
+    private void tnoticeidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tnoticeidsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tnoticeidsActionPerformed
+
+    private void btn_noticesearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_noticesearchActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(tnoticeids.getText());
+        String sql = "SELECT * FROM notices WHERE nid='" + id + "';";
+        try {
+            ResultSet rs = db_connection.getData(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Notice Found!");
+                tnid.setText(String.valueOf(rs.getInt("nid")));
+                tnt.setText(rs.getString("title"));
+                tnc.setText(rs.getString("content"));
+                tna.setText(rs.getString("author"));
+            } else {
+                JOptionPane.showMessageDialog(this, "No Results Found");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_noticesearchActionPerformed
+
+    private void btn_noticeresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_noticeresetActionPerformed
+        // TODO add your handling code here:
+        tnoticeids.setText("");
+        tnid.setText("");
+        tnt.setText("");
+        tnc.setText("");
+        tna.setText("");
+        show_tablevn();
+    }//GEN-LAST:event_btn_noticeresetActionPerformed
+
+    private void jTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTNMouseClicked
+        // TODO add your handling code here:
+        int row = jTN.getSelectedRow();
+        tnid.setText(jTN.getModel().getValueAt(row, 0).toString());
+        tnt.setText(jTN.getModel().getValueAt(row, 1).toString());
+        tnc.setText(jTN.getModel().getValueAt(row, 2).toString());
+        tna.setText(jTN.getModel().getValueAt(row, 3).toString());
+    }//GEN-LAST:event_jTNMouseClicked
+
+    private void btn_noticedeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_noticedeleteActionPerformed
+        // Delete Row From admin_info Table
+        int id = Integer.parseInt(tnid.getText());
+        String sql = "DELETE FROM notices WHERE nid='" + id + "';";
+        try {
+            db_connection.setData(sql);
+            JOptionPane.showMessageDialog(this, "User Deleted!");
+            tnoticeids.setText("");
+            tnid.setText("");
+            tnt.setText("");
+            tnc.setText("");
+            tna.setText("");
+            show_tablevn();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_noticedeleteActionPerformed
+
+    private void btn_noticesubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_noticesubmitActionPerformed
+        // TODO add your handling code here:
+        String title = tnt.getText();
+        String content = tnc.getText();
+        String author = tna.getText();
+        if (title.equals("") || content.equals("") || author.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Fill All Fields");
+        } else {
+            try {
+                String sql = "INSERT INTO `lms`.`notices` ( `title`, `content`, `author`) VALUES ('" + title + "', '" + content + "', '" + author + "');";
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "Notice Record is inserted in the table successfully");
+                tnoticeids.setText("");
+                tnid.setText("");
+                tnt.setText("");
+                tnc.setText("");
+                tna.setText("");
+                show_tablevn();
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    }//GEN-LAST:event_btn_noticesubmitActionPerformed
+
+    private void btn_noticeupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_noticeupdateActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(tnid.getText());
+        String title = tnt.getText();
+        String content = tnc.getText();
+        String author = tna.getText();
+        if (tnid.getText().equals("") || title.equals("") || content.equals("") || author.equals("")) {
+            JOptionPane.showMessageDialog(this, "Some Fileds Are Empty");
+        } else {
+            String sql = "UPDATE `lms`.`notices` SET `title` = '" + title + "', `content` = '" + content + "', `author` = '" + author + "' WHERE `nid` = '" + id + "';";
+            try {
+                db_connection.setData(sql);
+                JOptionPane.showMessageDialog(this, "User Updated!");
+                tnoticeids.setText("");
+                tnid.setText("");
+                tnt.setText("");
+                tnc.setText("");
+                tna.setText("");
+                show_tablevn();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_noticeupdateActionPerformed
+
+    private void btn_viewtbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtbackActionPerformed
+        // TODO add your handling code here:
+        jFtimetables.hide();
+        Admin adm = new Admin();
+        adm.show();
+    }//GEN-LAST:event_btn_viewtbackActionPerformed
+
+    private void btn_vtresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vtresetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_vtresetActionPerformed
+
+    private void btn_vtcreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vtcreateActionPerformed
+        // TODO add your handling code here:
+        String tname = ttctn.getSelectedItem().toString();
+        switch (tname) {
+            case "Level1-Semester1-ICT":
+                String sql25 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s1-ict', 'Level 1 Semester 1 Time Table', 'ICT');";
+                String sql = "CREATE TABLE `l1s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql);
+                    db_connection.setData(sql25);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester2-ICT":
+                String sql26 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s2-ict', 'Level 1 Semester 2 Time Table', 'ICT');";
+                String sql2 = "CREATE TABLE `l1s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql2);
+                    db_connection.setData(sql26);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester1-ICT":
+                String sql27 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s1-ict', 'Level 2 Semester 1 Time Table', 'ICT');";
+                String sql3 = "CREATE TABLE `l2s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql3);
+                    db_connection.setData(sql27);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester2-ICT":
+                String sql28 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s2-ict', 'Level 2 Semester 2 Time Table', 'ICT');";
+                String sql4 = "CREATE TABLE `l2s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql4);
+                    db_connection.setData(sql28);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester1-ICT":
+                String sql29 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s1-ict', 'Level 3 Semester 1 Time Table', 'ICT');";
+                String sql5 = "CREATE TABLE `l3s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql5);
+                    db_connection.setData(sql29);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester2-ICT":
+                String sql30 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s2-ict', 'Level 3 Semester 2 Time Table', 'ICT');";
+                String sql6 = "CREATE TABLE `l3s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql6);
+                    db_connection.setData(sql30);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester1-ICT":
+                String sql31 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s1-ict', 'Level 4 Semester 1 Time Table', 'ICT');";
+                String sql7 = "CREATE TABLE `l4s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql7);
+                    db_connection.setData(sql31);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester2-ICT":
+                String sql32 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s2-ict', 'Level 4 Semester 2 Time Table', 'ICT');";
+                String sql8 = "CREATE TABLE `l4s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql8);
+                    db_connection.setData(sql32);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester1-BST":
+                String sql33 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s1-bst', 'Level 1 Semester 1 Time Table', 'BST');";
+                String sql9 = "CREATE TABLE `l1s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql9);
+                    db_connection.setData(sql33);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester2-BST":
+                String sql34 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s2-bst', 'Level 2 Semester 1 Time Table', 'BST');";
+                String sql10 = "CREATE TABLE `l1s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql10);
+                    db_connection.setData(sql34);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester1-BST":
+                String sql35 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s1-bst', 'Level 2 Semester 1 Time Table', 'BST');";
+                String sql11 = "CREATE TABLE `l2s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql11);
+                    db_connection.setData(sql35);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester2-BST":
+                String sql36 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s2-bst', 'Level 2 Semester 2 Time Table', 'BST');";
+                String sql12 = "CREATE TABLE `l2s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql12);
+                    db_connection.setData(sql36);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester1-BST":
+                String sql37 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s1-bst', 'Level 3 Semester 1 Time Table', 'BST');";
+                String sql13 = "CREATE TABLE `l3s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql13);
+                    db_connection.setData(sql37);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester2-BST":
+                String sql38 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s2-bst', 'Level 3 Semester 2 Time Table', 'BST');";
+                String sql14 = "CREATE TABLE `l3s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql14);
+                    db_connection.setData(sql38);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester1-BST":
+                String sql39 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s1-bst', 'Level 4 Semester 1 Time Table', 'BST');";
+                String sql15 = "CREATE TABLE `l4s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql15);
+                    db_connection.setData(sql39);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester2-BST":
+                String sql40 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s2-bst', 'Level 4 Semester 2 Time Table', 'BST');";
+                String sql16 = "CREATE TABLE `l4s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql16);
+                    db_connection.setData(sql40);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester1-ET":
+                String sql41 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s1-et', 'Level 1 Semester 1 Time Table', 'ET');";
+                String sql17 = "CREATE TABLE `l1s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql17);
+                    db_connection.setData(sql41);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester2-ET":
+                String sql42 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s2-et', 'Level 1 Semester 2 Time Table', 'ET');";
+                String sql18 = "CREATE TABLE `l1s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql18);
+                    db_connection.setData(sql42);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester1-ET":
+                String sql43 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s1-et', 'Level 2 Semester 1 Time Table', 'ET');";
+                String sql19 = "CREATE TABLE `l2s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql19);
+                    db_connection.setData(sql43);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester2-ET":
+                String sql44 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s2-et', 'Level 2 Semester 2 Time Table', 'ET');";
+                String sql20 = "CREATE TABLE `l2s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql20);
+                    db_connection.setData(sql44);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester1-ET":
+                String sql45 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s1-et', 'Level 3 Semester 1 Time Table', 'ET');";
+                String sql21 = "CREATE TABLE `l3s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql21);
+                    db_connection.setData(sql45);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester2-ET":
+                String sql46 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s2-et', 'Level 3 Semester 2 Time Table', 'ET');";
+                String sql22 = "CREATE TABLE `l3s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql22);
+                    db_connection.setData(sql46);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester1-ET":
+                String sql47 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s1-et', 'Level 4 Semester 1 Time Table', 'ET');";
+                String sql23 = "CREATE TABLE `l4s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql23);
+                    db_connection.setData(sql47);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester2-ET":
+                String sql48 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s2-et', 'Level 4 Semester 2 Time Table', 'ET');";
+                String sql24 = "CREATE TABLE `l4s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql24);
+                    db_connection.setData(sql48);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            default:
+                JOptionPane.showMessageDialog(this, "Table Creation Error! Invalid Name!");
+        }
+    }//GEN-LAST:event_btn_vtcreateActionPerformed
+
+    private void btn_vtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vtsearchActionPerformed
+        String tname = ttctns.getSelectedItem().toString();
+        switch (tname) {
+            case "Level1-Semester1-ICT":
+                String sql25 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s1-ict', 'Level 1 Semester 1 Time Table', 'ICT');";
+                String sql = "CREATE TABLE `l1s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql);
+                    db_connection.setData(sql25);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester2-ICT":
+                String sql26 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s2-ict', 'Level 1 Semester 2 Time Table', 'ICT');";
+                String sql2 = "CREATE TABLE `l1s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql2);
+                    db_connection.setData(sql26);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester1-ICT":
+                String sql27 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s1-ict', 'Level 2 Semester 1 Time Table', 'ICT');";
+                String sql3 = "CREATE TABLE `l2s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql3);
+                    db_connection.setData(sql27);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester2-ICT":
+                String sql28 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s2-ict', 'Level 2 Semester 2 Time Table', 'ICT');";
+                String sql4 = "CREATE TABLE `l2s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql4);
+                    db_connection.setData(sql28);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester1-ICT":
+                String sql29 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s1-ict', 'Level 3 Semester 1 Time Table', 'ICT');";
+                String sql5 = "CREATE TABLE `l3s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql5);
+                    db_connection.setData(sql29);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester2-ICT":
+                String sql30 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s2-ict', 'Level 3 Semester 2 Time Table', 'ICT');";
+                String sql6 = "CREATE TABLE `l3s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql6);
+                    db_connection.setData(sql30);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester1-ICT":
+                String sql31 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s1-ict', 'Level 4 Semester 1 Time Table', 'ICT');";
+                String sql7 = "CREATE TABLE `l4s1-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql7);
+                    db_connection.setData(sql31);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester2-ICT":
+                String sql32 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s2-ict', 'Level 4 Semester 2 Time Table', 'ICT');";
+                String sql8 = "CREATE TABLE `l4s2-ict` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql8);
+                    db_connection.setData(sql32);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester1-BST":
+                String sql33 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s1-bst', 'Level 1 Semester 1 Time Table', 'BST');";
+                String sql9 = "CREATE TABLE `l1s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql9);
+                    db_connection.setData(sql33);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester2-BST":
+                String sql34 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s2-bst', 'Level 2 Semester 1 Time Table', 'BST');";
+                String sql10 = "CREATE TABLE `l1s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql10);
+                    db_connection.setData(sql34);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester1-BST":
+                String sql35 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s1-bst', 'Level 2 Semester 1 Time Table', 'BST');";
+                String sql11 = "CREATE TABLE `l2s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql11);
+                    db_connection.setData(sql35);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester2-BST":
+                String sql36 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s2-bst', 'Level 2 Semester 2 Time Table', 'BST');";
+                String sql12 = "CREATE TABLE `l2s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql12);
+                    db_connection.setData(sql36);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester1-BST":
+                String sql37 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s1-bst', 'Level 3 Semester 1 Time Table', 'BST');";
+                String sql13 = "CREATE TABLE `l3s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql13);
+                    db_connection.setData(sql37);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester2-BST":
+                String sql38 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s2-bst', 'Level 3 Semester 2 Time Table', 'BST');";
+                String sql14 = "CREATE TABLE `l3s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql14);
+                    db_connection.setData(sql38);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester1-BST":
+                String sql39 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s1-bst', 'Level 4 Semester 1 Time Table', 'BST');";
+                String sql15 = "CREATE TABLE `l4s1-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql15);
+                    db_connection.setData(sql39);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester2-BST":
+                String sql40 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s2-bst', 'Level 4 Semester 2 Time Table', 'BST');";
+                String sql16 = "CREATE TABLE `l4s2-bst` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql16);
+                    db_connection.setData(sql40);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester1-ET":
+                String sql41 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s1-et', 'Level 1 Semester 1 Time Table', 'ET');";
+                String sql17 = "CREATE TABLE `l1s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql17);
+                    db_connection.setData(sql41);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level1-Semester2-ET":
+                String sql42 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l1s2-et', 'Level 1 Semester 2 Time Table', 'ET');";
+                String sql18 = "CREATE TABLE `l1s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql18);
+                    db_connection.setData(sql42);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester1-ET":
+                String sql43 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s1-et', 'Level 2 Semester 1 Time Table', 'ET');";
+                String sql19 = "CREATE TABLE `l2s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql19);
+                    db_connection.setData(sql43);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level2-Semester2-ET":
+                String sql44 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l2s2-et', 'Level 2 Semester 2 Time Table', 'ET');";
+                String sql20 = "CREATE TABLE `l2s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql20);
+                    db_connection.setData(sql44);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester1-ET":
+                String sql45 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s1-et', 'Level 3 Semester 1 Time Table', 'ET');";
+                String sql21 = "CREATE TABLE `l3s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql21);
+                    db_connection.setData(sql45);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level3-Semester2-ET":
+                String sql46 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l3s2-et', 'Level 3 Semester 2 Time Table', 'ET');";
+                String sql22 = "CREATE TABLE `l3s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql22);
+                    db_connection.setData(sql46);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester1-ET":
+                String sql47 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s1-et', 'Level 4 Semester 1 Time Table', 'ET');";
+                String sql23 = "CREATE TABLE `l4s1-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql23);
+                    db_connection.setData(sql47);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            case "Level4-Semester2-ET":
+                String sql48 = "INSERT INTO `lms`.`time_tables` (`tname`, `discription`, `did`) VALUES ('l4s2-et', 'Level 4 Semester 2 Time Table', 'ET');";
+                String sql24 = "CREATE TABLE `l4s2-et` (\n"
+                        + "  `idx` int NOT NULL AUTO_INCREMENT,\n"
+                        + "  `time` varchar(100) DEFAULT NULL,\n"
+                        + "  `monday` varchar(100) DEFAULT NULL,\n"
+                        + "  `tuesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `wednesday` varchar(100) DEFAULT NULL,\n"
+                        + "  `thursday` varchar(100) DEFAULT NULL,\n"
+                        + "  `friday` varchar(100) DEFAULT NULL,\n"
+                        + "  PRIMARY KEY (`idx`)\n"
+                        + ") ";
+                try {
+                    db_connection.setData(sql24);
+                    db_connection.setData(sql48);
+                    JOptionPane.showMessageDialog(this, "Table Created!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Table Creation Error! " + ex);
+                }
+                show_tablevt();
+                break;
+
+            default:
+                JOptionPane.showMessageDialog(this, "Table Creation Error! Invalid Name!");
+        }
+    }//GEN-LAST:event_btn_vtsearchActionPerformed
+
+    private void jTTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTAMouseClicked
+        // TODO add your handling code here:
+        int row = jTTA.getSelectedRow();
+        String name = jTTA.getModel().getValueAt(row, 1).toString();
+        String dis = jTTA.getModel().getValueAt(row, 2).toString();
+        String dep = jTTA.getModel().getValueAt(row, 3).toString();
+        ttn.setText(dis + " " + dep);
+        try {
+            String sql = "SELECT idx AS 'INDEX', time AS 'Time', monday AS 'Monday', tuesday AS 'Tuesday', wednesday AS 'Wednesday', thursday AS 'Thursday', friday AS 'Friday' FROM lms.`" + name + "`;";
+            ResultSet rs = db_connection.getData(sql);
+            jTTS.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_jTTAMouseClicked
+
+    private void btn_vtdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vtdeleteActionPerformed
+        // TODO add your handling code here:
+        int row = jTTA.getSelectedRow();
+        String name = jTTA.getModel().getValueAt(row, 1).toString();
+        try {
+            String sql = "DELETE FROM time_tables WHERE tname='" + name + "';";
+            String sql2 = "DROP TABLE `" + name + "`;";
+            db_connection.setData(sql);
+            db_connection.setData(sql2);
+            JOptionPane.showMessageDialog(this, "Table Deleted");
+            show_tablevt();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_btn_vtdeleteActionPerformed
+
+    private void btn_viewaselectimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewaselectimageActionPerformed
+        // TODO add your handling code here:
+        JFileChooser browseImageFile = new JFileChooser("C:\\Users\\Public\\Pictures\\Sample Pictures");
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            selectedImagePath = selectedImageFile.getAbsolutePath();
+            selectedImageName = selectedImageFile.getName();
+            //Display image on jlable
+            ImageIcon ii = new ImageIcon(selectedImagePath);
+//            Resize image to fit jlabel
+            Image image = ii.getImage().getScaledInstance(pfaview.getWidth(), pfaview.getHeight(), Image.SCALE_SMOOTH);
+            pfaview.setIcon(new ImageIcon(image));
+        }
+
+    }//GEN-LAST:event_btn_viewaselectimageActionPerformed
+
+    private void btn_viewaupdateiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewaupdateiActionPerformed
+        // TODO add your handling code here:
+        int uid = Integer.parseInt(taviewulid.getText());
+        String storeImageQuery = "insert into pro_pic values (?,?)";
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        if (taviewulid.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Select A user First");
+        } else {
+            try {
+                // This will load the MySQL driver, each DB has its own driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                // Setup the connection with the DB
+                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "n1i1r1a1j1=nnd");
+                // Statements allow to issue SQL queries to the database
+                statement = connect.createStatement();
+                preparedStatement = connect.prepareStatement(storeImageQuery);
+
+                FileInputStream fileInputStream = new FileInputStream(selectedImagePath);
+
+                preparedStatement.setInt(1, uid);
+                preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
+                try {
+                    //execute delete
+                    db_connection.setData(deleteImageQuery);
+                    //execute update
+                    preparedStatement.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Error :" + e);
+                }
+
+                //close connection
+                preparedStatement.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+
+    }//GEN-LAST:event_btn_viewaupdateiActionPerformed
+
+    private void btn_viewlupdateiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewlupdateiActionPerformed
+        // TODO add your handling code here:
+        int uid = Integer.parseInt(tlviewulid.getText());
+        String storeImageQuery = "insert into pro_pic values (?,?)";
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        if (tlviewulid.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Select A user First");
+        } else {
+            try {
+                // This will load the MySQL driver, each DB has its own driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                // Setup the connection with the DB
+                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "n1i1r1a1j1=nnd");
+                // Statements allow to issue SQL queries to the database
+                statement = connect.createStatement();
+                preparedStatement = connect.prepareStatement(storeImageQuery);
+
+                FileInputStream fileInputStream = new FileInputStream(selectedImagePath);
+
+                preparedStatement.setInt(1, uid);
+                preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
+                try {
+                    //execute delete
+                    db_connection.setData(deleteImageQuery);
+                    //execute update
+                    preparedStatement.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Error :" + e);
+                }
+
+                //close connection
+                preparedStatement.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewlupdateiActionPerformed
+
+    private void btn_viewtoupdateiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewtoupdateiActionPerformed
+        // TODO add your handling code here:
+        int uid = Integer.parseInt(ttoviewulid.getText());
+        String storeImageQuery = "insert into pro_pic values (?,?)";
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        if (ttoviewulid.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Select A user First");
+        } else {
+            try {
+                // This will load the MySQL driver, each DB has its own driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                // Setup the connection with the DB
+                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "n1i1r1a1j1=nnd");
+                // Statements allow to issue SQL queries to the database
+                statement = connect.createStatement();
+                preparedStatement = connect.prepareStatement(storeImageQuery);
+
+                FileInputStream fileInputStream = new FileInputStream(selectedImagePath);
+
+                preparedStatement.setInt(1, uid);
+                preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
+                try {
+                    //execute delete
+                    db_connection.setData(deleteImageQuery);
+                    //execute update
+                    preparedStatement.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Error :" + e);
+                }
+
+                //close connection
+                preparedStatement.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewtoupdateiActionPerformed
+
+    private void btn_viewsupdateiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewsupdateiActionPerformed
+        // TODO add your handling code here:
+        int uid = Integer.parseInt(tsviewulid.getText());
+        String storeImageQuery = "insert into pro_pic values (?,?)";
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        if (tsviewulid.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Select A user First");
+        } else {
+            try {
+                // This will load the MySQL driver, each DB has its own driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                // Setup the connection with the DB
+                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "n1i1r1a1j1=nnd");
+                // Statements allow to issue SQL queries to the database
+                statement = connect.createStatement();
+                preparedStatement = connect.prepareStatement(storeImageQuery);
+
+                FileInputStream fileInputStream = new FileInputStream(selectedImagePath);
+
+                preparedStatement.setInt(1, uid);
+                preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
+                try {
+                    //execute delete
+                    db_connection.setData(deleteImageQuery);
+                    //execute update
+                    preparedStatement.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Error :" + e);
+                }
+
+                //close connection
+                preparedStatement.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_btn_viewsupdateiActionPerformed
+
+    private void btn_vtinsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vtinsertActionPerformed
+        // TODO add your handling code here:        
+//        for (int i = 0; i < jTTS.getRowCount(); i++) {
+//            jTTS.setValueAt(false, i, 0);
+//        }
+    }//GEN-LAST:event_btn_vtinsertActionPerformed
+
+    void setColor(JPanel panel) {
+        panel.setBackground(new Color(85, 65, 118));
     }
-    
-    void resetColor(JPanel panel){
-        panel.setBackground(new Color(64,43,100));
+
+    void resetColor(JPanel panel) {
+        panel.setBackground(new Color(64, 43, 100));
     }
-    
-    public void show_tablevlc(){
+
+    public void show_tablevlc() {
         //Import Mysql user Table To Jtable
         try {
-            String sql = "SELECT * FROM `lms`.`user`";
+            String sql = "SELECT uid AS 'User Login ID', username AS 'User Name', password AS 'Password', role AS 'User Role' FROM lms.user;";
             ResultSet rs = db_connection.getData(sql);
-            jTALC.setModel(DbUtils.resultSetToTableModel(rs));            
+            jTALC.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
     }
-    
-    public void show_tableva(){
+
+    public void show_tableva() {
         //Import Mysql admin_info Table To Jtable
         try {
-            String sql = "SELECT * FROM `lms`.`admin_info`";
+            String sql = "SELECT aid AS 'Admin ID', uname AS 'Login User Name', fname AS 'First Name', lname AS 'Last Name', email AS 'Email', tnumber AS 'Contact Number', address AS 'Address', uid AS 'User Login ID' FROM lms.admin_info;";
             ResultSet rs = db_connection.getData(sql);
-            jTAV.setModel(DbUtils.resultSetToTableModel(rs));            
+            jTAV.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
     }
-    
-    public void show_tablevl(){
+
+    public void show_tablevl() {
         //Import Mysql lecturer_info Table To Jtable
         try {
-            String sql = "SELECT * FROM `lms`.`lecturer_info`";
+            String sql = "SELECT lecid AS 'Lecturer ID', username AS 'Login User Name', fname AS 'First Name', lname AS 'Last Name', email AS 'Email', tnumber AS 'Contact Number', address AS 'Address', uid AS 'User Login ID' FROM lms.lecturer_info;";
             ResultSet rs = db_connection.getData(sql);
-            jTLV.setModel(DbUtils.resultSetToTableModel(rs));            
+            jTLV.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
     }
+
+    public void show_tablevto() {
+        //Import Mysql technical_officer_info Table To Jtable
+        try {
+            String sql = "SELECT toid AS 'TO ID', uname AS 'Login User Name', fname AS 'First Name', lname AS 'Last Name', email AS 'Email', tnumber AS 'Contact Number', address AS 'Address', uid AS 'User Login ID' FROM lms.technical_officer_info;";
+            ResultSet rs = db_connection.getData(sql);
+            jTTOV.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
+
+    public void show_tablevs() {
+        //Import Mysql student_info Table To Jtable
+        try {
+            String sql = "SELECT index_no AS 'Index Number', username AS 'Login User Name', fname AS 'First Name', lname AS 'Last Name',fullname AS 'Full Name', email AS 'Email', tnumber AS 'Contact Number', address AS 'Address', regdate AS 'Registered Date', did AS 'Department', uid AS 'User Login ID' FROM lms.student_info;";
+            ResultSet rs = db_connection.getData(sql);
+            jTSV.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
+
+    public void show_tablevc() {
+        //Import Mysql course Table To Jtable
+        try {
+            String sql = "SELECT idx AS 'Index', cid AS 'Course ID', coursename AS 'Course Name', coursecredits AS 'Course Credits', coursediscription AS 'Course Discription', did AS 'Department' FROM lms.course;";
+            ResultSet rs = db_connection.getData(sql);
+            jTVC.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
+
+    public void show_tablevn() {
+        //Import Mysql notices Table To Jtable
+        try {
+            String sql = "SELECT nid AS 'Notice ID', title AS 'Notice Title', content AS 'Notice Content', author AS 'Author Of The Notice' FROM lms.notices;";
+            ResultSet rs = db_connection.getData(sql);
+            jTN.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
+
+    public void show_tablevt() {
+        //Import Mysql timetables Table To Jtable
+        try {
+            String sql = "SELECT id AS 'Index', tname AS 'Table Name', discription AS 'Table Discription', did AS 'Department' FROM lms.time_tables;";
+            ResultSet rs = db_connection.getData(sql);
+            jTTA.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -5197,48 +8359,56 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel bg;
     private javax.swing.JPanel body;
     private javax.swing.JButton btn_aaback;
+    private javax.swing.JButton btn_acback;
     private javax.swing.JButton btn_adda;
     private javax.swing.JButton btn_addareset;
     private javax.swing.JButton btn_addasubmit;
     private javax.swing.JButton btn_addc;
+    private javax.swing.JButton btn_addcreset;
+    private javax.swing.JButton btn_addcsubmit;
     private javax.swing.JButton btn_addl;
     private javax.swing.JButton btn_addlc;
     private javax.swing.JButton btn_addlcreset;
     private javax.swing.JButton btn_addlcsubmit;
     private javax.swing.JButton btn_addlreset;
     private javax.swing.JButton btn_addlsubmit;
-    private javax.swing.JButton btn_addn;
     private javax.swing.JButton btn_adds;
     private javax.swing.JButton btn_addsreset;
     private javax.swing.JButton btn_addssubmit;
-    private javax.swing.JButton btn_addt;
     private javax.swing.JButton btn_addto;
     private javax.swing.JButton btn_addtoreset;
     private javax.swing.JButton btn_addtosubmit;
     private javax.swing.JButton btn_alback;
-    private javax.swing.JButton btn_alback2;
-    private javax.swing.JButton btn_alback3;
     private javax.swing.JButton btn_alcback;
     private javax.swing.JButton btn_asback;
     private javax.swing.JButton btn_atoback;
     private javax.swing.JButton btn_aviewback;
     private javax.swing.JPanel btn_courses;
     private javax.swing.JButton btn_lviewback;
+    private javax.swing.JButton btn_noticedelete;
+    private javax.swing.JButton btn_noticereset;
     private javax.swing.JPanel btn_notices;
+    private javax.swing.JButton btn_noticesearch;
+    private javax.swing.JButton btn_noticesubmit;
+    private javax.swing.JButton btn_noticeupdate;
+    private javax.swing.JButton btn_sviewback;
     private javax.swing.JPanel btn_timetables;
+    private javax.swing.JButton btn_toviewback;
     private javax.swing.JButton btn_upc;
     private javax.swing.JButton btn_upn;
-    private javax.swing.JButton btn_upt;
     private javax.swing.JPanel btn_users;
     private javax.swing.JButton btn_viewa;
     private javax.swing.JButton btn_viewadelete;
-    private javax.swing.JButton btn_viewadelete2;
-    private javax.swing.JButton btn_viewadelete3;
     private javax.swing.JButton btn_viewareset;
     private javax.swing.JButton btn_viewasearch;
     private javax.swing.JButton btn_viewaselectimage;
     private javax.swing.JButton btn_viewaupdate;
-    private javax.swing.JButton btn_viewc;
+    private javax.swing.JButton btn_viewaupdatei;
+    private javax.swing.JButton btn_viewcback;
+    private javax.swing.JButton btn_viewcdelete;
+    private javax.swing.JButton btn_viewcreset;
+    private javax.swing.JButton btn_viewcsearch;
+    private javax.swing.JButton btn_viewcupdate;
     private javax.swing.JButton btn_viewl;
     private javax.swing.JButton btn_viewlc;
     private javax.swing.JButton btn_viewlcdelete;
@@ -5247,22 +8417,36 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btn_viewlcupdate;
     private javax.swing.JButton btn_viewldelete;
     private javax.swing.JButton btn_viewlreset;
-    private javax.swing.JButton btn_viewlreset1;
-    private javax.swing.JButton btn_viewlreset2;
     private javax.swing.JButton btn_viewlsearch;
-    private javax.swing.JButton btn_viewlsearch1;
-    private javax.swing.JButton btn_viewlsearch2;
     private javax.swing.JButton btn_viewlselectimage;
-    private javax.swing.JButton btn_viewlselectimage1;
-    private javax.swing.JButton btn_viewlselectimage2;
     private javax.swing.JButton btn_viewlupdate;
-    private javax.swing.JButton btn_viewlupdate1;
-    private javax.swing.JButton btn_viewlupdate2;
-    private javax.swing.JButton btn_viewn;
+    private javax.swing.JButton btn_viewlupdatei;
+    private javax.swing.JButton btn_viewnback;
     private javax.swing.JButton btn_views;
+    private javax.swing.JButton btn_viewsdelete;
+    private javax.swing.JButton btn_viewsreset;
+    private javax.swing.JButton btn_viewssearch;
+    private javax.swing.JButton btn_viewsselectimage;
+    private javax.swing.JButton btn_viewsupdate;
+    private javax.swing.JButton btn_viewsupdatei;
     private javax.swing.JButton btn_viewt;
+    private javax.swing.JButton btn_viewtback;
     private javax.swing.JButton btn_viewto;
+    private javax.swing.JButton btn_viewtodelete;
+    private javax.swing.JButton btn_viewtoreset;
+    private javax.swing.JButton btn_viewtosearch;
+    private javax.swing.JButton btn_viewtoselectimage;
+    private javax.swing.JButton btn_viewtoupdate;
+    private javax.swing.JButton btn_viewtoupdatei;
     private javax.swing.JButton btn_vlcback;
+    private javax.swing.JButton btn_vtcreate;
+    private javax.swing.JButton btn_vtdelete;
+    private javax.swing.JButton btn_vtinsert;
+    private javax.swing.JButton btn_vtreset;
+    private javax.swing.JButton btn_vtsearch;
+    private javax.swing.JButton btn_vtupdate;
+    private javax.swing.JFrame jFnotices;
+    private javax.swing.JFrame jFtimetables;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -5272,29 +8456,44 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTALC;
     private javax.swing.JTable jTAV;
     private javax.swing.JTable jTLV;
-    private javax.swing.JTable jTLV1;
-    private javax.swing.JTable jTLV2;
+    private javax.swing.JTable jTN;
+    private javax.swing.JTable jTSV;
+    private javax.swing.JTable jTTA;
+    private javax.swing.JTable jTTOV;
+    private javax.swing.JTable jTTS;
+    private javax.swing.JTable jTVC;
     private javax.swing.JFrame jfadda;
+    private javax.swing.JFrame jfaddcourse;
     private javax.swing.JFrame jfaddl;
     private javax.swing.JFrame jfaddlc;
     private javax.swing.JFrame jfadds;
     private javax.swing.JFrame jfaddto;
     private javax.swing.JFrame jfviewa;
+    private javax.swing.JFrame jfviewcourse;
     private javax.swing.JFrame jfviewl;
     private javax.swing.JFrame jfviewlc;
     private javax.swing.JFrame jfviews;
@@ -5308,9 +8507,14 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPasswordField lcupass;
     private javax.swing.JLabel pfaview;
     private javax.swing.JLabel pflview;
-    private javax.swing.JLabel pflview1;
-    private javax.swing.JLabel pflview2;
+    private javax.swing.JLabel pfsview;
+    private javax.swing.JLabel pftoview;
     private javax.swing.JPanel sidepanel;
+    private javax.swing.JTextField taddcc;
+    private javax.swing.JTextField taddccd;
+    private javax.swing.JComboBox<String> taddcd;
+    private javax.swing.JTextField taddcid;
+    private javax.swing.JTextField taddcn;
     private javax.swing.JTextField taviewa;
     private javax.swing.JTextField taviewcn;
     private javax.swing.JTextField taviewe;
@@ -5334,32 +8538,19 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField tluid;
     private javax.swing.JTextField tluname;
     private javax.swing.JTextField tlviewa;
-    private javax.swing.JTextField tlviewa1;
-    private javax.swing.JTextField tlviewa2;
     private javax.swing.JTextField tlviewcn;
-    private javax.swing.JTextField tlviewcn1;
-    private javax.swing.JTextField tlviewcn2;
     private javax.swing.JTextField tlviewe;
-    private javax.swing.JTextField tlviewe1;
-    private javax.swing.JTextField tlviewe2;
     private javax.swing.JTextField tlviewfname;
-    private javax.swing.JTextField tlviewfname1;
-    private javax.swing.JTextField tlviewfname2;
     private javax.swing.JTextField tlviewlidf;
-    private javax.swing.JTextField tlviewlidf1;
-    private javax.swing.JTextField tlviewlidf2;
     private javax.swing.JTextField tlviewlname;
-    private javax.swing.JTextField tlviewlname1;
-    private javax.swing.JTextField tlviewlname2;
     private javax.swing.JTextField tlviewuid;
-    private javax.swing.JTextField tlviewuid1;
-    private javax.swing.JTextField tlviewuid2;
     private javax.swing.JTextField tlviewulid;
-    private javax.swing.JTextField tlviewulid1;
-    private javax.swing.JTextField tlviewulid2;
     private javax.swing.JTextField tlviewuname;
-    private javax.swing.JTextField tlviewuname1;
-    private javax.swing.JTextField tlviewuname2;
+    private javax.swing.JTextField tna;
+    private javax.swing.JTextArea tnc;
+    private javax.swing.JTextField tnid;
+    private javax.swing.JTextField tnoticeids;
+    private javax.swing.JTextField tnt;
     private javax.swing.JTextField tsa;
     private javax.swing.JTextField tscn;
     private javax.swing.JComboBox<String> tsdep;
@@ -5371,6 +8562,20 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField tsuid;
     private javax.swing.JTextField tsulcid;
     private javax.swing.JTextField tsuname;
+    private javax.swing.JTextField tsviewa;
+    private javax.swing.JTextField tsviewcn;
+    private javax.swing.JTextField tsviewe;
+    private javax.swing.JTextField tsviewfname;
+    private javax.swing.JTextField tsviewfullname;
+    private javax.swing.JTextField tsviewlidf;
+    private javax.swing.JTextField tsviewlname;
+    private javax.swing.JTextField tsviewregdate;
+    private javax.swing.JTextField tsviewuid;
+    private javax.swing.JTextField tsviewulid;
+    private javax.swing.JTextField tsviewuname;
+    private javax.swing.JComboBox<String> ttctn;
+    private javax.swing.JComboBox<String> ttctns;
+    private javax.swing.JLabel ttn;
     private javax.swing.JTextField ttoa;
     private javax.swing.JTextField ttocn;
     private javax.swing.JTextField ttoemail;
@@ -5379,5 +8584,22 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField ttouid;
     private javax.swing.JTextField ttoulcid;
     private javax.swing.JTextField ttouname;
+    private javax.swing.JTextField ttoviewa;
+    private javax.swing.JTextField ttoviewcn;
+    private javax.swing.JTextField ttoviewe;
+    private javax.swing.JTextField ttoviewfname;
+    private javax.swing.JTextField ttoviewlidf;
+    private javax.swing.JTextField ttoviewlname;
+    private javax.swing.JTextField ttoviewuid;
+    private javax.swing.JTextField ttoviewulid;
+    private javax.swing.JTextField ttoviewuname;
+    private javax.swing.JTextField tviewcc;
+    private javax.swing.JTextField tviewccd;
+    private javax.swing.JComboBox<String> tviewcd;
+    private javax.swing.JTextField tviewci;
+    private javax.swing.JTextField tviewcid;
+    private javax.swing.JTextField tviewcidf;
+    private javax.swing.JTextField tviewcn;
+    private javax.swing.JComboBox<String> tviewsd;
     // End of variables declaration//GEN-END:variables
 }
