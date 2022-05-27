@@ -6269,6 +6269,22 @@ public class Admin extends javax.swing.JFrame {
             if (rs.next()) {
                 JOptionPane.showMessageDialog(this, "User Found!");
                 ttoviewulid.setText(String.valueOf(rs.getInt("uid")));
+                String sql2 = "SELECT image FROM pro_pic WHERE uid='" + rs.getInt("uid") + "';";
+                try {
+                    ResultSet rs2 = db_connection.getData(sql2);
+                    if (rs2.next()) {
+                        byte[] pro_pic_data = rs2.getBytes("image");
+                        if (Objects.nonNull(pro_pic_data)) {
+                            format = new ImageIcon(pro_pic_data);
+                            Image mm = format.getImage();
+                            Image img2 = mm.getScaledInstance(pftoview.getWidth(), pftoview.getHeight(), Image.SCALE_SMOOTH);
+                            ImageIcon image = new ImageIcon(img2);
+                            pftoview.setIcon(image);
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex);
+                }
                 ttoviewuid.setText(rs.getString("toid"));
                 ttoviewuname.setText(rs.getString("uname"));
                 ttoviewfname.setText(rs.getString("fname"));
@@ -6439,6 +6455,22 @@ public class Admin extends javax.swing.JFrame {
             if (rs.next()) {
                 JOptionPane.showMessageDialog(this, "User Found!");
                 tsviewulid.setText(String.valueOf(rs.getInt("uid")));
+                String sql2 = "SELECT image FROM pro_pic WHERE uid='" + rs.getInt("uid") + "';";
+                try {
+                    ResultSet rs2 = db_connection.getData(sql2);
+                    if (rs2.next()) {
+                        byte[] pro_pic_data = rs2.getBytes("image");
+                        if (Objects.nonNull(pro_pic_data)) {
+                            format = new ImageIcon(pro_pic_data);
+                            Image mm = format.getImage();
+                            Image img2 = mm.getScaledInstance(pfsview.getWidth(), pfsview.getHeight(), Image.SCALE_SMOOTH);
+                            ImageIcon image = new ImageIcon(img2);
+                            pfsview.setIcon(image);
+                        }
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex);
+                }
                 tsviewuid.setText(rs.getString("index_no"));
                 tsviewuname.setText(rs.getString("username"));
                 tsviewfname.setText(rs.getString("fname"));
@@ -6563,6 +6595,22 @@ public class Admin extends javax.swing.JFrame {
         ttoviewcn.setText(jTTOV.getModel().getValueAt(row, 5).toString());
         ttoviewa.setText(jTTOV.getModel().getValueAt(row, 6).toString());
         ttoviewulid.setText(jTTOV.getModel().getValueAt(row, 7).toString());
+        String sql2 = "SELECT image FROM pro_pic WHERE uid='" + jTTOV.getModel().getValueAt(row, 7).toString() + "';";
+        try {
+            ResultSet rs2 = db_connection.getData(sql2);
+            if (rs2.next()) {
+                byte[] pro_pic_data = rs2.getBytes("image");
+                if (Objects.nonNull(pro_pic_data)) {
+                    format = new ImageIcon(pro_pic_data);
+                    Image mm = format.getImage();
+                    Image img2 = mm.getScaledInstance(pftoview.getWidth(), pftoview.getHeight(), Image.SCALE_SMOOTH);
+                    ImageIcon image = new ImageIcon(img2);
+                    pftoview.setIcon(image);
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
     }//GEN-LAST:event_jTTOVMouseClicked
 
     private void tsviewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsviewaActionPerformed
@@ -6587,6 +6635,22 @@ public class Admin extends javax.swing.JFrame {
         tsviewregdate.setText(jTSV.getModel().getValueAt(row, 8).toString());
         tviewsd.setSelectedItem(jTSV.getModel().getValueAt(row, 9).toString());
         tsviewulid.setText(jTSV.getModel().getValueAt(row, 10).toString());
+        String sql2 = "SELECT image FROM pro_pic WHERE uid='" + jTSV.getModel().getValueAt(row, 10).toString() + "';";
+        try {
+            ResultSet rs2 = db_connection.getData(sql2);
+            if (rs2.next()) {
+                byte[] pro_pic_data = rs2.getBytes("image");
+                if (Objects.nonNull(pro_pic_data)) {
+                    format = new ImageIcon(pro_pic_data);
+                    Image mm = format.getImage();
+                    Image img2 = mm.getScaledInstance(pfsview.getWidth(), pfsview.getHeight(), Image.SCALE_SMOOTH);
+                    ImageIcon image = new ImageIcon(img2);
+                    pfsview.setIcon(image);
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
     }//GEN-LAST:event_jTSVMouseClicked
 
     private void btn_upnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upnActionPerformed
@@ -8052,7 +8116,8 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         int uid = Integer.parseInt(taviewulid.getText());
         String storeImageQuery = "insert into pro_pic values (?,?)";
-        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid=" + uid + ";";
+        String searchImageQuery = "SELECT image FROM pro_pic where uid=" + uid + "";
         if (taviewulid.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Select A user First");
         } else {
@@ -8070,11 +8135,17 @@ public class Admin extends javax.swing.JFrame {
                 preparedStatement.setInt(1, uid);
                 preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
                 try {
-                    //execute delete
-                    db_connection.setData(deleteImageQuery);
-                    //execute update
-                    preparedStatement.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    ResultSet rs = db_connection.getData(searchImageQuery);
+                    if (rs.next()) {
+                        //execute delete
+                        db_connection.setData(deleteImageQuery);
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    } else {
+                        //execute update
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Error :" + e);
                 }
@@ -8093,7 +8164,8 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         int uid = Integer.parseInt(tlviewulid.getText());
         String storeImageQuery = "insert into pro_pic values (?,?)";
-        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid=" + uid + ";";
+        String searchImageQuery = "SELECT image FROM pro_pic where uid=" + uid + "";
         if (tlviewulid.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Select A user First");
         } else {
@@ -8111,11 +8183,17 @@ public class Admin extends javax.swing.JFrame {
                 preparedStatement.setInt(1, uid);
                 preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
                 try {
-                    //execute delete
-                    db_connection.setData(deleteImageQuery);
-                    //execute update
-                    preparedStatement.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    ResultSet rs = db_connection.getData(searchImageQuery);
+                    if (rs.next()) {
+                        //execute delete
+                        db_connection.setData(deleteImageQuery);
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    } else {
+                        //execute update
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Error :" + e);
                 }
@@ -8133,7 +8211,8 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         int uid = Integer.parseInt(ttoviewulid.getText());
         String storeImageQuery = "insert into pro_pic values (?,?)";
-        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid=" + uid + ";";
+        String searchImageQuery = "SELECT image FROM pro_pic where uid=" + uid + "";
         if (ttoviewulid.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Select A user First");
         } else {
@@ -8151,11 +8230,17 @@ public class Admin extends javax.swing.JFrame {
                 preparedStatement.setInt(1, uid);
                 preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
                 try {
-                    //execute delete
-                    db_connection.setData(deleteImageQuery);
-                    //execute update
-                    preparedStatement.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    ResultSet rs = db_connection.getData(searchImageQuery);
+                    if (rs.next()) {
+                        //execute delete
+                        db_connection.setData(deleteImageQuery);
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    } else {
+                        //execute update
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Error :" + e);
                 }
@@ -8173,7 +8258,8 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         int uid = Integer.parseInt(tsviewulid.getText());
         String storeImageQuery = "insert into pro_pic values (?,?)";
-        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid="+uid+";";        
+        String deleteImageQuery = "DELETE FROM pro_pic WHERE uid=" + uid + ";";
+        String searchImageQuery = "SELECT image FROM pro_pic where uid="+uid+"";
         if (tsviewulid.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Select A user First");
         } else {
@@ -8191,11 +8277,17 @@ public class Admin extends javax.swing.JFrame {
                 preparedStatement.setInt(1, uid);
                 preparedStatement.setBinaryStream(2, fileInputStream, fileInputStream.available());
                 try {
-                    //execute delete
-                    db_connection.setData(deleteImageQuery);
-                    //execute update
-                    preparedStatement.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    ResultSet rs = db_connection.getData(searchImageQuery);
+                    if (rs.next()) {
+                        //execute delete
+                        db_connection.setData(deleteImageQuery);
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    } else {
+                        //execute update
+                        preparedStatement.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Image Updated successfully.");
+                    }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Error :" + e);
                 }
