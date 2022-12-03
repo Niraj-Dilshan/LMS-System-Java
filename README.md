@@ -1,2 +1,2 @@
-# LMS-System-Java
-LMS-System-Developed-By-Java
+# LMS System Build Using Java GUI
+LMS system Build using java oop concepts and java GUI
